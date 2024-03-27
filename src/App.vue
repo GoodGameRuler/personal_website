@@ -13,6 +13,22 @@
                       <div class="rightTopBar"> US </div>
                       <div class="leftTopBar"> 80% | 27/03/2024 | Contact Me </div>
                   </div>
+                  <div class="dev infoBox">
+                    <div class="profilePhoto devBox">
+                        <span class="profileCircle" />
+                    </div>
+                    <div class="info devBox">
+                        <p class="headerFont"> UDIT SAMANT </p> <br />
+                        <p class="highlightFont" style="color: #4295AE;"> OS: <span style="color: #FFFFFF;"> Computer Science || Data Science </span></p><br />
+                        <p class="highlightFont" style="color: #4295AE;"> HOST: <span style="color: #FFFFFF;"> The University of Sydney </span></p><br />
+                        <p class="highlightFont" style="color: #4295AE;"> KERNEL: <span style="color: #FFFFFF;"> Bachelor of Adanced Computing || Bachelor of Science </span></p><br />
+                        <p class="highlightFont" style="color: #4295AE;"> UPTIME: <span style="color: #FFFFFF;"> 4th Year (Penultimate) || 2025 Graduation </span></p><br />
+                    </div>
+                    <div class="skills devBox">
+                        <p style="color: #4295AE; font-size: 20px; margin-bottom: 3px;"> ~ $ <span style="color: #FFFFFF;"> ls skills </span></p>
+                        <p style="color: #4295AE; font-size: 20px;"> ~ $ <span style="color: #FFFFFF;"> C, C++, PYTHON, RUST </span></p>
+                    </div>
+                  </div>
                   </div>
               </div>
           </div>
