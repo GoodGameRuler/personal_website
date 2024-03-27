@@ -40,18 +40,20 @@
 <style>
     @import "./assets/fonts.css";
 
-    p {
+    body {
         font-family: "Source Code Pro";
         font-weight: bold;
-        color: #B5B4FB;
+        color: #4295AE;
+        font-size: 20px;
     }
 
     p.headerFont {
-        font-size: 37px;
+        font-size: 45px;
+        color: #9EC4C2;
     }
     
-    p.welcomeFont {
-        font-size: 85px;
+    p.highlightFont {
+        font-size: 22px;
     }
     
     div.background {
@@ -72,9 +74,11 @@
         box-sizing: border-box;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        display: flex;
-        flex-direction: column;
         padding: 12px;
+        display: grid;
+        gap: 12px;
+        grid-template-rows: 75px 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .blurContainer {
@@ -85,8 +89,82 @@
     }
 
     .topBar {
-        width: 100%;
-        height: 40px;
+        grid-row: 1;
+        grid-column: 1 / 3;
         background-color: #000000;
+        display: flex;
+        align-items: center;
+        padding: 0px 30px;
     }
+
+    .leftTopBar {
+        flex: 1;
+        display: flex;
+        justify-content: right;
+
+    }
+
+    .rightTopBar {
+        flex: 1;
+    }
+
+    .dev {
+        grid-row: 2;
+        grid-column: 1;
+        padding: 20px;
+        display: grid;
+        gap: 10px;
+        grid-template-rows: 1fr 50px;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .exp {
+        grid-row: 3;
+        grid-column: 1;
+    }
+
+    .proj{
+        grid-row: 2 / 4;
+        grid-column: 2;
+    }
+
+    .infoBox {
+        background-color: #000000;
+        border: 1px #1C2A32;
+    }
+
+    .devBox {
+        padding: 5px;
+
+    }
+
+    .skills {
+        grid-row: 2;
+        grid-column: 1 / 3;
+    }
+
+    .info {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .profilePhoto {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .lineOfText {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .profileCircle {
+        height: 250px;
+        width: 250px;
+        background-color: #FFFFFF;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
 </style>
