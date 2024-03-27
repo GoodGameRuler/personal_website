@@ -10,6 +10,9 @@
           <div class="blurContainer">
               <div class="hoverContainer">
                   <div class="topBar">
+                      <div class="rightTopBar"> US </div>
+                      <div class="leftTopBar"> 80% | 27/03/2024 | Contact Me </div>
+                  </div>
                   </div>
               </div>
           </div>
