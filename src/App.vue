@@ -29,6 +29,9 @@
                         <p style="color: #4295AE; font-size: 20px;"> ~ $ <span style="color: #FFFFFF;"> C, C++, PYTHON, RUST </span></p>
                     </div>
                   </div>
+                  <div class="exp infoBox">
+                  </div>
+                  <div class="proj infoBox">
                   </div>
               </div>
           </div>
