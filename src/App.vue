@@ -9,21 +9,14 @@
       <div class="background">
           <div class="blurContainer">
               <div class="hoverContainer">
-                  <p class="headerFont"> UDIT SAMANT - PERSONAL WEBSITE</p>
-                  <div class="mainLoginConatiner"> 
-                      <div class="dividedLoginFlexContainter">
-                          <div class="welcomeFont"> 
-                              <p class="welcomeFont"> 04:06 </p>
-                              <p class="welcomeFont"> Welcome Visitor </p>
-                          </div>
-                      </div>
-
+                  <div class="topBar">
                   </div>
               </div>
           </div>
       </div>
   </main>
 </template>
+
 
 <style>
     @import "./assets/fonts.css";
@@ -45,7 +38,7 @@
     div.background {
         height: 100vh;
         width: 100vw;
-        background-image: url('./assets/Fedora BG.jpg');
+        background-image: url('./assets/bg.png');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -55,13 +48,14 @@
         height: 100%;
         width: 100%;
         padding: 2rem;
-        background-color: #3A273F;
+        background-color: #1A2225;
         opacity: 70%;
         box-sizing: border-box;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         display: flex;
         flex-direction: column;
+        padding: 12px;
     }
 
     .blurContainer {
@@ -71,9 +65,9 @@
         -webkit-backdrop-filter: blur(5px);
     }
 
-    .mainLoginConatiner {
-        margin: 10% 10% 30%;
-        box-sizing: border-box;
-        flex-grow: 1;
+    .topBar {
+        width: 100%;
+        height: 40px;
+        background-color: #000000;
     }
 </style>
