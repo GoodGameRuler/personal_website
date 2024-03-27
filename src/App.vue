@@ -80,7 +80,7 @@
         padding: 12px;
         display: grid;
         gap: 12px;
-        grid-template-rows: 75px 1fr 1fr;
+        grid-template-rows: 75px auto 1fr;
         grid-template-columns: 1fr 1fr;
     }
 
@@ -138,7 +138,6 @@
 
     .devBox {
         padding: 5px;
-
     }
 
     .skills {
