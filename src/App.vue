@@ -1,4 +1,8 @@
 <script setup>
+    import TopBar from './components/TopBar.vue'
+    import DevBox from './components/DevBox.vue'
+    import ExpBox from './components/ExpBox.vue'
+    import ProjButton from './components/ProjButton.vue'
 </script>
 
 <template>
@@ -9,29 +13,18 @@
       <div class="background">
           <div class="blurContainer">
               <div class="hoverContainer">
-                  <div class="topBar">
-                      <div class="rightTopBar"> US </div>
-                      <div class="leftTopBar"> 80% | 27/03/2024 | Contact Me </div>
-                  </div>
-                  <div class="dev infoBox">
-                    <div class="profilePhoto devBox">
-                        <span class="profileCircle" />
-                    </div>
-                    <div class="info devBox">
-                        <p class="headerFont"> UDIT SAMANT </p> <br />
-                        <p class="highlightFont" style="color: #4295AE;"> OS: <span style="color: #FFFFFF;"> Computer Science || Data Science </span></p><br />
-                        <p class="highlightFont" style="color: #4295AE;"> HOST: <span style="color: #FFFFFF;"> The University of Sydney </span></p><br />
-                        <p class="highlightFont" style="color: #4295AE;"> KERNEL: <span style="color: #FFFFFF;"> Bachelor of Adanced Computing || Bachelor of Science </span></p><br />
-                        <p class="highlightFont" style="color: #4295AE;"> UPTIME: <span style="color: #FFFFFF;"> 4th Year (Penultimate) || 2025 Graduation </span></p><br />
-                    </div>
-                    <div class="skills devBox">
-                        <p style="color: #4295AE; font-size: 20px; margin-bottom: 3px;"> ~ $ <span style="color: #FFFFFF;"> ls skills </span></p>
-                        <p style="color: #4295AE; font-size: 20px;"> ~ $ <span style="color: #FFFFFF;"> C, C++, PYTHON, RUST </span></p>
-                    </div>
-                  </div>
-                  <div class="exp infoBox">
-                  </div>
+                  <TopBar />
+                  <DevBox />
+                  <ExpBox />
                   <div class="proj infoBox">
+                      <ProjButton value="UniTrack" />
+                      <div class="singleProjectDetailsTitle projectBox"> Project Details </div>
+
+                      <ProjButton value="GDSC Game Jam" />
+                      <ProjButton value="Self" />
+
+                      <!--  SELF SHOULD BE LAST -->
+                      <div class="singleProjectDescBox projectBox"></div>
                   </div>
               </div>
           </div>
@@ -72,16 +65,19 @@
         height: 100%;
         width: 100%;
         padding: 2rem;
-        background-color: #1A2225;
-        opacity: 70%;
+        background-color: rgba(26, 34, 37, 0.7);
         box-sizing: border-box;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
         padding: 12px;
+        -webkit-backdrop-filter: blur(15px);
+        -moz-backdrop-filter: blur(15px);
+        -o-backdrop-filter: blur(15px);
+        -ms-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);;
         display: grid;
         gap: 12px;
         grid-template-rows: 75px auto 1fr;
         grid-template-columns: 1fr 1fr;
+        overflow: scroll;
     }
 
     .blurContainer {
@@ -89,65 +85,67 @@
         width: 100%;
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-    }
-
-    .topBar {
-        grid-row: 1;
-        grid-column: 1 / 3;
-        background-color: #000000;
-        display: flex;
-        align-items: center;
-        padding: 0px 30px;
-    }
-
-    .leftTopBar {
-        flex: 1;
-        display: flex;
-        justify-content: right;
-
-    }
-
-    .rightTopBar {
-        flex: 1;
+        -moz-backdrop-filter: blur(5px);
+        -o-backdrop-filter: blur(5px);
+        -ms-backdrop-filter: blur(5px);
     }
 
     .dev {
         grid-row: 2;
         grid-column: 1;
-        padding: 20px;
         display: grid;
         gap: 10px;
         grid-template-rows: 1fr 50px;
         grid-template-columns: 1fr 2fr;
     }
 
-    .exp {
-        grid-row: 3;
-        grid-column: 1;
-    }
-
     .proj{
         grid-row: 2 / 4;
+        grid-column: 2;
+        display: grid;
+        grid-template-rows: repeat(5, 65px) 1fr;
+        grid-template-columns: 1.75fr 5fr;
+        padding: 20px;
+    }
+
+    .projectBox {
+        background-color: #171F24;
+        margin: 5px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .singleProjectNameBox {
+        grid-column: 1;
+        color: #4295AE;
+        font-size: 20px;
+        font-family: "Source Code Pro";
+        font-weight: bold;
+        border: none;
+    }
+
+    .singleProjectNameBox:focus {
+        background-color: rgba(45, 104, 122, 0.4);
+        transition: all ease-in 0.5s;
+    }
+
+    .singleProjectDescBox {
+        grid-column: 2;
+        grid-row: 2 / 10;
+    }
+ 
+    .singleProjectDetailsTitle {
+        background-color: rgba(45, 104, 122, 0.4);
         grid-column: 2;
     }
 
     .infoBox {
-        background-color: #000000;
+        background-color: rgba(26, 32, 34, 0.7);
         border: 1px #1C2A32;
-    }
-
-    .devBox {
-        padding: 5px;
-    }
-
-    .skills {
-        grid-row: 2;
-        grid-column: 1 / 3;
-    }
-
-    .info {
-        grid-row: 1;
-        grid-column: 2;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     .profilePhoto {
@@ -167,6 +165,10 @@
         background-color: #FFFFFF;
         border-radius: 50%;
         display: inline-block;
+        background-image: url("./assets/profile.avif");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
 </style>
