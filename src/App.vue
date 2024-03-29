@@ -1,8 +1,28 @@
 <script setup>
+
     import TopBar from './components/TopBar.vue'
     import DevBox from './components/DevBox.vue'
     import ExpBox from './components/ExpBox.vue'
     import ProjButton from './components/ProjButton.vue'
+
+    // sharedState.js
+    import { ref } from 'vue';
+
+    const projButtons = [
+        { no: 1, value: 'UniTrack'},
+        { no: 2, value: 'GDSC Game Jam' },
+        // Add more buttons as needed
+
+        { no: 1000, value: 'Self' },
+    ]
+
+    const selectedButton = ref(1);
+
+    const handleSelectButton = (buttonNumber) => {
+        selectedButton.value = buttonNumber;
+        console.log("Working");
+    };
+
 </script>
 
 <template>
@@ -17,14 +37,38 @@
                   <DevBox />
                   <ExpBox />
                   <div class="proj infoBox">
-                      <ProjButton value="UniTrack" />
+                      <ProjButton v-for="button in projButtons" :key="button.no" :button="button" :selectedButton="selectedButton" @select-button="handleSelectButton" />
                       <div class="singleProjectDetailsTitle projectBox"> Project Details </div>
-
-                      <ProjButton value="GDSC Game Jam" />
-                      <ProjButton value="Self" />
-
                       <!--  SELF SHOULD BE LAST -->
-                      <div class="singleProjectDescBox projectBox"></div>
+                      <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
+                          <div class="projectHeader">
+                              <p class="headerText" style="font-size: 25px;"> UniTrack </p>
+                              <p class="headerDesc"> Group Project </p>
+                              <button class=""> V1<img src="./assets/link.svg" /> </button>
+                              <button class=""> V2<img src="./assets/link.svg" /> </button>
+                          </div>
+                          <hr />
+                          <p> Group Project </p>
+
+                      </div>
+                      <div v-if="selectedButton === 2" class="singleProjectDescBox projectBox">
+                          <div class="projectHeader">
+                              <p class="headerText" style="font-size: 25px;"> Google DSC Game Jam </p>
+                              <p class="headerDesc"> Team Planned Event </p>
+                              <button class=""> <img src="./assets/link.svg" /> </button>
+                          </div>
+                          <hr />
+
+                      </div>
+                      <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
+                          <div class="projectHeader">
+                              <p class="headerText" style="font-size: 25px;"> Portfolio Website </p>
+                              <p class="headerDesc"> Individual Project </p>
+                              <button class=""> <img src="./assets/link.svg" /> </button>
+                          </div>
+                          <hr />
+
+                      </div>
                   </div>
               </div>
           </div>
@@ -50,6 +94,12 @@
     
     p.highlightFont {
         font-size: 22px;
+    }
+
+    hr {
+        width: 100%;
+        margin: 6px 0;
+
     }
     
     div.background {
@@ -77,7 +127,7 @@
         gap: 12px;
         grid-template-rows: 75px auto 1fr;
         grid-template-columns: 1fr 1fr;
-        overflow: scroll;
+        overflow: auto;
     }
 
     .blurContainer {
@@ -124,21 +174,75 @@
         font-family: "Source Code Pro";
         font-weight: bold;
         border: none;
-    }
-
-    .singleProjectNameBox:focus {
-        background-color: rgba(45, 104, 122, 0.4);
         transition: all ease-in 0.5s;
     }
 
     .singleProjectDescBox {
         grid-column: 2;
         grid-row: 2 / 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
     }
+
+    .singleProjectDescBox > p {
+        margin-bottom: 6px;
+
+    }
+
+    .projectHeader {
+        display: grid;
+        width: 100%;
+        grid-template-rows: 1fr auto;
+        grid-template-columns: 1fr auto auto;
+        grid-column-gap: 5px;
+    }
+
+    .projectHeader > .headerText {
+        grid-row: 1;
+        grid-column: 1;
+        margin-bottom: 5px;
+
+    }
+
+    .projectHeader > .headerDesc {
+        grid-row: 2;
+        grid-column: 1;
+        margin-bottom: 2px;
+    }
+
+    .projectHeader > button {
+        grid-row: 1 / 10;
+        margin-bottom: 5px;
+        border-radius: 10px;
+        color: #000000;
+        background-color: #9ADAE7;
+        font-size: 20px;
+        font-family: "Source Code Pro";
+        font-weight: bold;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 50px;
+    }
+
+    button > img {
+        height: 22px;
+
+    }
+
+    .projectHeader > hr {
+        margin-bottom: 2px;
+    }
+ 
  
     .singleProjectDetailsTitle {
         background-color: rgba(45, 104, 122, 0.4);
         grid-column: 2;
+        grid-row: 1;
     }
 
     .infoBox {
@@ -165,7 +269,7 @@
         background-color: #FFFFFF;
         border-radius: 50%;
         display: inline-block;
-        background-image: url("./assets/profile.avif");
+        background-image: url("./assets/comic_pf2.png");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
