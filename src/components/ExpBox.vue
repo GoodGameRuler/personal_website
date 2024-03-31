@@ -7,7 +7,7 @@
             <p> ~ 12 #ifndef EXPERIENCES</p>
             <p> ~ 11 #define EXPERIENCES </p>
             <p> ~ 10  </p>
-            <p> ~ 09  <span style="color: #295968;"> // More Details On My Resume </span></p>
+            <p> ~ 09  <span style="color: #295968;"> // More Details On My <a href="/src/assets/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume </a></span></p>
             <p> ~ 08  </p>
             <p> ~ 07  1. <a href="#"> <span style="color: #FFFFFF;"> Machine Learning Internship - FreeGuides (Startup) </span> </a> </p>
             <p> ~ 06  </p>
@@ -65,12 +65,21 @@
 </template>
 
 <style>
-.exp {
-    grid-row: 3;
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-}
+
+    .cvButton {
+        position: float;
+        top: 10px;
+        right: 10px;
+        width: 75px;
+        border-radius: 5px;
+    }
+
+    .exp {
+        grid-row: 3;
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+    }
 
     .vimText {
         flex-shrink: 1;
@@ -78,7 +87,7 @@
         flex-direction: column;
         height: 40vh;
         min-height: 340px;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
     .vimLuaLine {

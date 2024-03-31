@@ -15,7 +15,7 @@
         </div>
         <div class="skills devBox">
             <p style="margin-bottom: 3px;"> ~ $ <span style="color: #FFFFFF;"> ls skills </span></p>
-            <p> ~ $ <span style="color: #FFFFFF;"> C, C++, PYTHON, RUST </span></p>
+            <p> &#62; <span style="color: #FFFFFF;"> C, C++, JAVA, JAVASCRIPT, PYTHON, HTML, CSS, PHP, SQL, REACT, VUE, RUST, DJANGO, NEXT.JS, DOCKER </span></p>
         </div>
     </div>
 </template>

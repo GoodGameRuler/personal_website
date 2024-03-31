@@ -37,36 +37,47 @@
                   <DevBox />
                   <ExpBox />
                   <div class="proj infoBox">
-                      <ProjButton v-for="button in projButtons" :key="button.no" :button="button" :selectedButton="selectedButton" @select-button="handleSelectButton" />
                       <div class="singleProjectDetailsTitle projectBox"> Project Details </div>
+                      <ProjButton v-for="button in projButtons" :key="button.no" :button="button" :selectedButton="selectedButton" @select-button="handleSelectButton" />
                       <!--  SELF SHOULD BE LAST -->
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
                               <p class="headerText" style="font-size: 25px;"> UniTrack </p>
                               <p class="headerDesc"> Group Project </p>
-                              <button class=""> V1<img src="./assets/link.svg" /> </button>
-                              <button class=""> V2<img src="./assets/link.svg" /> </button>
+                              <button class="linkButton" onclick="window.open('https://unitrack.au/','_blank')"> V1<img src="./assets/link.svg" /> </button>
+                              <button class="linkButton" onclick="window.open('https://github.com/USYDUniTrack/unitrack','_blank')"> V2<img src="./assets/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p> Group Project </p>
+                          <p> Made Using (Version 2): <span style="color: #FFFFFF;"> HTML, CSS, JS, HTMX, DJANGO, DOCKER </span></p> 
+                          <p style="font-style: italic;"> This project won 2023 Univerity of Sydney Coding Fest's Best Undergraduate Project </p> <br />
+
+                          <p> <span style="color: #FFFFFF;"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease. 
+                              Compared to the Original University Websites, UniTrack has... Simplified UI One Unified Page for timetabling, and planning A drag and Drop degree planner. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 2" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
                               <p class="headerText" style="font-size: 25px;"> Google DSC Game Jam </p>
                               <p class="headerDesc"> Team Planned Event </p>
-                              <button class=""> <img src="./assets/link.svg" /> </button>
+                              <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/GDSC-PyGame','_blank')"> <img src="./assets/link.svg" /> </button>
                           </div>
                           <hr />
+                          <p> Made Using: <span style="color: #FFFFFF;"> PYGAME, FIGMA </span></p> <br />
+
+                          <p> <span style="color: #FFFFFF;"> A introduction to Game Development workshop that I orchastrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p> <br />
+                          <p> <span style="color: #FFFFFF;"> The goal was to inspire stuents, to be creative and hopfeully introuce them to a different career option in CS. Here were the results: link. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
                               <p class="headerText" style="font-size: 25px;"> Portfolio Website </p>
                               <p class="headerDesc"> Individual Project </p>
-                              <button class=""> <img src="./assets/link.svg" /> </button>
+                              <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/personal_website','_blank')"> <img src="./assets/link.svg" /> </button>
                           </div>
                           <hr />
+                          <p> Made Using: <span style="color: #FFFFFF;"> HTML, CSS, JS, FIGMA, VUE 3, VERCEL </span></p> <br />
+                          <p> <span style="color: #FFFFFF;"> This personal website was a means for me to realy delve into the creative side of developing apps, while making a website as for my personal brand
+                              . I tried encorporating a terminal esque look, while adding elements of comic books here and there.</span> </p> <br />
 
                       </div>
                   </div>
@@ -80,11 +91,42 @@
 <style>
     @import "./assets/fonts.css";
 
+    button {
+        border: none;
+        background-color: inherit;
+        color: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+    }
+
     body {
         font-family: "Source Code Pro";
         font-weight: bold;
         color: #4295AE;
         font-size: 20px;
+    }
+
+    a {
+        text-decoration: underline #FFFFFF;
+        transition: ease 0.5s;
+        color: inherit;
+    }
+
+    a:hover {
+        text-decoration: underline #4295AE;
+
+    }
+
+    ::-webkit-scrollbar {
+        height: 8px;              /* height of horizontal scrollbar ← You're missing this */
+        width: 8px;               /* width of vertical scrollbar */
+        background: rgba(26, 32, 34, 0.9);;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background: #295968;
+        border-radius: 10px;
     }
 
     p.headerFont {
@@ -145,7 +187,7 @@
         grid-column: 1;
         display: grid;
         gap: 10px;
-        grid-template-rows: 1fr 50px;
+        grid-template-rows: 1fr auto;
         grid-template-columns: 1fr 2fr;
     }
 
@@ -213,10 +255,7 @@
         margin-bottom: 2px;
     }
 
-    .projectHeader > button {
-        grid-row: 1 / 10;
-        margin-bottom: 5px;
-        border-radius: 10px;
+    .linkButton {
         color: #000000;
         background-color: #9ADAE7;
         font-size: 20px;
@@ -227,6 +266,18 @@
         justify-content: center;
         align-items: center;
         min-width: 50px;
+        transition: all ease 0.2s;
+    }
+
+    .linkButton:active {
+        color: #000000;
+        background-color: #FFFFFF;
+    }
+
+    .projectHeader > button {
+        grid-row: 1 / 10;
+        margin-bottom: 5px;
+        border-radius: 10px;
     }
 
     button > img {
@@ -238,6 +289,12 @@
         margin-bottom: 2px;
     }
  
+
+    .singleProjectsTitle {
+        background-color: rgba(45, 104, 122, 0.4);
+        grid-column: 2;
+        grid-row: 1;
+    }
  
     .singleProjectDetailsTitle {
         background-color: rgba(45, 104, 122, 0.4);
