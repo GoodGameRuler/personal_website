@@ -47,7 +47,7 @@
                           </div>
                           <hr />
                           <p> Made Using (Version 2): <span style="color: #FFFFFF;"> HTML, CSS, JS, HTMX, DJANGO, DOCKER </span></p> 
-                          <p style="font-style: italic;"> This project won 2023 Univerity of Sydney Coding Fest's Best Undergraduate Project </p> <br />
+                          <p class= "breakLine" style="font-style: italic;"> This project won 2023 Univerity of Sydney Coding Fest's Best Undergraduate Project </p>
 
                           <p> <span style="color: #FFFFFF;"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease. 
                               Compared to the Original University Websites, UniTrack has... Simplified UI One Unified Page for timetabling, and planning A drag and Drop degree planner. </span> </p>
@@ -60,10 +60,9 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/GDSC-PyGame','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p> Made Using: <span style="color: #FFFFFF;"> PYGAME, FIGMA </span></p> <br />
+                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> PYGAME, FIGMA </span></p>
 
-                          <p> <span style="color: #FFFFFF;"> A introduction to Game Development workshop that I orchastrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p> <br />
-                          <p> <span style="color: #FFFFFF;"> The goal was to inspire stuents, to be creative and hopfeully introuce them to a different career option in CS. Here were the results: link. </span> </p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> A introduction to Game Development workshop that I orchastrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span style="color: #FFFFFF;"> The goal was to inspire stuents, to be creative and hopfeully introuce them to a different career option in CS. Here were the results: link. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
@@ -73,10 +72,9 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/personal_website','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p> Made Using: <span style="color: #FFFFFF;"> HTML, CSS, JS, FIGMA, VUE 3, VERCEL </span></p> <br />
-                          <p> <span style="color: #FFFFFF;"> This personal website was a means for me to realy delve into the creative side of developing apps, while making a website as for my personal brand
-                              . I tried encorporating a terminal esque look, while adding elements of comic books here and there.</span> </p> <br />
-
+                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> HTML, CSS, JS, FIGMA, VUE 3, NUXT 3, VERCEL </span></p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> This personal website was a means for me to realy delve into the creative side of developing apps, while making a website as for my personal brand
+                              . I tried encorporating a terminal esque look, while adding elements of comic books here and there.</span> </p>
                       </div>
                   </div>
               </div>
@@ -104,14 +102,14 @@
     }
 
     a {
-        text-decoration: underline #FFFFFF;
+        text-decoration: 2px underline #FFFFFF;
         transition: ease 0.5s;
         color: inherit;
     }
 
     a:hover {
-        text-decoration: underline #4295AE;
-
+        text-decoration: 2px underline #4295AE;
+        cursor: pointer;
     }
 
     ::-webkit-scrollbar {
@@ -137,7 +135,7 @@
     hr {
         width: 100%;
         margin: 6px 0;
-
+        color: white;
     }
     
     div.background {
@@ -226,7 +224,7 @@
     }
 
     .singleProjectDescBox > p {
-        margin-bottom: 6px;
+        margin-bottom: 10px;
 
     }
 
