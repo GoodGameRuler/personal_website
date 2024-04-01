@@ -7,7 +7,7 @@
             <p> ~ 12 #ifndef EXPERIENCES</p>
             <p> ~ 11 #define EXPERIENCES </p>
             <p> ~ 10  </p>
-            <p> ~ 09  <span style="color: #295968;"> // More Details On My <a href="/src/assets/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume </a></span></p>
+            <p> ~ 09  <span style="color: #295968;"> // More Details On My <a href="../assets/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume </a></span></p>
             <p> ~ 08  </p>
             <p> ~ 07  1. <a href="#"> <span style="color: #FFFFFF;"> Machine Learning Internship - FreeGuides (Startup) </span> </a> </p>
             <p> ~ 06  </p>
