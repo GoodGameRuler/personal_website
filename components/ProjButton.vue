@@ -1,6 +1,4 @@
 <script setup>
-    import { defineProps, ref } from 'vue';
-
     const emit = defineEmits(['selectButton']);
 
     const isActive = ref(true);
