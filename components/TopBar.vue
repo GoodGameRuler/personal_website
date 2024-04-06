@@ -33,7 +33,7 @@
     .topBarButton:hover {
         background-color: rgba(255, 255, 255);
         box-shadow: 5px 5px gray;
-
+        cursor: pointer;
     }
 
     .modal {
@@ -83,6 +83,10 @@
         align-items: center;
         padding: 0px 30px;
         border-radius: 15px;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
     }
 
     .leftTopBar {
