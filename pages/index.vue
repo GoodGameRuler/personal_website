@@ -100,6 +100,13 @@
         font-size: 20px;
     }
 
+    @-moz-document url-prefix(){
+        body {
+            scrollbar-width: 4px;
+            scrollbar-color: #295968 rgba(26, 32, 34, 0.9);
+        }
+    }
+
     a {
         text-decoration: 2px underline #FFFFFF;
         transition: ease 0.5s;
@@ -115,6 +122,10 @@
         height: 8px;              /* height of horizontal scrollbar ← You're missing this */
         width: 8px;               /* width of vertical scrollbar */
         background: rgba(26, 32, 34, 0.9);;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: #FFFFFF;
     }
 
     ::-webkit-scrollbar-thumb{
