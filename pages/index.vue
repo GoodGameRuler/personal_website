@@ -46,10 +46,10 @@
                               <button class="linkButton" onclick="window.open('https://github.com/USYDUniTrack/unitrack','_blank')"> V2<img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p> Made Using (Version 2): <span style="color: #FFFFFF;"> HTML, CSS, JS, HTMX, DJANGO, DOCKER </span></p> 
+                          <p> Made Using (Version 2): <span style="color: #FFFFFF;"> HTML, CSS, JS, HTMX, DJANGO, DOCKER </span></p>
                           <p class= "breakLine" style="font-style: italic;"> This project won 2023 Univerity of Sydney Coding Fest's Best Undergraduate Project </p>
 
-                          <p> <span style="color: #FFFFFF;"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease. 
+                          <p> <span style="color: #FFFFFF;"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease.
                               Compared to the Original University Websites, UniTrack has... Simplified UI One Unified Page for timetabling, and planning A drag and Drop degree planner. </span> </p>
 
                       </div>
@@ -95,7 +95,6 @@
     }
 
     body {
-        font-family: "Source Code Pro";
         font-weight: bold;
         color: #4295AE;
         font-size: 20px;
@@ -127,7 +126,7 @@
         font-size: 45px;
         color: #9EC4C2;
     }
-    
+
     p.highlightFont {
         font-size: 22px;
     }
@@ -137,7 +136,7 @@
         margin: 6px 0;
         color: white;
     }
-    
+
     div.background {
         height: 100vh;
         width: 100vw;
@@ -282,14 +281,14 @@
     .projectHeader > hr {
         margin-bottom: 2px;
     }
- 
+
 
     .singleProjectsTitle {
         background-color: rgba(45, 104, 122, 0.4);
         grid-column: 2;
         grid-row: 1;
     }
- 
+
     .singleProjectDetailsTitle {
         background-color: rgba(45, 104, 122, 0.4);
         grid-column: 2;
