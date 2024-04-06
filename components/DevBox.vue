@@ -41,7 +41,7 @@
         </div>
         <div class="skills devBox">
             <p style="margin-bottom: 3px;"> ~ $ <span style="color: #FFFFFF;"> ls skills </span></p>
-            <p> &#62; <span style="color: #FFFFFF;"> 
+            <p> &#62; <span style="color: #FFFFFF;">
                 <span class="" v-for="(skill, key) in skills" :key="key" @click="showSkill = true; selSkill = skill"><a class="skillButton"> {{ key }} </a>, </span></span></p>
         </div>
 
@@ -69,7 +69,6 @@
 
     #manPageSkillsContents {
         background-color: rgba(26, 32, 34, 1);
-        border-radius: 0;
     }
 
     .skills {
