@@ -4,7 +4,11 @@
 */
 @font-face {
     font-family: "Source Code Pro";
-    src: url("./fonts/SourceCodePro-VariableFont_wght.ttf") format("ttf"), url("./fonts/SourceCodePro-Italic-VariableFont_wght.ttf") format("ttf");
+    src: url("./fonts/SourceCodePro-VariableFont_wght.ttf") format("truetype"),
+        url("./fonts/SourceCodePro-Italic-VariableFont_wght.ttf") format("truetype"),
+        url("./fonts/SourceCodeProWOFF/OTF/SourceCodePro-Bold.otf.woff") format("woff")
+        url("./fonts/SourceCodeProWOFF2/TTF/SourceCodePro-Bold.ttf.woff2") format("woff2")
+        ;
     font-style: normal;
 }
 
