@@ -25,4 +25,8 @@
 
     }
 
+    .projectBox.selectedProjButton:hover {
+        background-color: rgba(45, 104, 122, 0.4);
+    }
+
 </style>

@@ -196,10 +196,16 @@
     .projectBox {
         background-color: #171F24;
         margin: 5px;
-        border-radius: 5px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .singleProjectNameBox.projectBox:not(.selectedProjButton):hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 5px 5px gray;
+        cursor: pointer;
     }
 
     .singleProjectNameBox {
@@ -262,6 +268,11 @@
         transition: all ease 0.2s;
     }
 
+    .linkButton:hover {
+        cursor: pointer;
+        box-shadow: 5px 5px gray;
+    }
+
     .linkButton:active {
         color: #000000;
         background-color: #FFFFFF;
@@ -300,6 +311,7 @@
         border: 1px #1C2A32;
         padding: 20px;
         box-sizing: border-box;
+        border-radius: 20px;
     }
 
     .profilePhoto {

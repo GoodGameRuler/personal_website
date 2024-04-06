@@ -12,7 +12,7 @@
                 <p style="margin-bottom: 15px; font-style: italic;"> I am overseas at the moment. If I don't receive your call feel free to contact me on any of my other contacts </p>
                 <p> Email: udit.samant@gmail.com </p>
                 <p> Mobile: +61 434 577 928 </p>
-                
+
                 <p> Instagram: some_ant02 </p>
                 <p> Facebook: Udit Samant </p>
         </Modal>
@@ -21,19 +21,21 @@
 </template>
 
 <style>
-    
+
     .topBarButton {
         padding: 5px;
-        border-radius: 5px;
+        border-radius: 10px;
         transition: ease 0.5s;
-        margin: 2px;
+        margin: 2px 0;
+        margin-left: 4px;
     }
 
     .topBarButton:hover {
         background-color: rgba(255, 255, 255);
+        box-shadow: 5px 5px gray;
 
     }
-    
+
     .modal {
         background-color: rgba(0, 0, 0, 0.4);
         z-index: 999;
@@ -80,6 +82,7 @@
         display: flex;
         align-items: center;
         padding: 0px 30px;
+        border-radius: 15px;
     }
 
     .leftTopBar {
