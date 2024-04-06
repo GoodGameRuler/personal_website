@@ -9,6 +9,7 @@
     const projButtons = [
         { no: 1, value: 'UniTrack'},
         { no: 2, value: 'GDSC Game Jam' },
+        { no: 3, value: 'Korean' },
         // Add more buttons as needed
 
         { no: 1000, value: 'Self' },
@@ -63,6 +64,19 @@
                           <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> PYGAME, FIGMA </span></p>
 
                           <p class="breakLine"> <span style="color: #FFFFFF;"> A introduction to Game Development workshop that I orchastrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span style="color: #FFFFFF;"> The goal was to inspire stuents, to be creative and hopfeully introuce them to a different career option in CS. Here were the results: link. </span> </p>
+
+                      </div>
+                      <div v-if="selectedButton === 3" class="singleProjectDescBox projectBox">
+                          <div class="projectHeader">
+                              <p class="headerText" style="font-size: 25px;"> Korean Learning Script </p>
+                              <p class="headerDesc"> Personal Project </p>
+                              <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/korean','_blank')"> <img src="/link.svg" /> </button>
+                          </div>
+                          <hr />
+                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> PYTHON </span></p>
+
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> A small project made to assist me in my endeavours of learning Korean. </span> </p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> In my attempts to learn korean, before my exchange at KAIST University, I realised tools like Quizlet and other spaced repitition based learning apps, just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
