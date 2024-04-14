@@ -8,8 +8,10 @@
             { name: "keywords", content: "Udit Samant, Personal Website, Vue, Nuxt, JS, HTML, CSS, Web Development"},
             { name: "og:title", content: "Udit Samant - Personal Website"},
             { name: "og:image", content: "https://www.uditsamant.com/comic_pf2.png"},
+            { name: "og:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
             { name: "twitter:title", content: "Udit Samant - Personal Website"},
             { name: "twitter:image", content: "https://www.uditsamant.com/comic_pf2.png"},
+            { name: "twitter:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
         ],
     })
 
