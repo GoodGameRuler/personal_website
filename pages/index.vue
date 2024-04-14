@@ -6,12 +6,12 @@
             { name: 'description', content: "Udit's Bio, Projects, and Expereience"},
             { name: 'author', content: "Udit Samant"},
             { name: "keywords", content: "Udit Samant, Personal Website, Vue, Nuxt, JS, HTML, CSS, Web Development"},
-            { property: "og:title", content: "Udit Samant - Personal Website"},
-            { property: "og:image", content: "https://www.uditsamant.com/comic_pf2.png"},
-            { property: "og:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
-            { property: "twitter:title", content: "Udit Samant - Personal Website"},
-            { property: "twitter:image", content: "https://www.uditsamant.com/comic_pf2.png"},
-            { property: "twitter:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
+            { name: "og:title", content: "Udit Samant - Personal Website"},
+            { name: "og:image", content: "https://www.uditsamant.com/comic_pf2.png"},
+            { name: "og:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
+            { name: "twitter:title", content: "Udit Samant - Personal Website"},
+            { name: "twitter:image", content: "https://www.uditsamant.com/comic_pf2.png"},
+            { name: "twitter:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
         ],
     })
 
