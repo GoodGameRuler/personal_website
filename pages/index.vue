@@ -1,5 +1,16 @@
 <script setup>
 
+    useHead({
+        title: "Udit's Personal Website",
+        meta: [
+            { name: 'description', content: "Udit's Bio, Projects, and Expereience"},
+            { name: 'author', content: "Udit Samant"},
+            { name: "keywords", content: "Udit Samant, Personal Website, Vue, Nuxt, JS, HTML, CSS, Web Development"},
+            { name: "og:title", content: "Udit Samant - Personal Website"},
+            { name: "og:image", content: "../public/comic_pf2.png"},
+        ],
+    })
+
     import '~/assets/base.css'
     import '~/assets/fonts.css'
 
