@@ -9,7 +9,7 @@
 
 <template>
     <div v-if="show" :id="modalID" class="modal" @click="show = false">
-        <div :id="modalContentsID" class="modalContents" @click.stop=""> 
+        <div :id="modalContentsID" class="modalContents" @click.stop="">
             <slot></slot>
         </div>
     </div>

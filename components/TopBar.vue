@@ -36,45 +36,6 @@
         cursor: pointer;
     }
 
-    .modal {
-        background-color: rgba(0, 0, 0, 0.4);
-        z-index: 999;
-        height: 100vh;
-        width: 100vw;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        overflow: hidden;
-        overscroll-behavior: contain;
-        display: grid;
-        grid-template-rows: 1fr auto 1fr;
-        grid-template-columns: 1fr auto 1fr;
-    }
-
-    .modalContents {
-        grid-row: 2;
-        grid-column: 2;
-        background-color: rgb(45, 104, 122);
-        color: #FFFFFF;
-        min-width: 400px;
-        max-width: 700px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        border-radius: 15px;
-        border: solid 1px white;
-    }
-
-    .modalContents > p {
-        margin-bottom: 3px;
-
-    }
-
-    .modalHeader {
-        font-size: 30px;
-
-    }
-
     .topBar {
         grid-row: 1;
         grid-column: 1 / 3;
