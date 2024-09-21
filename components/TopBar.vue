@@ -9,12 +9,10 @@
         <Modal v-model="showContactPage" modalID="contactMeModal">
                 <p class="modalHeader"> Say Hello! </p>
                 <hr />
-                <p style="margin-bottom: 15px; font-style: italic;"> I am overseas at the moment. If I don't receive your call feel free to contact me on any of my other contacts </p>
-                <p> Email: udit.samant@gmail.com </p>
-                <p> Mobile: +61 434 577 928 </p>
+                <p> Email: <a target="_blank" href="mailto:udit.samant@gmail.com">udit.samant@gmail.com</a> </p>
+                <p> Mobile: <a target="_blank" href="tel:+61434577928">+61 434 577 928</a> </p>
 
-                <p> Instagram: some_ant02 </p>
-                <p> Facebook: Udit Samant </p>
+                <p> LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/uditsamant/">Udit Samant</a> </p>
         </Modal>
 
     </div>
@@ -34,45 +32,6 @@
         background-color: rgba(255, 255, 255);
         box-shadow: 5px 5px gray;
         cursor: pointer;
-    }
-
-    .modal {
-        background-color: rgba(0, 0, 0, 0.4);
-        z-index: 999;
-        height: 100vh;
-        width: 100vw;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        overflow: hidden;
-        overscroll-behavior: contain;
-        display: grid;
-        grid-template-rows: 1fr auto 1fr;
-        grid-template-columns: 1fr auto 1fr;
-    }
-
-    .modalContents {
-        grid-row: 2;
-        grid-column: 2;
-        background-color: rgb(45, 104, 122);
-        color: #FFFFFF;
-        min-width: 400px;
-        max-width: 700px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        border-radius: 15px;
-        border: solid 1px white;
-    }
-
-    .modalContents > p {
-        margin-bottom: 3px;
-
-    }
-
-    .modalHeader {
-        font-size: 30px;
-
     }
 
     .topBar {

@@ -3,16 +3,24 @@
     let showExp = ref(false);
     let exp = {
         a: {
-            name: "FreeGuides Data Science Internship", 
-            skills: "Python, Pandas, SciKit Learn, BigQuery, Google Cloud Functions", 
+            name: "FreeGuides Data Science Internship",
+            skills: "Python, Pandas, SciKit Learn, BigQuery, Google Cloud Functions",
             desc: "I directed and executed early decesions and planning regarding automating validation of self guided tours. I used machine learning models to generate ratings, and feedback for every tour on the mobile application platform."},
         b: {
-            name: "Google Developers Student Club", 
-            skills: "Leadership, Critical Thinking, Time Management, Pygame, Web Development", 
-            desc: "A valuable experience in leading a passionate group towards enabling and enspiring future software developers with emerging technologies and topics."},
+            name: "Sydney Computing Society",
+            skills: "Leadership, Azure, Docker, Python, C#",
+            desc: "I co-lead a small group of passionate developers in creating systems and infrastructure enabling events at SYNCS."},
         c: {
-            name: "Sydney Quant Traders", 
-            skills: "Collaboration, Python, Flask, JavaScript, Discord.Js", 
+            name: "Google Developers Student Club",
+            skills: "Leadership, Critical Thinking, Time Management, Pygame, Web Development, Event Planning",
+            desc: "A valuable experience in leading a passionate group towards enabling and enspiring future software developers with emerging technologies and topics."},
+        d: {
+            name: "Sydney Computing Society",
+            skills: "Leadership, Critical Thinking, Time Management, Event Planning",
+            desc: "I was responsible for organising events and played a roles in building a community for The Univeristy of Sydney Students"},
+        e: {
+            name: "Sydney Quant Traders",
+            skills: "Collaboration, Python, Flask, JavaScript, Discord.Js",
             desc: "At Sydney Quant Traders I was invited to work on an unique project to intergrate the Social Media Platform (Discord) into their propriety Mock Trading Platform. Had quite a bit of fun with this, and it was a valuable experience in programming in a professional, team setting."
         },
     };
@@ -38,15 +46,15 @@
             <p> ~ 08  </p>
             <p> ~ 07  1. <a @click="showExp = true; selExp = exp.a"> <span style="color: #FFFFFF;"> Machine Learning Internship - FreeGuides (Startup) </span> </a> </p>
             <p> ~ 06  </p>
-            <p> ~ 05  2. <a @click="showExp = true; selExp = exp.b"> <span style="color: #FFFFFF;"> Technical Events Director   - Google DSC (Student Club) </span> </a> </p>
+            <p> ~ 05  2. <a @click="showExp = true; selExp = exp.b"> <span style="color: #FFFFFF;"> Developer Lead              - SYNCS (Student Club) </span> </a> </p>
             <p> ~ 04  </p>
-            <p> ~ 03  3. <a @click="showExp = true; selExp = exp.c"> <span style="color: #FFFFFF;"> Software Developer    -  SQT      (Student Club) </span> </a> </p>
+            <p> ~ 03  3. <a @click="showExp = true; selExp = exp.c"> <span style="color: #FFFFFF;"> Technical Events Director   - Google DSC (Student Club) </span> </a> </p>
             <p> ~ 02  </p>
-            <p> ~ 01  </p>
-            <p> ~ 00  #endif </p>
-            <p> ~ 01  </p>
+            <p> ~ 01  4. <a @click="showExp = true; selExp = exp.d"> <span style="color: #FFFFFF;"> Technical Events Sucomittee - SYNCS (Student Club) </span> </a> </p>
+            <p> ~ 00  </p>
+            <p> ~ 01  5. <a @click="showExp = true; selExp = exp.e"> <span style="color: #FFFFFF;"> Software Developer          -  SQT      (Student Club) </span> </a> </p>
             <p> ~ 02  </p>
-            <p> ~ 03  </p>
+            <p> ~ 03  #endif </p>
             <p> ~ 04  </p>
             <p> ~ 05  </p>
             <p> ~ 06  </p>
