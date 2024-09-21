@@ -9,12 +9,10 @@
         <Modal v-model="showContactPage" modalID="contactMeModal">
                 <p class="modalHeader"> Say Hello! </p>
                 <hr />
-                <p style="margin-bottom: 15px; font-style: italic;"> I am overseas at the moment. If I don't receive your call feel free to contact me on any of my other contacts </p>
-                <p> Email: udit.samant@gmail.com </p>
-                <p> Mobile: +61 434 577 928 </p>
+                <p> Email: <a target="_blank" href="mailto:udit.samant@gmail.com">udit.samant@gmail.com</a> </p>
+                <p> Mobile: <a target="_blank" href="tel:+61434577928">+61 434 577 928</a> </p>
 
-                <p> Instagram: some_ant02 </p>
-                <p> Facebook: Udit Samant </p>
+                <p> LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/uditsamant/">Udit Samant</a> </p>
         </Modal>
 
     </div>
