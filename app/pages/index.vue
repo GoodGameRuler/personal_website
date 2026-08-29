@@ -76,6 +76,7 @@
                           <p class="breakLine" style="font-style: italic;"> An ongoing Linux playground </p>
                           <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs most of what I host. Services typically in their own LXCs. </span> </p>
                           <p class="breakLine"> <span class="hl"> CGNAT restrictions mean the cluster cannot accept incoming connections, so I use Wireguard VPN to access my services. Anything meant to be public is exposed through a tunnel to a small cloud machine, where a reverse proxy forwards the traffic to my homelab. I run a minimal DNS service for adblock, and so I don't have to remember IP addresses. </span> </p>
+                          <p class="breakLine"> <span class="hl"> Next, I am looking to explore more small-scale private cloud technologies, including storage and file serving, SSO, and an email server. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
