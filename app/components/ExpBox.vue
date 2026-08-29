@@ -18,6 +18,11 @@
 
     let selExp = ref(exp.a);
 
+    // nvim cursor: absolute line it sits on; gutter renders relative numbers around it
+    const cur = ref(13);
+    const gut = (n) => cur.value === n ? n : Math.abs(n - cur.value);
+    const setCur = (n) => { cur.value = n; };
+
 </script>
 
 <template>
@@ -34,19 +39,19 @@
                 <hr />
                 <p> {{ selExp.desc }} </p>
             </Modal>
-            <p class="vimLine"><span class="vimNum">12</span><span class="vimBody">#ifndef EXPERIENCES</span></p>
-            <p class="vimLine"><span class="vimNum">11</span><span class="vimBody">#define EXPERIENCES</span></p>
-            <p class="vimLine"><span class="vimNum">10</span></p>
-            <p class="vimLine"><span class="vimNum">9</span><span class="vimBody"><span class="vimComment">// These are clickable!</span></span></p>
-            <p class="vimLine"><span class="vimNum">8</span></p>
-            <p class="vimLine"><span class="vimNum">7</span><span class="vimBody">1. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern - Jane Street </span> </a></span></p>
-            <p class="vimLine"><span class="vimNum">6</span></p>
-            <p class="vimLine"><span class="vimNum">5</span><span class="vimBody">2. <a @click="showExp = true; selExp = exp.b"> <span class="hl"> Software Engineering Intern - SafetyCulture </span> </a></span></p>
-            <p class="vimLine"><span class="vimNum">4</span></p>
-            <p class="vimLine"><span class="vimNum">3</span><span class="vimBody">3. <a @click="showExp = true; selExp = exp.c"> <span class="hl"> Data Science Intern - FreeGuides (Startup) </span> </a></span></p>
-            <p class="vimLine"><span class="vimNum">2</span></p>
-            <p class="vimLine"><span class="vimNum">1</span></p>
-            <p class="vimLine cursorLine"><span class="vimNum">13</span><span class="vimBody">#endif</span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 1 }" @click="setCur(1)"><span class="vimNum">{{ gut(1) }}</span><span class="vimBody">#ifndef EXPERIENCES</span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 2 }" @click="setCur(2)"><span class="vimNum">{{ gut(2) }}</span><span class="vimBody">#define EXPERIENCES</span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 3 }" @click="setCur(3)"><span class="vimNum">{{ gut(3) }}</span><span class="vimBody"></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 4 }" @click="setCur(4)"><span class="vimNum">{{ gut(4) }}</span><span class="vimBody"><span class="vimComment">// These are clickable!</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 5 }" @click="setCur(5)"><span class="vimNum">{{ gut(5) }}</span><span class="vimBody"></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 6 }" @click="setCur(6)"><span class="vimNum">{{ gut(6) }}</span><span class="vimBody">1. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern - Jane Street </span> </a></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 7 }" @click="setCur(7)"><span class="vimNum">{{ gut(7) }}</span><span class="vimBody"></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 8 }" @click="setCur(8)"><span class="vimNum">{{ gut(8) }}</span><span class="vimBody">2. <a @click="showExp = true; selExp = exp.b"> <span class="hl"> Software Engineering Intern - SafetyCulture </span> </a></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 9 }" @click="setCur(9)"><span class="vimNum">{{ gut(9) }}</span><span class="vimBody"></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 10 }" @click="setCur(10)"><span class="vimNum">{{ gut(10) }}</span><span class="vimBody">3. <a @click="showExp = true; selExp = exp.c"> <span class="hl"> Data Science Intern - FreeGuides (Startup) </span> </a></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 11 }" @click="setCur(11)"><span class="vimNum">{{ gut(11) }}</span><span class="vimBody"></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 12 }" @click="setCur(12)"><span class="vimNum">{{ gut(12) }}</span><span class="vimBody"></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 13 }" @click="setCur(13)"><span class="vimNum">{{ gut(13) }}</span><span class="vimBody">#endif</span></p>
             <div class="vimFiller">
                 <p class="vimLine" v-for="n in 60" :key="n"><span class="vimNum vimTilde">~</span></p>
             </div>
@@ -54,7 +59,7 @@
 
         <div class="vimLuaLine">
             <p><span class="hl"> NORMAL ► experiences.h </span></p>
-            <p> 13:1 </p>
+            <p> {{ cur }}:1 </p>
 
 
         </div>
@@ -172,8 +177,28 @@
         text-align: left;
     }
 
+    .cursorLine {
+        background-color: var(--selected);
+    }
+
     .cursorLine .vimNum {
         color: var(--label);
+    }
+
+    .cursorLine .vimBody::first-letter {
+        background-color: var(--text);
+        color: var(--pane-solid);
+    }
+
+    .cursorLine .vimBody:empty::before {
+        content: "\00a0";
+        display: inline-block;
+        width: 0.6em;
+        background-color: var(--text);
+    }
+
+    .vimLine {
+        cursor: default;
     }
 
     .vimBody {
