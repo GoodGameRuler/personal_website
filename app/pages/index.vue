@@ -73,8 +73,8 @@
                           <hr />
                           <p> Made Using: <span class="hl"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
                           <p class="breakLine" style="font-style: italic;"> This is where most of my Linux learning actually happens. </p>
-                          <p class="breakLine"> <span class="hl"> I run a Proxmox cluster at home that hosts my self-hosted services in LXC containers. My ISP puts me behind CGNAT, so I set up a WireGuard tunnel through a small cloud host to carry external traffic in, with a Traefik reverse proxy routing it to the right service. </span> </p>
-                          <p class="breakLine"> <span class="hl"> I also configured split DNS zones to separate internal and external traffic. The same names work at home and away, and only the services I choose are reachable from the internet. </span> </p>
+                          <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs everything I self-host, each service in its own LXC container. </span> </p>
+                          <p class="breakLine"> <span class="hl"> Reaching it from outside was the fun part. My ISP hides me behind CGNAT, so traffic comes in through a WireGuard tunnel via a tiny cloud box, and Traefik hands it to the right service. Split DNS keeps the same names working at home and away, and only what I choose is public. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
@@ -284,7 +284,7 @@
         grid-row: 2 / 4;
         grid-column: 2;
         display: grid;
-        grid-template-rows: 44px repeat(7, 48px) 1fr;
+        grid-template-rows: 52px repeat(7, 48px) 1fr;
         grid-template-columns: 1.75fr 5fr;
         padding: 20px;
         align-content: start;
@@ -294,8 +294,8 @@
         grid-row: 1;
         grid-column: 1 / 3;
         display: flex;
-        align-items: center;
-        padding: 0 14px;
+        align-items: flex-start;
+        padding: 4px 14px 0;
         font-weight: bold;
     }
 
@@ -318,6 +318,7 @@
         background-color: transparent;
         border-radius: 0;
         margin: 0;
+        padding: 4px 20px 20px;
         animation: paneFade 0.2s ease;
     }
 
