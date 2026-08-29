@@ -73,6 +73,7 @@ ccccccccccccccccccccccccccccc:'.
             <p style="margin-bottom: 3px;"> ~ $ <span class="hl"> ls skills </span></p>
             <p> &#62; <span class="hl">
                 <span class="" v-for="(skill, key) in skills" :key="key" @click="showSkill = true; selSkill = skill"><a class="skillButton"> {{ key }} </a>, </span></span></p>
+            <p class="shellPrompt"> ~ $ <span class="promptCursor"></span></p>
         </div>
 
         <Modal v-model="showSkill" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
@@ -125,6 +126,28 @@ ccccccccccccccccccccccccccccc:'.
     .skills {
         grid-row: 3;
         grid-column: 1 / 3;
+    }
+
+    .shellPrompt {
+        margin-top: 8px;
+    }
+
+    .promptCursor {
+        display: inline-block;
+        width: 0.6em;
+        height: 1.05em;
+        background-color: var(--text);
+        vertical-align: text-bottom;
+        opacity: 0.45;
+    }
+
+    .dev:hover .promptCursor, .dev:focus-within .promptCursor {
+        opacity: 1;
+        animation: promptBlink 1.1s step-end infinite;
+    }
+
+    @keyframes promptBlink {
+        50% { opacity: 0; }
     }
 
     .info {
