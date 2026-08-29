@@ -5,78 +5,120 @@
     onMounted(() => {
         const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        /* ---- light: dawn mist (WebGL fbm, high contrast wisps) ---- */
-        let drawMist = () => {};
+        /* ---- light: petals over soft clouds (2D particles, Senbonzakura) ---- */
         const mc = mistCanvas.value;
-        const gl = mc.getContext('webgl', { antialias: false, depth: false });
-        if (gl) {
-            const vsrc = `attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}`;
-            const fsrc = `precision highp float;
-uniform vec2 u_res;uniform float u_t;
-float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
-return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+1.),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.02+vec2(13.7,7.3);a*=.5;}return v;}
-void main(){
-vec2 uv=gl_FragCoord.xy/u_res;
-vec2 p=uv*vec2(u_res.x/u_res.y,1.)*1.8;
-float t=u_t*.03;
-vec2 q=vec2(fbm(p+t),fbm(p+vec2(5.2,1.3)-t*.7));
-vec2 r=vec2(fbm(p+2.5*q+vec2(1.7,9.2)+t*.5),fbm(p+2.5*q+vec2(8.3,2.8)-t*.4));
-float cl=fbm(p*.9+q*.8);
-vec3 base=vec3(.93,.83,.79);
-vec3 cloud=vec3(.87,.74,.72);
-vec3 rose=vec3(.93,.30,.55);
-vec3 berry=vec3(.82,.44,.60);
-vec3 col=mix(base,cloud,smoothstep(.35,.85,cl)*.6);
-float t2=u_t*.22;
-float g=smoothstep(.55,.82,sin(t2*.5)*.5+.5);
-float aa=t2*.07;
-vec2 dir=vec2(cos(aa),sin(aa));
-vec2 per=vec2(-dir.y,dir.x);
-float uu=dot(p,dir);
-float vv=dot(p,per);
-float band=sin(uu*1.2+t2*.9)*.3;
-float v2=mix(vv,band,g*.85);
-vec2 p2=uu*dir+v2*per;
-vec2 wind=vec2(1.3,-.8)*t*(1.+g*1.2);
-float n1=noise(vec2(p2.x*8.,p2.y*13.)+wind*3.+r*1.5);
-float pet1=smoothstep(.87,.94,n1);
-float n2=noise(vec2(p2.x*12.,p2.y*18.)+wind*3.6+vec2(4.7,2.9)+q*1.5);
-float pet2=smoothstep(.90,.96,n2);
-col=mix(col,rose,pet1*.85);
-col=mix(col,berry,pet2*.6);
-col*=.95+.06*uv.y;
-gl_FragColor=vec4(col,1.);}`;
-            const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
-            const prog = gl.createProgram();
-            gl.attachShader(prog, sh(gl.VERTEX_SHADER, vsrc));
-            gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fsrc));
-            gl.linkProgram(prog);
-            if (gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-                gl.useProgram(prog);
-                const buf = gl.createBuffer();
-                gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-                const loc = gl.getAttribLocation(prog, 'a');
-                gl.enableVertexAttribArray(loc);
-                gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-                const uRes = gl.getUniformLocation(prog, 'u_res');
-                const uT = gl.getUniformLocation(prog, 'u_t');
-                const sizeMist = () => {
-                    mc.width = Math.max(1, Math.floor(mc.clientWidth / 2));
-                    mc.height = Math.max(1, Math.floor(mc.clientHeight / 2));
-                    gl.viewport(0, 0, mc.width, mc.height);
-                };
-                sizeMist();
-                window.addEventListener('resize', sizeMist);
-                drawMist = (ms) => {
-                    gl.uniform2f(uRes, mc.width, mc.height);
-                    gl.uniform1f(uT, ms / 1000);
-                    gl.drawArrays(gl.TRIANGLES, 0, 3);
-                };
+        const pctx = mc.getContext('2d');
+        const petalColors = ['#e04f82', '#d16a8e', '#ef8cab', '#c95c86'];
+        const N = 90;
+        let petals = [];
+        let clouds = [];
+        const sizePetals = () => {
+            mc.width = Math.max(1, Math.floor(mc.clientWidth / 2));
+            mc.height = Math.max(1, Math.floor(mc.clientHeight / 2));
+            petals = Array.from({ length: N }, (_, i) => ({
+                x: Math.random() * mc.width,
+                y: Math.random() * mc.height,
+                vx: 0, vy: 0,
+                size: 2.2 + Math.random() * 2.4,
+                aspect: 0.45 + Math.random() * 0.25,
+                rot: Math.random() * Math.PI,
+                rotV: (Math.random() - 0.5) * 0.02,
+                col: petalColors[i % petalColors.length],
+                phase: Math.random() * Math.PI * 2,
+                theta: Math.acos(2 * Math.random() - 1), // seat on the orb
+                phi: Math.random() * Math.PI * 2,
+            }));
+            clouds = Array.from({ length: 6 }, () => ({
+                x: Math.random() * mc.width,
+                y: Math.random() * mc.height,
+                r: mc.width * (0.18 + Math.random() * 0.22),
+                tint: Math.random() < 0.5 ? '247, 233, 223' : '236, 207, 198',
+                drift: (Math.random() - 0.5) * 0.05,
+            }));
+        };
+        sizePetals();
+        window.addEventListener('resize', sizePetals);
+
+        // state machine: float -> gather (converge + revolve) -> explode -> float
+        let mode = 'float', modeUntil = 12000, orb = { x: 0, y: 0, r: 0 };
+        const drawPetals = (ms) => {
+            const w = mc.width, h = mc.height;
+            if (ms > modeUntil) {
+                if (mode === 'float') {
+                    mode = 'gather';
+                    modeUntil = ms + 9000;
+                    orb = { x: w * (0.3 + Math.random() * 0.4), y: h * (0.3 + Math.random() * 0.4), r: Math.min(w, h) * 0.17 };
+                } else if (mode === 'gather') {
+                    mode = 'explode';
+                    modeUntil = ms + 1400;
+                    for (const p of petals) {
+                        const dx = p.x - orb.x, dy = p.y - orb.y;
+                        const d = Math.hypot(dx, dy) || 1;
+                        const kick = 3.5 + Math.random() * 3;
+                        p.vx = (dx / d) * kick - (dy / d) * 1.2;
+                        p.vy = (dy / d) * kick + (dx / d) * 1.2;
+                    }
+                } else {
+                    mode = 'float';
+                    modeUntil = ms + 15000 + Math.random() * 12000;
+                }
             }
-        }
+
+            // sky: blush base and slow soft clouds
+            pctx.globalAlpha = 1;
+            pctx.fillStyle = '#f0d9cd';
+            pctx.fillRect(0, 0, w, h);
+            for (const c of clouds) {
+                c.x += c.drift;
+                if (c.x < -c.r) c.x = w + c.r;
+                if (c.x > w + c.r) c.x = -c.r;
+                const grad = pctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.r);
+                grad.addColorStop(0, `rgba(${c.tint}, 0.9)`);
+                grad.addColorStop(1, `rgba(${c.tint}, 0)`);
+                pctx.fillStyle = grad;
+                pctx.fillRect(c.x - c.r, c.y - c.r, c.r * 2, c.r * 2);
+            }
+
+            const spin = ms * 0.0011;
+            for (const p of petals) {
+                let depth = 0;
+                if (mode === 'gather') {
+                    // seat on a revolving sphere; smooth, non-uniform, a little unstable
+                    const sx = Math.sin(p.theta) * Math.cos(p.phi + spin);
+                    const sz = Math.sin(p.theta) * Math.sin(p.phi + spin);
+                    const sy = Math.cos(p.theta);
+                    const wob = Math.sin(ms * 0.003 + p.phase) * 4;
+                    const tx = orb.x + sx * orb.r + wob;
+                    const ty = orb.y + sy * orb.r * 0.92 + Math.cos(ms * 0.0026 + p.phase) * 3;
+                    p.x += (tx - p.x) * 0.055;
+                    p.y += (ty - p.y) * 0.055;
+                    p.vx = 0; p.vy = 0;
+                    depth = sz;
+                } else {
+                    // weightless float: one gentle breeze, individual sway, no gravity
+                    const swayX = Math.sin(ms * 0.0007 + p.phase) * 0.12;
+                    const swayY = Math.cos(ms * 0.0005 + p.phase) * 0.10;
+                    p.vx += ((0.16 + swayX) - p.vx) * 0.02;
+                    p.vy += ((-0.04 + swayY) - p.vy) * 0.02;
+                    if (mode === 'explode') { p.vx *= 0.965; p.vy *= 0.965; }
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < -6) p.x = w + 6;
+                    if (p.x > w + 6) p.x = -6;
+                    if (p.y < -6) p.y = h + 6;
+                    if (p.y > h + 6) p.y = -6;
+                }
+                p.rot += p.rotV;
+
+                const scale = 1 + depth * 0.45;
+                pctx.globalAlpha = mode === 'gather' ? 0.55 + 0.45 * (depth + 1) / 2 : 0.9;
+                pctx.fillStyle = p.col;
+                pctx.beginPath();
+                pctx.ellipse(p.x, p.y, p.size * scale, p.size * p.aspect * scale, p.rot, 0, Math.PI * 2);
+                pctx.fill();
+            }
+            pctx.globalAlpha = 1;
+        };
 
         /* ---- dark: neon tracer with a decaying trail (2D canvas) ---- */
         const nc = neonCanvas.value;
@@ -155,7 +197,7 @@ gl_FragColor=vec4(col,1.);}`;
         };
 
         if (still) {
-            drawMist(1200);
+            drawPetals(6000);
             for (let i = 0; i < 900; i++) drawNeon(i * 16);
             mc.style.opacity = ''; nc.style.opacity = '';
             return;
@@ -163,12 +205,16 @@ gl_FragColor=vec4(col,1.);}`;
         let raf;
         const loop = (ms) => {
             const light = document.documentElement.dataset.theme === 'light';
-            if (light) drawMist(ms); else drawNeon(ms);
+            if (light) drawPetals(ms); else drawNeon(ms);
             raf = requestAnimationFrame(loop);
         };
         raf = requestAnimationFrame(loop);
         mc.style.opacity = ''; nc.style.opacity = '';
-        onUnmounted(() => { cancelAnimationFrame(raf); window.removeEventListener('resize', sizeNeon); });
+        onUnmounted(() => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('resize', sizeNeon);
+            window.removeEventListener('resize', sizePetals);
+        });
     });
 </script>
 
