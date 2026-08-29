@@ -8,8 +8,8 @@
         /* ---- light: petals over soft clouds (2D particles, Senbonzakura) ---- */
         const mc = mistCanvas.value;
         const pctx = mc.getContext('2d');
-        const petalColors = ['#e04f82', '#d16a8e', '#ef8cab', '#c95c86'];
-        const N = 90;
+        const petalColors = ['#d63572', '#e8377c', '#c22a63', '#f0619b', '#b81e56'];
+        const N = 220;
         let petals = [];
         let clouds = [];
         const sizePetals = () => {
@@ -19,13 +19,15 @@
                 x: Math.random() * mc.width,
                 y: Math.random() * mc.height,
                 vx: 0, vy: 0,
-                size: 2.2 + Math.random() * 2.4,
+                size: (2.5 + Math.random() * 2.8),
                 aspect: 0.45 + Math.random() * 0.25,
                 rot: Math.random() * Math.PI,
-                rotV: (Math.random() - 0.5) * 0.02,
+                rotV: (Math.random() - 0.5) * 0.03,
                 col: petalColors[i % petalColors.length],
                 phase: Math.random() * Math.PI * 2,
-                theta: Math.acos(2 * Math.random() - 1), // seat on the orb
+                windA: (Math.random() - 0.5) * 0.55, // own heading around the shared breeze
+                windS: 0.28 + Math.random() * 0.30,
+                theta: Math.acos(2 * Math.random() - 1),
                 phi: Math.random() * Math.PI * 2,
             }));
             clouds = Array.from({ length: 6 }, () => ({
@@ -39,14 +41,15 @@
         sizePetals();
         window.addEventListener('resize', sizePetals);
 
-        // state machine: float -> gather (converge + revolve) -> explode -> float
+        // state machine: float -> gather (currents wrap the orb) -> explode -> float
         let mode = 'float', modeUntil = 12000, orb = { x: 0, y: 0, r: 0 };
+        const BREEZE = -0.22; // shared wind heading (radians); petals vary around it
         const drawPetals = (ms) => {
             const w = mc.width, h = mc.height;
             if (ms > modeUntil) {
                 if (mode === 'float') {
                     mode = 'gather';
-                    modeUntil = ms + 9000;
+                    modeUntil = ms + 10000;
                     orb = { x: w * (0.3 + Math.random() * 0.4), y: h * (0.3 + Math.random() * 0.4), r: Math.min(w, h) * 0.17 };
                 } else if (mode === 'gather') {
                     mode = 'explode';
@@ -79,42 +82,46 @@
                 pctx.fillRect(c.x - c.r, c.y - c.r, c.r * 2, c.r * 2);
             }
 
-            const spin = ms * 0.0011;
             for (const p of petals) {
                 let depth = 0;
                 if (mode === 'gather') {
-                    // seat on a revolving sphere; smooth, non-uniform, a little unstable
-                    const sx = Math.sin(p.theta) * Math.cos(p.phi + spin);
-                    const sz = Math.sin(p.theta) * Math.sin(p.phi + spin);
+                    // currents on the globe: petals stream along a shared, shifting
+                    // flow, chains wrapping themselves around the ball
+                    p.phi += 0.026 + 0.014 * Math.cos(p.theta * 3 - ms * 0.0008);
+                    p.theta += 0.012 * Math.sin(p.phi * 2 + ms * 0.0011) + 0.003 * Math.sin(ms * 0.004 + p.phase);
+                    const rr = orb.r * (0.88 + 0.20 * Math.sin(ms * 0.0023 + p.phase * 2)); // riptide radius
+                    const sx = Math.sin(p.theta) * Math.cos(p.phi);
+                    const sz = Math.sin(p.theta) * Math.sin(p.phi);
                     const sy = Math.cos(p.theta);
-                    const wob = Math.sin(ms * 0.003 + p.phase) * 4;
-                    const tx = orb.x + sx * orb.r + wob;
-                    const ty = orb.y + sy * orb.r * 0.92 + Math.cos(ms * 0.0026 + p.phase) * 3;
-                    p.x += (tx - p.x) * 0.055;
-                    p.y += (ty - p.y) * 0.055;
+                    const tx = orb.x + sx * rr;
+                    const ty = orb.y + sy * rr * 0.92;
+                    p.x += (tx - p.x) * 0.06;
+                    p.y += (ty - p.y) * 0.06;
                     p.vx = 0; p.vy = 0;
                     depth = sz;
                 } else {
-                    // weightless float: one gentle breeze, individual sway, no gravity
-                    const swayX = Math.sin(ms * 0.0007 + p.phase) * 0.12;
-                    const swayY = Math.cos(ms * 0.0005 + p.phase) * 0.10;
-                    p.vx += ((0.16 + swayX) - p.vx) * 0.02;
-                    p.vy += ((-0.04 + swayY) - p.vy) * 0.02;
+                    // floaty wind: everyone rides the same breeze with their own
+                    // lean and pace, wrapping through the walls
+                    const a = BREEZE + p.windA + Math.sin(ms * 0.0006 + p.phase) * 0.18;
+                    p.vx += (Math.cos(a) * p.windS - p.vx) * 0.02;
+                    p.vy += (Math.sin(a) * p.windS * 0.5 - p.vy) * 0.02;
                     if (mode === 'explode') { p.vx *= 0.965; p.vy *= 0.965; }
                     p.x += p.vx;
                     p.y += p.vy;
-                    if (p.x < -6) p.x = w + 6;
-                    if (p.x > w + 6) p.x = -6;
-                    if (p.y < -6) p.y = h + 6;
-                    if (p.y > h + 6) p.y = -6;
+                    if (p.x < -8) p.x = w + 8;
+                    if (p.x > w + 8) p.x = -8;
+                    if (p.y < -8) p.y = h + 8;
+                    if (p.y > h + 8) p.y = -8;
                 }
                 p.rot += p.rotV;
 
+                // malleable: never holds its exact shape, always still a petal
+                const squish = p.aspect * (0.82 + 0.30 * Math.sin(ms * 0.004 + p.phase * 3));
                 const scale = 1 + depth * 0.45;
-                pctx.globalAlpha = mode === 'gather' ? 0.55 + 0.45 * (depth + 1) / 2 : 0.9;
+                pctx.globalAlpha = mode === 'gather' ? 0.55 + 0.45 * (depth + 1) / 2 : 0.92;
                 pctx.fillStyle = p.col;
                 pctx.beginPath();
-                pctx.ellipse(p.x, p.y, p.size * scale, p.size * p.aspect * scale, p.rot, 0, Math.PI * 2);
+                pctx.ellipse(p.x, p.y, p.size * scale, p.size * squish * scale, p.rot, 0, Math.PI * 2);
                 pctx.fill();
             }
             pctx.globalAlpha = 1;
