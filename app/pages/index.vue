@@ -172,7 +172,7 @@
 
 <style>
     button {
-        border: 1px solid var(--btn-border);
+        border: none;
         background-color: inherit;
         color: inherit;
         font-family: inherit;
@@ -341,7 +341,7 @@
         font-size: inherit;
         font-family: "Source Code Pro";
         font-weight: bold;
-        border: 1px solid var(--btn-border);
+        border: none;
         transition: all ease-in 0.5s;
     }
 

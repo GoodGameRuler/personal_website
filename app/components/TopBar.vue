@@ -55,7 +55,7 @@
                 <p class="modalHeader"> Degree Loading </p>
                 <hr />
                 <div class="progressTrack"><div class="progressFill"></div></div>
-                <p> <span class="material-icons progressSpinner">progress_activity</span> 5 of 6 years complete: 83% </p>
+                <p> <span class="material-icons progressSpinner">autorenew</span> 5 of 6 years complete: 83% </p>
                 <p class="lbl"> Ships June 2027. </p>
         </Modal>
 
