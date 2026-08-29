@@ -9,17 +9,22 @@
         const mc = mistCanvas.value;
         const pctx = mc.getContext('2d');
         const petalColors = ['#d63572', '#e8377c', '#c22a63', '#f0619b', '#b81e56'];
-        const N = 400;
         let petals = [];
         let clouds = [];
         const sizePetals = () => {
             mc.width = Math.max(1, Math.floor(mc.clientWidth / 2));
             mc.height = Math.max(1, Math.floor(mc.clientHeight / 2));
+            // density and size follow the screen: 400 on a laptop, fewer and
+            // smaller on a phone
+            const area = mc.width * mc.height;
+            const REF = 720 * 450;
+            const N = Math.round(400 * Math.min(1.15, Math.max(0.35, area / REF)));
+            const szScale = Math.min(1.1, Math.max(0.55, Math.sqrt(area / REF)));
             petals = Array.from({ length: N }, (_, i) => ({
                 x: Math.random() * mc.width,
                 y: Math.random() * mc.height,
                 vx: 0, vy: 0,
-                size: (2.75 + Math.random() * 3.1),
+                size: (2.75 + Math.random() * 3.1) * szScale,
                 aspect: 0.45 + Math.random() * 0.25,
                 rot: Math.random() * Math.PI,
                 rotV: (Math.random() - 0.5) * 0.03,
@@ -43,7 +48,8 @@
 
         // state machine: float -> gather (currents wrap the orb) -> explode -> float
         let mode = 'float', modeUntil = 12000, orb = { x: 0, y: 0, r: 0 }, gatherT0 = 0;
-        const BREEZE = -0.22; // shared wind heading (radians); petals vary around it
+        let breeze = Math.random() * Math.PI * 2; // fresh heading each calm
+        let floatT0 = 0;
         const drawPetals = (ms) => {
             const w = mc.width, h = mc.height;
             if (ms > modeUntil) {
@@ -52,14 +58,9 @@
                     modeUntil = ms + 12000;
                     gatherT0 = ms;
                     orb = { x: w * (0.3 + Math.random() * 0.4), y: h * (0.3 + Math.random() * 0.4), r: Math.min(w, h) * 0.17 };
-                    const maxD = Math.hypot(w, h) / 2;
-                    for (const p of petals) {
-                        const d = Math.hypot(p.x - orb.x, p.y - orb.y);
-                        p.lag = (d / maxD) * 4200 + Math.random() * 1200;
-                    }
                 } else if (mode === 'gather') {
                     mode = 'explode';
-                    modeUntil = ms + 1400;
+                    modeUntil = ms + 4200;
                     for (const p of petals) {
                         const dx = p.x - orb.x, dy = p.y - orb.y;
                         const d = Math.hypot(dx, dy) || 1;
@@ -70,6 +71,8 @@
                 } else {
                     mode = 'float';
                     modeUntil = ms + 15000 + Math.random() * 12000;
+                    breeze = Math.random() * Math.PI * 2;
+                    floatT0 = ms;
                 }
             }
 
@@ -88,10 +91,11 @@
                 pctx.fillRect(c.x - c.r, c.y - c.r, c.r * 2, c.r * 2);
             }
 
+            const maxD = Math.hypot(w, h) / 2;
             for (const p of petals) {
                 let depth = 0;
-                const caught = mode === 'gather' && ms >= gatherT0 + p.lag;
-                if (caught) {
+                let alph = 0.92;
+                if (mode === 'gather') {
                     // currents on the globe: petals stream along a shared, shifting
                     // flow, chains wrapping themselves around the ball
                     p.phi += 0.026 + 0.014 * Math.cos(p.theta * 3 - ms * 0.0008);
@@ -102,18 +106,34 @@
                     const sy = Math.cos(p.theta);
                     const tx = orb.x + sx * rr;
                     const ty = orb.y + sy * rr * 0.92;
-                    const k = Math.min(1, (ms - gatherT0 - p.lag) / 1500);
-                    p.x += (tx - p.x) * (0.015 + 0.055 * k);
-                    p.y += (ty - p.y) * (0.015 + 0.055 * k);
+                    // one continuous stream: the pull is simply weaker with
+                    // distance, so far petals lean in while near ones dive
+                    const dx = tx - p.x, dy = ty - p.y;
+                    const dist = Math.hypot(dx, dy);
+                    const ramp = Math.min(1, (ms - gatherT0) / 900);
+                    const pull = ramp * 0.07 / (1 + dist / (0.3 * maxD));
+                    p.x += dx * pull;
+                    p.y += dy * pull;
                     p.vx = 0; p.vy = 0;
                     depth = sz;
+                    if (dist < orb.r * 1.8) alph = 0.55 + 0.45 * (depth + 1) / 2;
+                } else if (mode === 'explode') {
+                    // ballistic: no wind yet, just the blast slowly giving out,
+                    // leaving them spread wherever it carried them
+                    p.vx *= 0.985;
+                    p.vy *= 0.985;
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < -8) p.x = w + 8;
+                    if (p.x > w + 8) p.x = -8;
+                    if (p.y < -8) p.y = h + 8;
+                    if (p.y > h + 8) p.y = -8;
                 } else {
-                    // floaty wind: everyone rides the same breeze with their own
-                    // lean and pace, wrapping through the walls
-                    const a = BREEZE + p.windA + Math.sin(ms * 0.0006 + p.phase) * 0.30;
-                    p.vx += (Math.cos(a) * p.windS - p.vx) * 0.02;
-                    p.vy += (Math.sin(a) * p.windS * 0.5 - p.vy) * 0.02;
-                    if (mode === 'explode') { p.vx *= 0.965; p.vy *= 0.965; }
+                    // the wind picks up gently, in whatever direction it chose
+                    const a = breeze + p.windA + Math.sin(ms * 0.0006 + p.phase) * 0.30;
+                    const g = 0.004 + 0.016 * Math.min(1, (ms - floatT0) / 4000);
+                    p.vx += (Math.cos(a) * p.windS - p.vx) * g;
+                    p.vy += (Math.sin(a) * p.windS * 0.5 - p.vy) * g;
                     p.x += p.vx;
                     p.y += p.vy;
                     if (p.x < -8) p.x = w + 8;
@@ -126,7 +146,7 @@
                 // malleable: never holds its exact shape, always still a petal
                 const squish = p.aspect * (0.82 + 0.30 * Math.sin(ms * 0.004 + p.phase * 3));
                 const scale = 1 + depth * 0.45;
-                pctx.globalAlpha = caught ? 0.55 + 0.45 * (depth + 1) / 2 : 0.92;
+                pctx.globalAlpha = alph;
                 pctx.fillStyle = p.col;
                 pctx.beginPath();
                 pctx.ellipse(p.x, p.y, p.size * scale, p.size * squish * scale, p.rot, 0, Math.PI * 2);
