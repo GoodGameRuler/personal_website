@@ -1,15 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="petalFill" x1="0.2" y1="0" x2="0.8" y2="1">
-      <stop offset="0" stop-color="#f0619b"/>
-      <stop offset="0.55" stop-color="#e8377c"/>
-      <stop offset="1" stop-color="#c22a63"/>
+    <linearGradient id="petalFill" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0" stop-color="#f9b8cf"/>
+      <stop offset="0.45" stop-color="#f0619b"/>
+      <stop offset="1" stop-color="#e8377c"/>
     </linearGradient>
+    <radialGradient id="blush" cx="0.5" cy="0.85" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <g transform="rotate(24 32 32)">
-    <path d="M32 5 C 46 14, 53 34, 33 59 C 32.4 59.7, 31.6 59.7, 31 59 C 11 34, 18 14, 32 5 Z"
+  <g transform="rotate(18 32 32)">
+    <path d="M32 57
+             C 21 50, 11 38, 13 23
+             C 14.5 12, 24 4.5, 30 11
+             C 30.8 12, 31.5 13.5, 32 15.5
+             C 32.5 13.5, 33.2 12, 34 11
+             C 40 4.5, 49.5 12, 51 23
+             C 53 38, 43 50, 32 57 Z"
           fill="url(#petalFill)"/>
-    <path d="M32 14 C 33.5 28, 33.5 42, 32 53" stroke="#f6afc9" stroke-width="2.4"
-          stroke-linecap="round" fill="none" opacity="0.85"/>
+    <path d="M32 57
+             C 21 50, 11 38, 13 23
+             C 14.5 12, 24 4.5, 30 11
+             C 30.8 12, 31.5 13.5, 32 15.5
+             C 32.5 13.5, 33.2 12, 34 11
+             C 40 4.5, 49.5 12, 51 23
+             C 53 38, 43 50, 32 57 Z"
+          fill="url(#blush)"/>
   </g>
 </svg>
