@@ -76,7 +76,14 @@
                           <p class="breakLine" style="font-style: italic;"> An ongoing Linux playground </p>
                           <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs most of what I host. Services typically in their own LXCs. </span> </p>
                           <p class="breakLine"> <span class="hl"> CGNAT restrictions mean the cluster cannot accept incoming connections, so I use Wireguard VPN to access my services. Anything meant to be public is exposed through a tunnel to a small cloud machine, where a reverse proxy forwards the traffic to my homelab. I run a minimal DNS service for adblock, and so I don't have to remember IP addresses. </span> </p>
-                          <p class="breakLine"> <span class="hl"> Next, I am looking to explore more small-scale private cloud technologies, including storage and file serving, SSO, and an email server. </span> </p>
+                          <p class="breakLine"> <span class="hl"> Next, I am looking to explore more small-scale private cloud technologies: </span> </p>
+                          <ul class="projList hl">
+                              <li> Storage and file serving </li>
+                              <li> SSO </li>
+                              <li> An email server </li>
+                              <li> Monitoring with Prometheus and Grafana </li>
+                              <li> Performance tracing tools </li>
+                          </ul>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
@@ -356,6 +363,19 @@
     .singleProjectDescBox > p {
         margin-bottom: 10px;
 
+    }
+
+    .projList {
+        margin-bottom: 10px;
+    }
+
+    .projList > li {
+        margin-bottom: 4px;
+    }
+
+    .projList > li::before {
+        content: "- ";
+        color: var(--label);
     }
 
     .projectHeader .headerText {
