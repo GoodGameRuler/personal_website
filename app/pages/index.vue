@@ -82,7 +82,7 @@
                               <li> SSO </li>
                               <li> An email server </li>
                               <li> Monitoring with Prometheus and Grafana </li>
-                              <li> Performance tracing tools </li>
+                              <li> Linux performance and tracing tools </li>
                           </ul>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
