@@ -25,7 +25,7 @@
         z-index: 999;
         height: 100vh;
         width: 100vw;
-        position: absolute;
+        position: fixed;
         top: 0px;
         left: 0px;
         overflow: hidden;

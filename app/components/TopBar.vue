@@ -6,7 +6,7 @@
     const config = useRuntimeConfig();
     const lastModified = new Date(config.public.lastModified);
     const lastModifiedShort = lastModified.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    const lastModifiedLong = lastModified.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+    const lastModifiedFull = lastModified.toLocaleString('en-AU', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
     const isStale = (Date.now() - lastModified.getTime()) > 365 * 24 * 60 * 60 * 1000;
 
     const theme = ref('light');
@@ -58,14 +58,16 @@
                 <p class="modalHeader"> Degree Loading </p>
                 <hr />
                 <div class="progressTrack"><div class="progressFill"></div></div>
-                <p> <span class="material-icons progressSpinner">autorenew</span> 5 of 6 years complete: 83% </p>
+                <p class="progressLine"> <span class="material-icons progressSpinner">autorenew</span> 5 of 6 years complete: 83% </p>
                 <p class="lbl"> Ships June 2027. </p>
         </Modal>
 
         <Modal v-model="showLastModified" modalID="lastModifiedModal">
                 <p class="modalHeader"> mtime </p>
                 <hr />
-                <p> Last modified: <span class="hl">{{ lastModifiedLong }}</span> </p>
+                <p> Website Last Modified Time: </p>
+                <p class="hl"> {{ lastModifiedFull }} </p>
+                <p> The date stamps itself each time the site is deployed. </p>
                 <p v-if="isStale" class="lbl"> -- this may be out of date </p>
         </Modal>
 
@@ -117,10 +119,15 @@
         background-color: var(--label);
     }
 
+    .progressLine {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
     .progressSpinner {
         font-size: 18px;
-        vertical-align: middle;
-        display: inline-block;
+        display: block;
         animation: spin 2s linear infinite;
     }
 

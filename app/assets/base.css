@@ -72,7 +72,7 @@ time, mark, audio, video {
     --heading: #907aa9;
     --muted: #797593;
     --selected: rgba(215, 130, 126, 0.28);
-    --modal-bg: #f7e2d0;
+    --modal-bg: #fffdf6;
     --scroll-thumb: #cecacd;
     --scroll-track: rgba(250, 244, 237, 0.9);
 }
