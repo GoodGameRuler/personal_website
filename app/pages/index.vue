@@ -61,7 +61,8 @@
                   <DevBox />
                   <ExpBox />
                   <div class="proj infoBox">
-                      <div class="singleProjectDetailsTitle projectBox"> Project Details </div>
+                      <div class="singleFoldersTitle projectBox paneTitle"> Folders </div>
+                      <div class="singleProjectDetailsTitle projectBox paneTitle"> Project Details </div>
                       <ProjButton v-for="button in projButtons" :key="button.no" :button="button" :selectedButton="selectedButton" @select-button="handleSelectButton" />
                       <!--  SELF SHOULD BE LAST -->
                       <div v-if="selectedButton === 6" class="singleProjectDescBox projectBox">
@@ -282,7 +283,7 @@
         grid-row: 2 / 4;
         grid-column: 2;
         display: grid;
-        grid-template-rows: repeat(7, 65px) 1fr;
+        grid-template-rows: repeat(8, 65px) 1fr;
         grid-template-columns: 1.75fr 5fr;
         padding: 20px;
     }
@@ -394,10 +395,19 @@
         grid-row: 1;
     }
 
-    .singleProjectDetailsTitle {
-        background-color: transparent;
+    .paneTitle {
+        background-color: var(--surface);
+        color: var(--heading);
+        font-weight: bold;
         border: 1px solid var(--tile-border);
-        color: var(--muted);
+    }
+
+    .singleFoldersTitle {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .singleProjectDetailsTitle {
         grid-column: 2;
         grid-row: 1;
     }
