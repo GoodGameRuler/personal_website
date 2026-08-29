@@ -20,12 +20,12 @@
 </template>
 
 <style>
-    .proj .projectBox.selectedProjButton {
+    .proj .singleProjectNameBox.projectBox.selectedProjButton {
         background-color: var(--label);
         color: var(--pane-solid);
     }
 
-    .proj .projectBox.selectedProjButton:hover {
+    .proj .singleProjectNameBox.projectBox.selectedProjButton:hover {
         background-color: var(--label);
         color: var(--pane-solid);
     }
