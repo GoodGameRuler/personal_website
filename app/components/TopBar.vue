@@ -19,8 +19,8 @@
         document.querySelectorAll("link[rel='icon']").forEach(l => l.remove());
         const fav = document.createElement('link');
         fav.rel = 'icon';
-        fav.type = 'image/svg+xml';
-        fav.href = (theme.value === 'dark' ? '/favicon-dot.svg' : '/favicon-petal.svg') + '?t=' + theme.value;
+        fav.type = 'image/png';
+        fav.href = (theme.value === 'dark' ? '/favicon-dot.png' : '/favicon-petal.png') + '?t=' + theme.value;
         document.head.appendChild(fav);
     };
     onMounted(() => {
