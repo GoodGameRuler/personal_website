@@ -26,7 +26,14 @@
 
 <template>
     <div class="topBar">
-        <div class="rightTopBar"> US </div>
+        <div class="rightTopBar">
+            <span> US </span>
+            <span class="workspaces">
+                <span class="wsDot wsActive"></span>
+                <span class="wsDot"></span>
+                <span class="wsDot"></span>
+            </span>
+        </div>
         <div class="leftTopBar">
             <button class="topBarButton themeToggle" :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'" @click="toggleTheme">
                 <span class="material-icons topBarIcon">{{ theme === 'dark' ? 'light_mode' : 'dark_mode' }}</span>
@@ -45,10 +52,10 @@
         </Modal>
 
         <Modal v-model="showProgress" modalID="progressModal">
-                <p class="modalHeader"> <span class="material-icons progressSpinner">progress_activity</span> Degree Loading </p>
+                <p class="modalHeader"> Degree Loading </p>
                 <hr />
                 <div class="progressTrack"><div class="progressFill"></div></div>
-                <p> 5 of 6 years complete: 83% </p>
+                <p> <span class="material-icons progressSpinner">progress_activity</span> 5 of 6 years complete: 83% </p>
                 <p class="lbl"> Ships June 2027. </p>
         </Modal>
 
@@ -125,8 +132,8 @@
         background-color: var(--pane);
         display: flex;
         align-items: center;
-        padding: 0px 30px;
-        border-radius: 15px;
+        padding: 0px 20px;
+        border-radius: 12px;
         -webkit-user-select: none; /* Safari */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* IE10+/Edge */
@@ -143,6 +150,28 @@
 
     .rightTopBar {
         flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .workspaces {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .wsDot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid var(--label);
+        display: inline-block;
+        box-sizing: border-box;
+    }
+
+    .wsActive {
+        background-color: var(--label);
     }
 
 </style>

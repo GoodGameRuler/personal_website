@@ -254,7 +254,7 @@
         backdrop-filter: blur(15px);;
         display: grid;
         gap: 12px;
-        grid-template-rows: 75px auto 1fr;
+        grid-template-rows: 54px auto 1fr;
         grid-template-columns: 1fr 1fr;
         overflow: auto;
     }
@@ -543,8 +543,12 @@
             overflow: visible;
         }
 
+        .workspaces {
+            display: none;
+        }
+
         .topBar {
-            min-height: 56px;
+            min-height: 48px;
             padding: 6px 12px;
         }
 
