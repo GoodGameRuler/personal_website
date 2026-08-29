@@ -9,12 +9,15 @@
     const lastModifiedLong = lastModified.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
     const isStale = (Date.now() - lastModified.getTime()) > 365 * 24 * 60 * 60 * 1000;
 
-    const theme = ref('dark');
+    const theme = ref('light');
     const applyTheme = () => {
         if (typeof document !== 'undefined') document.documentElement.dataset.theme = theme.value;
     };
     onMounted(() => {
-        try { theme.value = localStorage.getItem('theme') || 'dark'; } catch {}
+        try {
+            theme.value = localStorage.getItem('theme')
+                || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        } catch {}
         applyTheme();
     });
     const toggleTheme = () => {
