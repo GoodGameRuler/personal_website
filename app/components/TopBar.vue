@@ -1,17 +1,40 @@
 <script setup>
     const showContactPage = ref(false);
     const showLastModified = ref(false);
+    const showProgress = ref(false);
 
     const config = useRuntimeConfig();
     const lastModified = new Date(config.public.lastModified);
     const lastModifiedShort = lastModified.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' });
     const lastModifiedLong = lastModified.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+    const isStale = (Date.now() - lastModified.getTime()) > 365 * 24 * 60 * 60 * 1000;
+
+    const theme = ref('dark');
+    const applyTheme = () => {
+        if (typeof document !== 'undefined') document.documentElement.dataset.theme = theme.value;
+    };
+    onMounted(() => {
+        try { theme.value = localStorage.getItem('theme') || 'dark'; } catch {}
+        applyTheme();
+    });
+    const toggleTheme = () => {
+        theme.value = theme.value === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', theme.value); } catch {}
+        applyTheme();
+    };
 </script>
 
 <template>
     <div class="topBar">
         <div class="rightTopBar"> US </div>
-        <div class="leftTopBar"> 83% | <button class="topBarButton" @click="showLastModified = true"> {{ lastModifiedShort }} </button> | <button class="topBarButton" @click="showContactPage = true"> Contact Me </button> </div>
+        <div class="leftTopBar">
+            <button class="topBarButton themeToggle" :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'" @click="toggleTheme">
+                <span class="material-icons topBarIcon">{{ theme === 'dark' ? 'light_mode' : 'dark_mode' }}</span>
+            </button>
+            | <button class="topBarButton" @click="showProgress = true"> 83% </button>
+            | <button class="topBarButton" @click="showLastModified = true"> {{ lastModifiedShort }} </button>
+            | <button class="topBarButton" @click="showContactPage = true"> Contact Me </button>
+        </div>
         <Modal v-model="showContactPage" modalID="contactMeModal">
                 <p class="modalHeader"> Say Hello! </p>
                 <hr />
@@ -21,11 +44,19 @@
                 <p> LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/uditsamant/">Udit Samant</a> </p>
         </Modal>
 
-        <Modal v-model="showLastModified" modalID="lastModifiedModal">
-                <p class="modalHeader"> Last Modified </p>
+        <Modal v-model="showProgress" modalID="progressModal">
+                <p class="modalHeader"> <span class="material-icons progressSpinner">progress_activity</span> Degree Loading </p>
                 <hr />
-                <p> This site was last built on <span style="color: #FFFFFF;">{{ lastModifiedLong }}</span>. </p>
-                <p> The date stamps itself on every deploy. </p>
+                <div class="progressTrack"><div class="progressFill"></div></div>
+                <p> 5 of 6 years complete: 83% </p>
+                <p class="lbl"> Ships June 2027. </p>
+        </Modal>
+
+        <Modal v-model="showLastModified" modalID="lastModifiedModal">
+                <p class="modalHeader"> mtime </p>
+                <hr />
+                <p> Last modified: <span class="hl">{{ lastModifiedLong }}</span> </p>
+                <p v-if="isStale" class="lbl"> -- this may be out of date </p>
         </Modal>
 
     </div>
@@ -42,15 +73,52 @@
     }
 
     .topBarButton:hover {
-        background-color: rgba(255, 255, 255);
-        box-shadow: 5px 5px gray;
+        background-color: var(--surface-2);
+        box-shadow: 5px 5px var(--overlay);
         cursor: pointer;
+    }
+
+    .topBarIcon {
+        font-size: 20px;
+        display: block;
+    }
+
+    .themeToggle {
+        margin-right: 4px;
+    }
+
+    .progressTrack {
+        width: 100%;
+        height: 14px;
+        border-radius: 7px;
+        background-color: var(--pane-solid);
+        overflow: hidden;
+        margin: 8px 0;
+    }
+
+    .progressFill {
+        width: 83%;
+        height: 100%;
+        border-radius: 7px;
+        background-color: var(--label);
+    }
+
+    .progressSpinner {
+        font-size: 18px;
+        vertical-align: middle;
+        display: inline-block;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 
     .topBar {
         grid-row: 1;
         grid-column: 1 / 3;
-        background-color: rgba(26, 32, 34, 0.7);
+        background-color: var(--pane);
         display: flex;
         align-items: center;
         padding: 0px 30px;

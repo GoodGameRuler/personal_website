@@ -25,7 +25,7 @@
         <div class="vimText">
             <Modal v-model="showExp" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
                 <p class=""> exp(8) - MAN PAGE EXPERIENCES </p>
-                <p class="modalHeader" style="color: #4295AE;"> {{ selExp.name }} </p>
+                <p class="modalHeader lbl"> {{ selExp.name }} </p>
                 <p> SKILLS: {{ selExp.skills }} </p>
                 <hr />
                 <p> {{ selExp.desc }} </p>
@@ -33,13 +33,13 @@
             <p> ~ 12 #ifndef EXPERIENCES</p>
             <p> ~ 11 #define EXPERIENCES </p>
             <p> ~ 10  </p>
-            <p> ~ 09  <span style="color: #295968;"> // More details on my resume: </span> <a class="resumeButton" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume <span class="material-icons resumeIcon">download</span></a></p>
+            <p> ~ 09  <span class="vimComment"> // More details on my resume: </span> <a class="resumeButton" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume <span class="material-icons resumeIcon">download</span></a></p>
             <p> ~ 08  </p>
-            <p> ~ 07  1. <a @click="showExp = true; selExp = exp.a"> <span style="color: #FFFFFF;"> Linux Engineering Intern    - Jane Street </span> </a> </p>
+            <p> ~ 07  1. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern    - Jane Street </span> </a> </p>
             <p> ~ 06  </p>
-            <p> ~ 05  2. <a @click="showExp = true; selExp = exp.b"> <span style="color: #FFFFFF;"> Software Engineering Intern - SafetyCulture </span> </a> </p>
+            <p> ~ 05  2. <a @click="showExp = true; selExp = exp.b"> <span class="hl"> Software Engineering Intern - SafetyCulture </span> </a> </p>
             <p> ~ 04  </p>
-            <p> ~ 03  3. <a @click="showExp = true; selExp = exp.c"> <span style="color: #FFFFFF;"> Data Science Intern         - FreeGuides (Startup) </span> </a> </p>
+            <p> ~ 03  3. <a @click="showExp = true; selExp = exp.c"> <span class="hl"> Data Science Intern         - FreeGuides (Startup) </span> </a> </p>
             <p> ~ 02  </p>
             <p> ~ 01  #endif </p>
             <p> ~ 00  </p>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="vimLuaLine">
-            <p><span style="color: #FFFFFF;"> NORMAL ► experiences.h </span></p>
+            <p><span class="hl"> NORMAL ► experiences.h </span></p>
             <p> 13:1 </p>
 
 
@@ -110,21 +110,26 @@
         flex-shrink: 0;
     }
 
+    .vimComment {
+        color: var(--muted);
+        font-style: italic;
+    }
+
     .resumeButton {
         display: inline-flex;
         align-items: center;
         gap: 6px;
         padding: 2px 10px;
-        border: 2px solid #4295AE;
+        border: 2px solid var(--label);
         border-radius: 8px;
-        color: #FFFFFF;
+        color: var(--text-strong);
         text-decoration: none;
         transition: all ease 0.2s;
     }
 
     .resumeButton:hover {
-        background-color: #4295AE;
-        color: #171F24;
+        background-color: var(--label);
+        color: var(--pane-solid);
         text-decoration: none;
         box-shadow: 5px 5px gray;
     }

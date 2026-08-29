@@ -27,20 +27,20 @@
         </div>
         <div class="info devBox">
             <p class="headerFont"> UDIT SAMANT </p> <br />
-            <p class="highlightFont"> OS: <span style="color: #FFFFFF;"> Computer Science || Data Science </span></p><br />
-            <p class="highlightFont"> HOST: <span style="color: #FFFFFF;"> The University of Sydney </span></p><br />
-            <p class="highlightFont"> KERNEL: <span style="color: #FFFFFF;"> Bachelor of Advanced Computing || Bachelor of Science </span></p><br />
-            <p class="highlightFont"> UPTIME: <span style="color: #FFFFFF;"> Final Year || June 2027 Graduation </span></p><br />
+            <p class="highlightFont"> OS: <span class="hl"> Computer Science || Data Science </span></p><br />
+            <p class="highlightFont"> HOST: <span class="hl"> The University of Sydney </span></p><br />
+            <p class="highlightFont"> KERNEL: <span class="hl"> Bachelor of Advanced Computing || Bachelor of Science </span></p><br />
+            <p class="highlightFont"> UPTIME: <span class="hl"> Final Year || June 2027 Graduation </span></p><br />
         </div>
         <div class="skills devBox">
-            <p style="margin-bottom: 3px;"> ~ $ <span style="color: #FFFFFF;"> ls skills </span></p>
-            <p> &#62; <span style="color: #FFFFFF;">
+            <p style="margin-bottom: 3px;"> ~ $ <span class="hl"> ls skills </span></p>
+            <p> &#62; <span class="hl">
                 <span class="" v-for="(skill, key) in skills" :key="key" @click="showSkill = true; selSkill = skill"><a class="skillButton"> {{ key }} </a>, </span></span></p>
         </div>
 
         <Modal v-model="showSkill" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
             <p class=""> skills(9) - MAN PAGE MISC</p>
-            <p class="modalHeader" style="color: #4295AE;"> NAME: {{ selSkill.name }} </p>
+            <p class="modalHeader lbl"> NAME: {{ selSkill.name }} </p>
             <hr />
             <p> PROFICIENCY: {{ selSkill.prof }} </p>
         </Modal>
@@ -49,7 +49,7 @@
 
 <style>
     .skillButton:hover {
-        color: #4295AE;
+        color: var(--label);
     }
 
     .devBox {
@@ -60,7 +60,7 @@
     }
 
     #manPageSkillsContents {
-        background-color: rgba(26, 32, 34, 1);
+        background-color: var(--pane-solid);
     }
 
     .skills {

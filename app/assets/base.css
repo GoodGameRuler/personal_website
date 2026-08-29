@@ -32,6 +32,45 @@ time, mark, audio, video {
 	border: 0;
 	vertical-align: baseline;
 }
+
+/* Themes: Catppuccin Mocha (dark, default) and Rose Pine Dawn (light) */
+:root {
+    --pane: rgba(30, 30, 46, 0.78);
+    --overlay: rgba(30, 30, 46, 0.6);
+    --pane-solid: #1e1e2e;
+    --surface: #313244;
+    --surface-2: #45475a;
+    --text: #cdd6f4;
+    --text-strong: #f5e0dc;
+    --label: #cba6f7;
+    --heading: #f5c2e7;
+    --muted: #9399b2;
+    --selected: rgba(203, 166, 247, 0.28);
+    --modal-bg: #313244;
+    --scroll-thumb: #585b70;
+    --scroll-track: rgba(30, 30, 46, 0.9);
+}
+
+:root[data-theme="light"] {
+    --pane: rgba(250, 244, 237, 0.85);
+    --overlay: rgba(250, 244, 237, 0.65);
+    --pane-solid: #faf4ed;
+    --surface: #fffaf3;
+    --surface-2: #f2e9e1;
+    --text: #575279;
+    --text-strong: #26233a;
+    --label: #d7827e;
+    --heading: #907aa9;
+    --muted: #797593;
+    --selected: rgba(215, 130, 126, 0.28);
+    --modal-bg: #fffaf3;
+    --scroll-thumb: #cecacd;
+    --scroll-track: rgba(250, 244, 237, 0.9);
+}
+
+.hl { color: var(--text-strong); }
+.lbl { color: var(--label); }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {

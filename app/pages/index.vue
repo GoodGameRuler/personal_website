@@ -70,10 +70,10 @@
                               <p class="headerDesc"> Self-Hosted Infrastructure </p>
                           </div>
                           <hr />
-                          <p> Made Using: <span style="color: #FFFFFF;"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
+                          <p> Made Using: <span class="hl"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
                           <p class="breakLine" style="font-style: italic;"> The server rack lives at home. The services live everywhere. </p>
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> A home Proxmox cluster running my self-hosted services in LXC containers. My ISP hides the cluster behind CGNAT, so a WireGuard tunnel through a cloud host carries external traffic in, and a Traefik reverse proxy routes it to the right service. </span> </p>
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> Split DNS zones keep internal and external traffic separate, so the same names work at home and away while only the services meant to be public are reachable from outside. </span> </p>
+                          <p class="breakLine"> <span class="hl"> A home Proxmox cluster running my self-hosted services in LXC containers. My ISP hides the cluster behind CGNAT, so a WireGuard tunnel through a cloud host carries external traffic in, and a Traefik reverse proxy routes it to the right service. </span> </p>
+                          <p class="breakLine"> <span class="hl"> Split DNS zones keep internal and external traffic separate, so the same names work at home and away while only the services meant to be public are reachable from outside. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
@@ -81,11 +81,11 @@
                               <p class="headerDesc"> Individual Research Project </p>
                           </div>
                           <hr />
-                          <p> Made Using: <span style="color: #FFFFFF;"> OFence, C </span></p>
+                          <p> Made Using: <span class="hl"> OFence, C </span></p>
                           <p class= "breakLine" style="font-style: italic;"> An extension of the original OFence research <a target="_blank" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567504">Paper</a>. </p>
-                          <p> <span style="color: #FFFFFF;"> My task is to identify (and potentially automate) whether it is feasible to convert read, write, and general purpose memory barriers
+                          <p> <span class="hl"> My task is to identify (and potentially automate) whether it is feasible to convert read, write, and general purpose memory barriers
                           in the Linux Kernel to acquire-release semantics. </span> </p>
-                          <p> <span style="color: #FFFFFF;">Where it is not possible, the project aims to automate the generation of comments around the barriers.
+                          <p> <span class="hl">Where it is not possible, the project aims to automate the generation of comments around the barriers.
                           This would help kernel developers easily identify the structures that barriers target.</span> </p>
 
 
@@ -97,13 +97,13 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/unitrack_v3/','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p> Made Using (Version 3): <span style="color: #FFFFFF;"> HTML, CSS, JS, React, NextJS, Vercel </span></p>
+                          <p> Made Using (Version 3): <span class="hl"> HTML, CSS, JS, React, NextJS, Vercel </span></p>
                           <p class= "breakLine" style="font-style: italic;"> This project won 2023 University of Sydney Coding Fest's Best Undergraduate Project </p>
 
-                          <p> <span style="color: #FFFFFF;"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease.
+                          <p> <span class="hl"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease.
                               Compared to the Original University Websites, UniTrack has... Simplified UI One Unified Page for timetabling, and planning A drag and Drop degree planner. </span> </p>
 
-                          <p> <span style="color: #FFFFFF;"> This was also the first opportunity I had creating an open source application that took contributions through forked pull requests.
+                          <p> <span class="hl"> This was also the first opportunity I had creating an open source application that took contributions through forked pull requests.
                               An experience that has taught me how to manage projects, and what the importance of having proper issue management and documentation is.</span> </p>
 
                       </div>
@@ -114,15 +114,15 @@
                               <button class="linkButton" onclick="window.open('https://github.com/Crawl-App/app-frontend','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> React Native, Expo, Python, Google Maps API, Figma </span></p>
+                          <p class="breakLine"> Made Using: <span class="hl"> React Native, Expo, Python, Google Maps API, Figma </span></p>
 
                           <p class= "breakLine" style="font-style: italic;"> This Project was a Finalist in the Sydney Computing Society Annual Hackathon </p>
 
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> Crawl is an app that reduces the friction of planning events with friends. Given a location and a number of stops
+                          <p class="breakLine"> <span class="hl"> Crawl is an app that reduces the friction of planning events with friends. Given a location and a number of stops
                               Crawl determines an optimal activity route using rating as a heuristic and distance as the cost. Crawl's intuitive UI, and simple usage lifts the focus away from
                               determining the next thing to do, and lets customers focus on what truly matters - enjoying their night.</span> </p>
 
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> "As software engineers and innovators the goal should not be make software and products that bring us back to
+                          <p class="breakLine"> <span class="hl"> "As software engineers and innovators the goal should not be make software and products that bring us back to
                               a pre-covid norm but rather a build a better more social one" - The opening line to SYNCSHACK 2024, with the Theme Software That Brings People Together. </span> </p>
 
                       </div>
@@ -133,9 +133,9 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/GDSC-PyGame','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> PyGame, Figma </span></p>
+                          <p class="breakLine"> Made Using: <span class="hl"> PyGame, Figma </span></p>
 
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> An introduction to Game Development workshop that I orchestrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span style="color: #FFFFFF;"> The goal was to inspire students to be creative, and hopefully introduce them to a different career option in CS. Here were the results: <a target="_blank" href="https://gdsc-game-jam-2022.devpost.com/project-gallery">Link</a>. </span> </p>
+                          <p class="breakLine"> <span class="hl"> An introduction to Game Development workshop that I orchestrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span class="hl"> The goal was to inspire students to be creative, and hopefully introduce them to a different career option in CS. Here were the results: <a target="_blank" href="https://gdsc-game-jam-2022.devpost.com/project-gallery">Link</a>. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 5" class="singleProjectDescBox projectBox">
@@ -145,10 +145,10 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/korean','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> Python </span></p>
+                          <p class="breakLine"> Made Using: <span class="hl"> Python </span></p>
 
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> A small project made to assist me in my endeavours of learning Korean. </span> </p>
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> In my attempts to learn Korean, before my exchange at KAIST University, I realised tools like Quizlet and other spaced repetition based learning apps, just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
+                          <p class="breakLine"> <span class="hl"> A small project made to assist me in my endeavours of learning Korean. </span> </p>
+                          <p class="breakLine"> <span class="hl"> In my attempts to learn Korean, before my exchange at KAIST University, I realised tools like Quizlet and other spaced repetition based learning apps, just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
@@ -158,8 +158,8 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/personal_website','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> HTML, CSS, JS, Figma, Vue 3, Nuxt 4, Vercel </span></p>
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> This personal website was a means for me to really delve into the creative side of developing apps, while making a website for my personal brand. I tried incorporating a terminal-esque look, while adding elements of comic books here and there.</span> </p>
+                          <p class="breakLine"> Made Using: <span class="hl"> HTML, CSS, JS, Figma, Vue 3, Nuxt 4, Vercel </span></p>
+                          <p class="breakLine"> <span class="hl"> This personal website was a means for me to really delve into the creative side of developing apps, while making a website for my personal brand. I tried incorporating a terminal-esque look, while adding elements of comic books here and there.</span> </p>
                       </div>
                   </div>
               </div>
@@ -181,46 +181,46 @@
 
     body {
         font-weight: bold;
-        color: #4295AE;
+        color: var(--label);
         font-size: 20px;
     }
 
     @-moz-document url-prefix(){
         body {
             scrollbar-width: 4px;
-            scrollbar-color: #295968 rgba(26, 32, 34, 0.9);
+            scrollbar-color: var(--scroll-thumb) var(--scroll-track);
         }
     }
 
     a {
-        text-decoration: 2px underline #FFFFFF;
+        text-decoration: 2px underline var(--text-strong);
         transition: ease 0.5s;
         color: inherit;
     }
 
     a:hover {
-        text-decoration: 2px underline #4295AE;
+        text-decoration: 2px underline var(--label);
         cursor: pointer;
     }
 
     ::-webkit-scrollbar {
         height: 8px;              /* height of horizontal scrollbar ← You're missing this */
         width: 8px;               /* width of vertical scrollbar */
-        background: rgba(26, 32, 34, 0.9);;
+        background: var(--scroll-track);
     }
 
     ::-webkit-scrollbar-thumb:active {
-        background: #FFFFFF;
+        background: var(--text-strong);
     }
 
     ::-webkit-scrollbar-thumb{
-        background: #295968;
+        background: var(--scroll-thumb);
         border-radius: 10px;
     }
 
     p.headerFont {
         font-size: 45px;
-        color: #9EC4C2;
+        color: var(--heading);
     }
 
     p.highlightFont {
@@ -230,7 +230,7 @@
     hr {
         width: 100%;
         margin: 6px 0;
-        color: white;
+        color: var(--text);
     }
 
     div.background {
@@ -246,7 +246,7 @@
         height: 100%;
         width: 100%;
         padding: 2rem;
-        background-color: rgba(26, 34, 37, 0.7);
+        background-color: var(--overlay);
         box-sizing: border-box;
         padding: 12px;
         -webkit-backdrop-filter: blur(15px);
@@ -290,7 +290,7 @@
     }
 
     .projectBox {
-        background-color: #171F24;
+        background-color: var(--surface);
         margin: 5px;
         border-radius: 10px;
         display: flex;
@@ -299,14 +299,14 @@
     }
 
     .singleProjectNameBox.projectBox:not(.selectedProjButton):hover {
-        background-color: rgba(255, 255, 255, 0.8);
-        box-shadow: 5px 5px gray;
+        background-color: var(--surface-2);
+        box-shadow: 5px 5px var(--overlay);
         cursor: pointer;
     }
 
     .singleProjectNameBox {
         grid-column: 1;
-        color: #4295AE;
+        color: var(--label);
         font-size: 20px;
         font-family: "Source Code Pro";
         font-weight: bold;
@@ -351,8 +351,8 @@
     }
 
     .linkButton {
-        color: #000000;
-        background-color: #9ADAE7;
+        color: var(--pane-solid);
+        background-color: var(--label);
         font-size: 20px;
         font-family: "Source Code Pro";
         font-weight: bold;
@@ -366,12 +366,12 @@
 
     .linkButton:hover {
         cursor: pointer;
-        box-shadow: 5px 5px gray;
+        box-shadow: 5px 5px var(--overlay);
     }
 
     .linkButton:active {
-        color: #000000;
-        background-color: #FFFFFF;
+        color: var(--pane-solid);
+        background-color: var(--text-strong);
     }
 
     .projectHeader > button {
@@ -391,20 +391,20 @@
 
 
     .singleProjectsTitle {
-        background-color: rgba(45, 104, 122, 0.4);
+        background-color: var(--selected);
         grid-column: 2;
         grid-row: 1;
     }
 
     .singleProjectDetailsTitle {
-        background-color: rgba(45, 104, 122, 0.4);
+        background-color: var(--selected);
         grid-column: 2;
         grid-row: 1;
     }
 
     .infoBox {
-        background-color: rgba(26, 32, 34, 0.7);
-        border: 1px #1C2A32;
+        background-color: var(--pane);
+        border: 1px solid transparent;
         padding: 20px;
         box-sizing: border-box;
         border-radius: 20px;
@@ -424,7 +424,7 @@
     .profileCircle {
         height: 250px;
         width: 250px;
-        background-color: #FFFFFF;
+        background-color: var(--surface);
         border-radius: 50%;
         display: inline-block;
         background-image: url("/comic_pf2.png");

@@ -42,15 +42,15 @@
     .modalContents {
         grid-row: 2;
         grid-column: 2;
-        background-color: rgb(45, 104, 122);
-        color: #FFFFFF;
+        background-color: var(--modal-bg);
+        color: var(--text);
         min-width: 400px;
         max-width: 700px;
         display: flex;
         flex-direction: column;
         padding: 20px;
         border-radius: 15px;
-        border: solid 1px white;
+        border: solid 1px var(--label);
     }
 
 
