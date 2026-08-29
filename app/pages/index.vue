@@ -236,10 +236,7 @@
     div.background {
         height: 100vh;
         width: 100vw;
-        background-image: url('/bg.png');
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-color: var(--bg);
     }
 
     .hoverContainer {
@@ -407,6 +404,8 @@
         outline: 2px solid transparent;
         outline-offset: -2px;
         transition: outline-color 0.2s ease;
+        border: 1px solid var(--tile-border);
+        box-shadow: 0 3px 10px var(--tile-shadow);
     }
 
     .infoBox:hover, .infoBox:focus-within, .topBar:hover, .topBar:focus-within {
@@ -415,7 +414,6 @@
 
     .infoBox {
         background-color: var(--pane);
-        border: 1px solid transparent;
         padding: 20px;
         box-sizing: border-box;
         border-radius: 20px;

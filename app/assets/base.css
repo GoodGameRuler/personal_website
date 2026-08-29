@@ -35,6 +35,9 @@ time, mark, audio, video {
 
 /* Themes: Catppuccin Mocha (dark, default) and Rose Pine Dawn (light) */
 :root {
+    --bg: #11111b;
+    --tile-border: rgba(205, 214, 244, 0.08);
+    --tile-shadow: rgba(0, 0, 0, 0.35);
     --pane: rgba(30, 30, 46, 0.78);
     --overlay: rgba(30, 30, 46, 0.6);
     --pane-solid: #1e1e2e;
@@ -52,8 +55,11 @@ time, mark, audio, video {
 }
 
 :root[data-theme="light"] {
-    --pane: rgba(250, 244, 237, 0.85);
-    --overlay: rgba(250, 244, 237, 0.65);
+    --bg: #dfdad9;
+    --tile-border: rgba(87, 82, 121, 0.18);
+    --tile-shadow: rgba(87, 82, 121, 0.14);
+    --pane: rgba(255, 250, 243, 0.92);
+    --overlay: rgba(250, 244, 237, 0.55);
     --pane-solid: #faf4ed;
     --surface: #fffaf3;
     --surface-2: #f2e9e1;
