@@ -435,7 +435,7 @@
 
     /* Laptop widths: keep vim buffer lines on one line */
     @media (min-width: 851px) and (max-width: 1700px) {
-        .vimText > p {
+        .vimLine {
             font-size: 17px;
         }
     }
@@ -512,12 +512,20 @@
 
         .vimText {
             min-height: 0;
-            height: 300px;
+            height: auto;
             flex: 0 0 auto;
         }
 
-        .vimText > p {
+        .vimLine {
             font-size: 14px;
+        }
+
+        .vimFiller {
+            display: none;
+        }
+
+        .exp {
+            min-height: 0;
         }
 
         .proj {

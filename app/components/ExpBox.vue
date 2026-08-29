@@ -30,40 +30,22 @@
                 <hr />
                 <p> {{ selExp.desc }} </p>
             </Modal>
-            <p> ~ 12 #ifndef EXPERIENCES</p>
-            <p> ~ 11 #define EXPERIENCES </p>
-            <p> ~ 10  </p>
-            <p> ~ 09  <span class="vimComment"> // More details on my resume: </span> <a class="resumeButton" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume <span class="material-icons resumeIcon">download</span></a></p>
-            <p> ~ 08  </p>
-            <p> ~ 07  1. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern    - Jane Street </span> </a> </p>
-            <p> ~ 06  </p>
-            <p> ~ 05  2. <a @click="showExp = true; selExp = exp.b"> <span class="hl"> Software Engineering Intern - SafetyCulture </span> </a> </p>
-            <p> ~ 04  </p>
-            <p> ~ 03  3. <a @click="showExp = true; selExp = exp.c"> <span class="hl"> Data Science Intern         - FreeGuides (Startup) </span> </a> </p>
-            <p> ~ 02  </p>
-            <p> ~ 01  #endif </p>
-            <p> ~ 00  </p>
-            <p> ~ 01  </p>
-            <p> ~ 02  </p>
-            <p> ~ 03  </p>
-            <p> ~ 04  </p>
-            <p> ~ 05  </p>
-            <p> ~ 06  </p>
-            <p> ~ 07  </p>
-            <p> ~ 08  </p>
-            <p> ~ 09  </p>
-            <p> ~ 10  </p>
-            <p> ~ 11  </p>
-            <p> ~ 12  </p>
-            <p> ~ 13  </p>
-            <p> ~ 14  </p>
-            <p> ~ 15  </p>
-            <p> ~ 16  </p>
-            <p> ~ 17  </p>
-            <p> ~ 18  </p>
-            <p> ~ 19  </p>
-            <p> ~ 20  </p>
-            <p> ~ 21  </p>
+            <p class="vimLine"><span class="vimNum">12</span><span class="vimBody">#ifndef EXPERIENCES</span></p>
+            <p class="vimLine"><span class="vimNum">11</span><span class="vimBody">#define EXPERIENCES</span></p>
+            <p class="vimLine"><span class="vimNum">10</span></p>
+            <p class="vimLine"><span class="vimNum">9</span><span class="vimBody"><span class="vimComment">// More details on my resume: </span> <a class="resumeButton" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume <span class="material-icons resumeIcon">download</span></a></span></p>
+            <p class="vimLine"><span class="vimNum">8</span></p>
+            <p class="vimLine"><span class="vimNum">7</span><span class="vimBody">1. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern - Jane Street </span> </a></span></p>
+            <p class="vimLine"><span class="vimNum">6</span></p>
+            <p class="vimLine"><span class="vimNum">5</span><span class="vimBody">2. <a @click="showExp = true; selExp = exp.b"> <span class="hl"> Software Engineering Intern - SafetyCulture </span> </a></span></p>
+            <p class="vimLine"><span class="vimNum">4</span></p>
+            <p class="vimLine"><span class="vimNum">3</span><span class="vimBody">3. <a @click="showExp = true; selExp = exp.c"> <span class="hl"> Data Science Intern - FreeGuides (Startup) </span> </a></span></p>
+            <p class="vimLine"><span class="vimNum">2</span></p>
+            <p class="vimLine"><span class="vimNum">1</span></p>
+            <p class="vimLine cursorLine"><span class="vimNum">13</span><span class="vimBody">#endif</span></p>
+            <div class="vimFiller">
+                <p class="vimLine" v-for="n in 60" :key="n"><span class="vimNum vimTilde">~</span></p>
+            </div>
         </div>
 
         <div class="vimLuaLine">
@@ -95,7 +77,7 @@
         grid-column: 1;
         display: flex;
         flex-direction: column;
-        min-height: 0;
+        min-height: 340px;
     }
 
     .vimText {
@@ -145,12 +127,41 @@
         padding: 10px 10px;
     }
 
-    .vimText > p {
+    .vimLine {
+        display: flex;
+        align-items: baseline;
         margin-bottom: 2px;
-        flex-shrink: 1;
         box-sizing: border-box;
         font-size: 22px;
         padding: 0 10px;
+        min-height: 1.2em;
+    }
+
+    .vimNum {
+        flex: 0 0 3ch;
+        text-align: right;
+        margin-right: 1.5ch;
+        color: var(--muted);
+        user-select: none;
+    }
+
+    .vimTilde {
+        text-align: left;
+    }
+
+    .cursorLine .vimNum {
+        color: var(--label);
+    }
+
+    .vimBody {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .vimFiller {
+        flex: 1 0 0;
+        min-height: 0;
+        overflow: hidden;
     }
 
 
