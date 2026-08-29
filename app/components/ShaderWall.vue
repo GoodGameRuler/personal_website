@@ -158,7 +158,7 @@
         /* ---- dark: neon tracer with a decaying trail (2D canvas) ---- */
         const nc = neonCanvas.value;
         const ctx = nc.getContext('2d');
-        const trailColors = ['#d3bdf5', '#f5c6c3', '#aee2ea'];
+        const trailColors = ['#d3bdf5', '#f5c6c3', '#aee2ea', '#f6e0a3', '#f0a6c2', '#a9d7c5'];
         let px = 0, py = 0, ang = 0;
         let targetAng = 0, speed = 2.2, targetSpeed = 2.2, nextTurn = 0;
         const sizeNeon = () => {
@@ -198,7 +198,7 @@
             ang += (targetAng - ang) * 0.045;
             speed += (targetSpeed - speed) * 0.05;
 
-            const mixT = (Math.sin(ms * 0.00013) + 1) / 2 * (trailColors.length - 1);
+            const mixT = (Math.sin(ms * 0.000052) + 1) / 2 * (trailColors.length - 1);
             const col = trailColors[Math.round(mixT)];
             for (let i = 0; i < 2; i++) {
                 const nx = px + Math.cos(ang) * speed;
@@ -207,7 +207,7 @@
                 ctx.strokeStyle = col;
                 ctx.shadowColor = col;
                 ctx.shadowBlur = 12;
-                ctx.lineWidth = 2.4;
+                ctx.lineWidth = 1.3;
                 ctx.lineCap = 'round';
                 ctx.beginPath();
                 ctx.moveTo(px, py);
