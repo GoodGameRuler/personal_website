@@ -306,7 +306,7 @@
         margin: 0;
         justify-content: flex-start;
         padding: 0 14px;
-        transition: none;
+        transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .proj .singleProjectNameBox.projectBox:not(.selectedProjButton):hover {
@@ -318,6 +318,12 @@
         background-color: transparent;
         border-radius: 0;
         margin: 0;
+        animation: paneFade 0.2s ease;
+    }
+
+    @keyframes paneFade {
+        from { opacity: 0; transform: translateX(6px); }
+        to { opacity: 1; transform: translateX(0); }
     }
 
     .projectBox {
