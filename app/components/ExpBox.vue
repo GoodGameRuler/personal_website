@@ -22,6 +22,10 @@
 
 <template>
     <div class="exp infoBox">
+        <a class="resumeFab" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf" aria-label="Download Resume">
+            <span class="resumeFabText">Download Resume</span>
+            <span class="material-icons resumeFabIcon">download</span>
+        </a>
         <div class="vimText">
             <Modal v-model="showExp" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
                 <p class=""> exp(8) - MAN PAGE EXPERIENCES </p>
@@ -33,7 +37,7 @@
             <p class="vimLine"><span class="vimNum">12</span><span class="vimBody">#ifndef EXPERIENCES</span></p>
             <p class="vimLine"><span class="vimNum">11</span><span class="vimBody">#define EXPERIENCES</span></p>
             <p class="vimLine"><span class="vimNum">10</span></p>
-            <p class="vimLine"><span class="vimNum">9</span><span class="vimBody"><span class="vimComment">// More details on my resume: </span> <a class="resumeButton" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume <span class="material-icons resumeIcon">download</span></a></span></p>
+            <p class="vimLine"><span class="vimNum">9</span><span class="vimBody"><span class="vimComment">// These are clickable!</span></span></p>
             <p class="vimLine"><span class="vimNum">8</span></p>
             <p class="vimLine"><span class="vimNum">7</span><span class="vimBody">1. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern - Jane Street </span> </a></span></p>
             <p class="vimLine"><span class="vimNum">6</span></p>
@@ -78,6 +82,7 @@
         display: flex;
         flex-direction: column;
         min-height: 340px;
+        position: relative;
     }
 
     .vimText {
@@ -97,27 +102,45 @@
         font-style: italic;
     }
 
-    .resumeButton {
+    .resumeFab {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 5;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 2px 10px;
+        padding: 8px;
         border: 2px solid var(--label);
-        border-radius: 8px;
-        color: var(--text-strong);
+        border-radius: 10px;
+        background-color: var(--surface);
+        color: var(--label);
         text-decoration: none;
-        transition: all ease 0.2s;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
-    .resumeButton:hover {
+    .resumeFab:hover {
         background-color: var(--label);
         color: var(--pane-solid);
         text-decoration: none;
-        box-shadow: 5px 5px gray;
     }
 
-    .resumeIcon {
-        font-size: 18px;
+    .resumeFabText {
+        max-width: 0;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: bold;
+        transition: max-width 0.3s ease, margin-right 0.3s ease;
+    }
+
+    .resumeFab:hover .resumeFabText, .resumeFab:focus .resumeFabText {
+        max-width: 200px;
+        margin-right: 8px;
+    }
+
+    .resumeFabIcon {
+        font-size: 20px;
+        display: block;
     }
 
     .vimLuaLine {
