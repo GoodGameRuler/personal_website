@@ -20,13 +20,14 @@
 </template>
 
 <style>
-    .projectBox.selectedProjButton {
-        background-color: rgba(45, 104, 122, 0.4);
-
+    .proj .singleProjectNameBox.projectBox.selectedProjButton {
+        background-color: var(--label);
+        color: var(--pane-solid);
     }
 
-    .projectBox.selectedProjButton:hover {
-        background-color: rgba(45, 104, 122, 0.4);
+    .proj .singleProjectNameBox.projectBox.selectedProjButton:hover {
+        background-color: var(--label);
+        color: var(--pane-solid);
     }
 
 </style>

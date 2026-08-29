@@ -12,63 +12,54 @@
             desc: "On the Platforms Access team I built a bulk operation for assigning user permissions, and a setting that lets users choose which organisation they land in when they log in. Go and Temporal on the backend, React in front."},
         c: {
             name: "FreeGuides - Data Science Internship",
-            skills: "Python, Pandas, SciKit Learn, BigQuery, Google Cloud Functions",
+            skills: "Python, Pandas, scikit-learn, BigQuery, Google Cloud Functions",
             desc: "I automated the screening of self-guided tours on the app: machine learning models assigned each tour a rating and feedback, replacing manual review."},
     };
 
     let selExp = ref(exp.a);
 
+    // nvim cursor: absolute line it sits on; gutter renders relative numbers around it
+    const cur = ref(4);
+    const gut = (n) => cur.value === n ? n : Math.abs(n - cur.value);
+    const setCur = (n) => { cur.value = n; };
+
 </script>
 
 <template>
     <div class="exp infoBox">
+        <a class="resumeFab" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf" aria-label="Download Resume">
+            <span class="resumeFabText">Download Resume</span>
+            <span class="material-icons resumeFabIcon">download</span>
+        </a>
         <div class="vimText">
-            <Modal v-model="showExp" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
+            <Modal v-model="showExp" modalID="manPageExp" modalContentsID="manPageExpContents">
                 <p class=""> exp(8) - MAN PAGE EXPERIENCES </p>
-                <p class="modalHeader" style="color: #4295AE;"> {{ selExp.name }} </p>
+                <p class="modalHeader lbl"> {{ selExp.name }} </p>
                 <p> SKILLS: {{ selExp.skills }} </p>
                 <hr />
                 <p> {{ selExp.desc }} </p>
             </Modal>
-            <p> ~ 12 #ifndef EXPERIENCES</p>
-            <p> ~ 11 #define EXPERIENCES </p>
-            <p> ~ 10  </p>
-            <p> ~ 09  <span style="color: #295968;"> // More details on my resume: </span> <a class="resumeButton" href="/Technical Resume-Udit Samant.pdf" download="Technical Resume - Udit Samant.pdf"> Resume <span class="material-icons resumeIcon">download</span></a></p>
-            <p> ~ 08  </p>
-            <p> ~ 07  1. <a @click="showExp = true; selExp = exp.a"> <span style="color: #FFFFFF;"> Linux Engineering Intern    - Jane Street </span> </a> </p>
-            <p> ~ 06  </p>
-            <p> ~ 05  2. <a @click="showExp = true; selExp = exp.b"> <span style="color: #FFFFFF;"> Software Engineering Intern - SafetyCulture </span> </a> </p>
-            <p> ~ 04  </p>
-            <p> ~ 03  3. <a @click="showExp = true; selExp = exp.c"> <span style="color: #FFFFFF;"> Data Science Intern         - FreeGuides (Startup) </span> </a> </p>
-            <p> ~ 02  </p>
-            <p> ~ 01  #endif </p>
-            <p> ~ 00  </p>
-            <p> ~ 01  </p>
-            <p> ~ 02  </p>
-            <p> ~ 03  </p>
-            <p> ~ 04  </p>
-            <p> ~ 05  </p>
-            <p> ~ 06  </p>
-            <p> ~ 07  </p>
-            <p> ~ 08  </p>
-            <p> ~ 09  </p>
-            <p> ~ 10  </p>
-            <p> ~ 11  </p>
-            <p> ~ 12  </p>
-            <p> ~ 13  </p>
-            <p> ~ 14  </p>
-            <p> ~ 15  </p>
-            <p> ~ 16  </p>
-            <p> ~ 17  </p>
-            <p> ~ 18  </p>
-            <p> ~ 19  </p>
-            <p> ~ 20  </p>
-            <p> ~ 21  </p>
+            <p class="vimLine" :class="{ cursorLine: cur === 1 }" @click="setCur(1)"><span class="vimNum">{{ gut(1) }}</span><span class="vimBody"><span class="cur1">#</span>ifndef EXPERIENCES</span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 2 }" @click="setCur(2)"><span class="vimNum">{{ gut(2) }}</span><span class="vimBody"><span class="cur1">#</span>define EXPERIENCES</span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 3 }" @click="setCur(3)"><span class="vimNum">{{ gut(3) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 4 }" @click="setCur(4)"><span class="vimNum">{{ gut(4) }}</span><span class="vimBody"><span class="vimComment"><span class="cur1">/</span>/ Experiences are clickable!</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 5 }" @click="setCur(5)"><span class="vimNum">{{ gut(5) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 6 }" @click="setCur(6)"><span class="vimNum">{{ gut(6) }}</span><span class="vimBody"><span class="cur1">1</span>. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern - Jane Street </span> </a></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 7 }" @click="setCur(7)"><span class="vimNum">{{ gut(7) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 8 }" @click="setCur(8)"><span class="vimNum">{{ gut(8) }}</span><span class="vimBody"><span class="cur1">2</span>. <a @click="showExp = true; selExp = exp.b"> <span class="hl"> Software Engineering Intern - SafetyCulture </span> </a></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 9 }" @click="setCur(9)"><span class="vimNum">{{ gut(9) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 10 }" @click="setCur(10)"><span class="vimNum">{{ gut(10) }}</span><span class="vimBody"><span class="cur1">3</span>. <a @click="showExp = true; selExp = exp.c"> <span class="hl"> Data Science Intern - FreeGuides (Startup) </span> </a></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 11 }" @click="setCur(11)"><span class="vimNum">{{ gut(11) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 12 }" @click="setCur(12)"><span class="vimNum">{{ gut(12) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 13 }" @click="setCur(13)"><span class="vimNum">{{ gut(13) }}</span><span class="vimBody"><span class="cur1">#</span>endif</span></p>
+            <div class="vimFiller">
+                <p class="vimLine" v-for="n in 60" :key="n"><span class="vimNum vimTilde">~</span></p>
+            </div>
         </div>
 
         <div class="vimLuaLine">
-            <p><span style="color: #FFFFFF;"> NORMAL ► experiences.h </span></p>
-            <p> 13:1 </p>
+            <p><span class="hl"> NORMAL ► experiences.h </span></p>
+            <p> {{ cur }}:1 </p>
 
 
         </div>
@@ -82,26 +73,20 @@
 
 <style>
 
-    .cvButton {
-        position: float;
-        top: 10px;
-        right: 10px;
-        width: 75px;
-        border-radius: 5px;
-    }
-
     .exp {
         grid-row: 3;
         grid-column: 1;
         display: flex;
         flex-direction: column;
+        min-height: 340px;
+        position: relative;
     }
 
     .vimText {
-        flex: 1 1 auto;
+        flex: 1 1 0;
         display: flex;
         flex-direction: column;
-        min-height: 340px;
+        min-height: 0;
         overflow-y: auto;
     }
 
@@ -109,27 +94,54 @@
         flex-shrink: 0;
     }
 
-    .resumeButton {
+    .vimComment {
+        color: var(--muted);
+        font-style: italic;
+    }
+
+    .resumeFab {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 5;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 2px 10px;
-        border: 2px solid #4295AE;
+        padding: 8px;
+        border: 2px solid var(--label);
         border-radius: 8px;
-        color: #FFFFFF;
+        background-color: var(--surface);
+        color: var(--label);
         text-decoration: none;
-        transition: all ease 0.2s;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
-    .resumeButton:hover {
-        background-color: #4295AE;
-        color: #171F24;
+    .resumeFab:hover {
+        background-color: var(--label);
+        color: var(--pane-solid);
         text-decoration: none;
-        box-shadow: 5px 5px gray;
     }
 
-    .resumeIcon {
-        font-size: 18px;
+    .resumeFabText {
+        max-width: 0;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: bold;
+        transition: max-width 0.3s ease, margin-right 0.3s ease;
+    }
+
+    .resumeFab:hover .resumeFabText, .resumeFab:focus .resumeFabText {
+        max-width: 200px;
+        margin-right: 8px;
+    }
+
+    .resumeFabIcon {
+        font-size: 20px;
+        display: block;
+    }
+
+    .tmuxBar {
+        padding: 0 10px 4px;
     }
 
     .vimLuaLine {
@@ -139,12 +151,72 @@
         padding: 10px 10px;
     }
 
-    .vimText > p {
-        margin-bottom: 2px;
-        flex-shrink: 1;
+    .vimLine {
+        display: flex;
+        align-items: baseline;
+        line-height: 1.35;
         box-sizing: border-box;
-        font-size: 22px;
+        font-size: 20px;
         padding: 0 10px;
+        min-height: 1.35em;
+    }
+
+    .vimNum {
+        flex: 0 0 3ch;
+        text-align: right;
+        margin-right: 1.5ch;
+        color: var(--muted);
+        user-select: none;
+    }
+
+    .vimTilde {
+        text-align: left;
+    }
+
+    .cursorLine {
+        background-color: var(--selected);
+    }
+
+    .cursorLine .vimNum {
+        color: var(--label);
+    }
+
+    .cur1 {
+        display: inline-block;
+        min-width: 0.62em;
+        border-radius: 2px;
+    }
+
+    .cursorLine .cur1 {
+        background-color: var(--text);
+        color: var(--pane-solid);
+    }
+
+    .exp:hover .cursorLine .cur1, .exp:focus-within .cursorLine .cur1 {
+        animation: curBlink 1.1s step-end infinite;
+    }
+
+    @keyframes curBlink {
+        50% {
+            background-color: var(--selected);
+            color: var(--text);
+        }
+    }
+
+    .vimLine {
+        cursor: default;
+        transition: background-color 0.15s ease;
+    }
+
+    .vimBody {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .vimFiller {
+        flex: 1 0 0;
+        min-height: 0;
+        overflow: hidden;
     }
 
 

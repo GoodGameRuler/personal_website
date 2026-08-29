@@ -1,17 +1,60 @@
 <script setup>
     const showContactPage = ref(false);
     const showLastModified = ref(false);
+    const showProgress = ref(false);
 
     const config = useRuntimeConfig();
     const lastModified = new Date(config.public.lastModified);
     const lastModifiedShort = lastModified.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    const lastModifiedLong = lastModified.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+    const lastModifiedFull = lastModified.toLocaleString('en-AU', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    const isStale = (Date.now() - lastModified.getTime()) > 365 * 24 * 60 * 60 * 1000;
+
+    const theme = ref('light');
+    const applyTheme = () => {
+        if (typeof document === 'undefined') return;
+        document.documentElement.dataset.theme = theme.value;
+        // the tab icon follows the toggle: tracer head at night, petal at dawn.
+        // Chromium ignores href mutation on an existing icon link, so the
+        // link node itself is replaced to force a repaint.
+        document.querySelectorAll("link[rel='icon']").forEach(l => l.remove());
+        const fav = document.createElement('link');
+        fav.rel = 'icon';
+        fav.type = 'image/png';
+        fav.href = (theme.value === 'dark' ? '/favicon-dot.png' : '/favicon-petal.png') + '?t=' + theme.value;
+        document.head.appendChild(fav);
+    };
+    onMounted(() => {
+        try {
+            theme.value = localStorage.getItem('theme')
+                || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        } catch {}
+        applyTheme();
+    });
+    const toggleTheme = () => {
+        theme.value = theme.value === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', theme.value); } catch {}
+        applyTheme();
+    };
 </script>
 
 <template>
     <div class="topBar">
-        <div class="rightTopBar"> US </div>
-        <div class="leftTopBar"> 83% | <button class="topBarButton" @click="showLastModified = true"> {{ lastModifiedShort }} </button> | <button class="topBarButton" @click="showContactPage = true"> Contact Me </button> </div>
+        <div class="rightTopBar">
+            <span> US </span>
+            <span class="workspaces">
+                <span class="wsDot wsActive"></span>
+                <span class="wsDot"></span>
+                <span class="wsDot"></span>
+            </span>
+        </div>
+        <div class="leftTopBar">
+            <button class="topBarButton themeToggle" :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'" @click="toggleTheme">
+                <span class="material-icons topBarIcon">{{ theme === 'dark' ? 'light_mode' : 'dark_mode' }}</span>
+            </button>
+            | <button class="topBarButton" @click="showProgress = true"> 83% </button>
+            | <button class="topBarButton" @click="showLastModified = true"> {{ lastModifiedShort }} </button>
+            | <button class="topBarButton" @click="showContactPage = true"> Contact Me </button>
+        </div>
         <Modal v-model="showContactPage" modalID="contactMeModal">
                 <p class="modalHeader"> Say Hello! </p>
                 <hr />
@@ -21,11 +64,21 @@
                 <p> LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/uditsamant/">Udit Samant</a> </p>
         </Modal>
 
-        <Modal v-model="showLastModified" modalID="lastModifiedModal">
-                <p class="modalHeader"> Last Modified </p>
+        <Modal v-model="showProgress" modalID="progressModal">
+                <p class="modalHeader"> Degree Loading </p>
                 <hr />
-                <p> This site was last built on <span style="color: #FFFFFF;">{{ lastModifiedLong }}</span>. </p>
-                <p> The date stamps itself on every deploy. </p>
+                <div class="progressTrack"><div class="progressFill"></div></div>
+                <p class="progressLine"> <span class="material-icons progressSpinner">autorenew</span> 5 of 6 years complete: 83% </p>
+                <p class="lbl"> Ships June 2027. </p>
+        </Modal>
+
+        <Modal v-model="showLastModified" modalID="lastModifiedModal">
+                <p class="modalHeader"> mtime </p>
+                <hr />
+                <p> Website Last Modified Time: </p>
+                <p class="hl"> {{ lastModifiedFull }} </p>
+                <p> The date stamps itself each time the site is deployed. </p>
+                <p v-if="isStale" class="lbl"> -- this may be out of date </p>
         </Modal>
 
     </div>
@@ -34,27 +87,66 @@
 <style>
 
     .topBarButton {
+        display: inline-flex;
+        align-items: center;
         padding: 5px;
-        border-radius: 10px;
+        border-radius: 8px;
         transition: ease 0.5s;
-        margin: 2px 0;
-        margin-left: 4px;
+        margin: 2px 4px;
     }
 
     .topBarButton:hover {
-        background-color: rgba(255, 255, 255);
-        box-shadow: 5px 5px gray;
+        background-color: var(--surface-2);
+        box-shadow: 5px 5px var(--overlay);
         cursor: pointer;
+    }
+
+    .topBarIcon {
+        font-size: 20px;
+        display: block;
+    }
+
+    .progressTrack {
+        width: 100%;
+        height: 14px;
+        border-radius: 8px;
+        background-color: var(--pane-solid);
+        overflow: hidden;
+        margin: 8px 0;
+    }
+
+    .progressFill {
+        width: 83%;
+        height: 100%;
+        border-radius: 8px;
+        background-color: var(--label);
+    }
+
+    .progressLine {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .progressSpinner {
+        font-size: 20px;
+        display: block;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 
     .topBar {
         grid-row: 1;
         grid-column: 1 / 3;
-        background-color: rgba(26, 32, 34, 0.7);
+        background-color: var(--pane);
         display: flex;
         align-items: center;
-        padding: 0px 30px;
-        border-radius: 15px;
+        padding: 0px 20px;
+        border-radius: 12px;
         -webkit-user-select: none; /* Safari */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* IE10+/Edge */
@@ -65,12 +157,34 @@
         flex: 1;
         display: flex;
         align-items: center;
-        justify-content: right;
+        justify-content: flex-end;
 
     }
 
     .rightTopBar {
         flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .workspaces {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .wsDot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid var(--label);
+        display: inline-block;
+        box-sizing: border-box;
+    }
+
+    .wsActive {
+        background-color: var(--label);
     }
 
 </style>

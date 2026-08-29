@@ -23,24 +23,62 @@
 <template>
     <div class="dev infoBox">
         <div class="profilePhoto devBox">
-            <span class="profileCircle" />
+            <pre class="distroArt distroArch">                  -`
+                 .o+`
+                `ooo/
+               `+oooo:
+              `+oooooo:
+              -+oooooo+:
+            `/:-:++oooo+:
+           `/++++/+++++++:
+          `/++++++++++++++:
+         `/+++ooooooooooooo/`
+        ./ooosssso++osssssso+`
+       .oossssso-````/ossssss+`
+      -osssssso.      :ssssssso.
+     :osssssss/        osssso+++.
+    /ossssssss/        +ssssooo/-
+  `/ossssso+/:-        -:/+osssso+-
+ `+sso+:-`                 `.-/+oso:
+`++:.                           `-/+/
+.`                                 `/</pre>
+            <pre class="distroArt distroFedora">             .',;::::;,'.
+         .';:cccccccccccc:;,.
+      .;cccccccccccccccccccccc;.
+    .:cccccccccccccccccccccccccc:.
+  .;ccccccccccccc;.:dddl:.;ccccccc;.
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,
+:cccccccccccccc;MMM.;cccccccccccccccc:
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;
+cccccc;dNMWXXXWM0:;cccccccccccccc:,
+cccccccc;.:odl:.;cccccccccccccc:,.
+ccccccccccccccccccccccccccccc:'.
+:ccccccccccccccccccccccc:;,..
+ ':cccccccccccccccc::;,.</pre>
         </div>
         <div class="info devBox">
             <p class="headerFont"> UDIT SAMANT </p> <br />
-            <p class="highlightFont"> OS: <span style="color: #FFFFFF;"> Computer Science || Data Science </span></p><br />
-            <p class="highlightFont"> HOST: <span style="color: #FFFFFF;"> The University of Sydney </span></p><br />
-            <p class="highlightFont"> KERNEL: <span style="color: #FFFFFF;"> Bachelor of Advanced Computing || Bachelor of Science </span></p><br />
-            <p class="highlightFont"> UPTIME: <span style="color: #FFFFFF;"> Final Year || June 2027 Graduation </span></p><br />
+            <p class="highlightFont"> OS: <span class="hl"> Computer Science || Data Science </span></p><br />
+            <p class="highlightFont"> HOST: <span class="hl"> The University of Sydney </span></p><br />
+            <p class="highlightFont"> KERNEL: <span class="hl"> Bachelor of Advanced Computing || Bachelor of Science </span></p><br />
+            <p class="highlightFont"> UPTIME: <span class="hl"> Final Year || June 2027 Graduation </span></p><br />
         </div>
         <div class="skills devBox">
-            <p style="margin-bottom: 3px;"> ~ $ <span style="color: #FFFFFF;"> ls skills </span></p>
-            <p> &#62; <span style="color: #FFFFFF;">
+            <p style="margin-bottom: 3px;"> ~ $ <span class="hl"> ls skills </span></p>
+            <p> &#62; <span class="hl">
                 <span class="" v-for="(skill, key) in skills" :key="key" @click="showSkill = true; selSkill = skill"><a class="skillButton"> {{ key }} </a>, </span></span></p>
+            <p class="shellPrompt"> ~ $ <span class="promptCursor"></span></p>
         </div>
 
         <Modal v-model="showSkill" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
             <p class=""> skills(9) - MAN PAGE MISC</p>
-            <p class="modalHeader" style="color: #4295AE;"> NAME: {{ selSkill.name }} </p>
+            <p class="modalHeader lbl"> NAME: {{ selSkill.name }} </p>
             <hr />
             <p> PROFICIENCY: {{ selSkill.prof }} </p>
         </Modal>
@@ -48,19 +86,34 @@
 </template>
 
 <style>
+    .distroArt {
+        font-family: "Source Code Pro", monospace;
+        font-size: 11px;
+        line-height: 1.05;
+        font-weight: bold;
+        color: var(--label);
+        user-select: none;
+    }
+
+    .distroFedora {
+        display: none;
+    }
+
+    :root[data-theme="light"] .distroArch {
+        display: none;
+    }
+
+    :root[data-theme="light"] .distroFedora {
+        display: block;
+        color: var(--heading);
+    }
+
     .skillButton:hover {
-        color: #4295AE;
+        color: var(--label);
     }
 
     .devBox {
-        padding: 5px;
-    }
-
-    #manPageSkills {
-    }
-
-    #manPageSkillsContents {
-        background-color: rgba(26, 32, 34, 1);
+        padding: 10px;
     }
 
     .skills {
@@ -68,16 +121,31 @@
         grid-column: 1 / 3;
     }
 
+    .shellPrompt {
+        margin-top: 8px;
+    }
+
+    .promptCursor {
+        display: inline-block;
+        width: 0.6em;
+        height: 1.05em;
+        background-color: var(--text);
+        vertical-align: text-bottom;
+        opacity: 0.45;
+    }
+
+    .dev:hover .promptCursor, .dev:focus-within .promptCursor {
+        opacity: 1;
+        animation: promptBlink 1.1s step-end infinite;
+    }
+
+    @keyframes promptBlink {
+        50% { opacity: 0; }
+    }
+
     .info {
         grid-row: 1;
         grid-column: 2;
-    }
-
-    .intro {
-        grid-row: 2;
-        grid-column: 1 / 3;
-        color: white;
-        font-style: italic;
     }
 
 </style>
