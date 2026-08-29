@@ -1,11 +1,17 @@
 <script setup>
     const showContactPage = ref(false);
+    const showLastModified = ref(false);
+
+    const config = useRuntimeConfig();
+    const lastModified = new Date(config.public.lastModified);
+    const lastModifiedShort = lastModified.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const lastModifiedLong = lastModified.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
 </script>
 
 <template>
     <div class="topBar">
         <div class="rightTopBar"> US </div>
-        <div class="leftTopBar"> 80% | 27/03/2024 | <button class="topBarButton" @click="showContactPage = true"> Contact Me </button> </div>
+        <div class="leftTopBar"> 83% | <button class="topBarButton" @click="showLastModified = true"> {{ lastModifiedShort }} </button> | <button class="topBarButton" @click="showContactPage = true"> Contact Me </button> </div>
         <Modal v-model="showContactPage" modalID="contactMeModal">
                 <p class="modalHeader"> Say Hello! </p>
                 <hr />
@@ -13,6 +19,13 @@
                 <p> Mobile: <a target="_blank" href="tel:+61434577928">+61 434 577 928</a> </p>
 
                 <p> LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/uditsamant/">Udit Samant</a> </p>
+        </Modal>
+
+        <Modal v-model="showLastModified" modalID="lastModifiedModal">
+                <p class="modalHeader"> Last Modified </p>
+                <hr />
+                <p> This site was last built on <span style="color: #FFFFFF;">{{ lastModifiedLong }}</span>. </p>
+                <p> The date stamps itself on every deploy. </p>
         </Modal>
 
     </div>

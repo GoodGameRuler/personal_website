@@ -3,7 +3,7 @@
     useHead({
         title: "Udit's Personal Website",
         meta: [
-            { name: 'description', content: "Udit's Bio, Projects, and Expereience"},
+            { name: 'description', content: "Udit's Bio, Projects, and Experience"},
             { name: 'author', content: "Udit Samant"},
             { name: "keywords", content: "Udit Samant, Personal Website, Vue, Nuxt, JS, HTML, CSS, Web Development"},
 
@@ -11,14 +11,14 @@
             { property: "og:type", content: "website"},
             { property: "og:title", content: "Udit Samant - Personal Website"},
             { property: "og:image", content: "https://www.uditsamant.com/comic_pf2.png"},
-            { property: "og:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
+            { property: "og:description", content: "A developer summary of Udit Samant - Bio, Projects, and Experience"},
 
             { name: "twitter:card", content: "summary_large_image"},
             { property: "twitter:domain", content: "uditsamant.com"},
             { property: "twitter:url", content: "https://www.uditsamant.com/"},
             { name: "twitter:title", content: "Udit Samant - Personal Website"},
             { name: "twitter:image", content: "https://www.uditsamant.com/comic_pf2.png"},
-            { name: "twitter:description", content: "A developer summary of Udit Samant - Bio, Projects, and Expereience"},
+            { name: "twitter:description", content: "A developer summary of Udit Samant - Bio, Projects, and Experience"},
         ],
     })
 
@@ -29,6 +29,7 @@
     import { ref } from 'vue';
 
     const projButtons = [
+        { no: 6, value: 'Homelab'},
         { no: 1, value: 'OFence'},
         { no: 2, value: 'UniTrack'},
         { no: 3, value: 'Crawl'},
@@ -39,7 +40,7 @@
         { no: 1000, value: 'Self' },
     ]
 
-    const selectedButton = ref(1);
+    const selectedButton = ref(6);
 
     const handleSelectButton = (buttonNumber) => {
         selectedButton.value = buttonNumber;
@@ -63,6 +64,17 @@
                       <div class="singleProjectDetailsTitle projectBox"> Project Details </div>
                       <ProjButton v-for="button in projButtons" :key="button.no" :button="button" :selectedButton="selectedButton" @select-button="handleSelectButton" />
                       <!--  SELF SHOULD BE LAST -->
+                      <div v-if="selectedButton === 6" class="singleProjectDescBox projectBox">
+                          <div class="projectHeader">
+                              <p class="headerText" style="font-size: 25px;"> Homelab </p>
+                              <p class="headerDesc"> Self-Hosted Infrastructure </p>
+                          </div>
+                          <hr />
+                          <p> Made Using: <span style="color: #FFFFFF;"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
+                          <p class="breakLine" style="font-style: italic;"> The server rack lives at home. The services live everywhere. </p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> A home Proxmox cluster running my self-hosted services in LXC containers. My ISP hides the cluster behind CGNAT, so a WireGuard tunnel through a cloud host carries external traffic in, and a Traefik reverse proxy routes it to the right service. </span> </p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> Split DNS zones keep internal and external traffic separate, so the same names work at home and away while only the services meant to be public are reachable from outside. </span> </p>
+                      </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
                               <p class="headerText" style="font-size: 25px;"> OFence </p>
@@ -70,11 +82,11 @@
                           </div>
                           <hr />
                           <p> Made Using: <span style="color: #FFFFFF;"> OFence, C </span></p>
-                          <p class= "breakLine" style="font-style: italic;"> An extension of the orginal OFence Research <a target="_blank" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567504">Paper</a>. </p>
+                          <p class= "breakLine" style="font-style: italic;"> An extension of the original OFence research <a target="_blank" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567504">Paper</a>. </p>
                           <p> <span style="color: #FFFFFF;"> My task is to identify (and potentially automate) whether it is feasible to convert read, write, and general purpose memory barriers
                           in the Linux Kernel to acquire-release semantics. </span> </p>
                           <p> <span style="color: #FFFFFF;">Where it is not possible, the project aims to automate the generation of comments around the barriers.
-                          This would help kernel developers easily identify the the structures that barriers target.</span> </p>
+                          This would help kernel developers easily identify the structures that barriers target.</span> </p>
 
 
                       </div>
@@ -86,13 +98,13 @@
                           </div>
                           <hr />
                           <p> Made Using (Version 3): <span style="color: #FFFFFF;"> HTML, CSS, JS, React, NextJS, Vercel </span></p>
-                          <p class= "breakLine" style="font-style: italic;"> This project won 2023 Univerity of Sydney Coding Fest's Best Undergraduate Project </p>
+                          <p class= "breakLine" style="font-style: italic;"> This project won 2023 University of Sydney Coding Fest's Best Undergraduate Project </p>
 
                           <p> <span style="color: #FFFFFF;"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease.
                               Compared to the Original University Websites, UniTrack has... Simplified UI One Unified Page for timetabling, and planning A drag and Drop degree planner. </span> </p>
 
-                          <p> <span style="color: #FFFFFF;"> This was also the first opportunity I had creating an open source application that took contributions forked pull requests.
-                              An exeperience that has taught me how to manage projects, and what the importance of having proper issue management and documentation is.</span> </p>
+                          <p> <span style="color: #FFFFFF;"> This was also the first opportunity I had creating an open source application that took contributions through forked pull requests.
+                              An experience that has taught me how to manage projects, and what the importance of having proper issue management and documentation is.</span> </p>
 
                       </div>
                       <div v-if="selectedButton === 3" class="singleProjectDescBox projectBox">
@@ -107,8 +119,8 @@
                           <p class= "breakLine" style="font-style: italic;"> This Project was a Finalist in the Sydney Computing Society Annual Hackathon </p>
 
                           <p class="breakLine"> <span style="color: #FFFFFF;"> Crawl is an app that reduces the friction of planning events with friends. Given a location and a number of stops
-                              Crawl determines an optimal activity route using rating as hueristic and distance as the cost. Crawl's intuitive UI, and simple usage lifts the focus away from
-                              determining the next thing to, and lets customers focus on what truly matters - enjoying their night.</span> </p>
+                              Crawl determines an optimal activity route using rating as a heuristic and distance as the cost. Crawl's intuitive UI, and simple usage lifts the focus away from
+                              determining the next thing to do, and lets customers focus on what truly matters - enjoying their night.</span> </p>
 
                           <p class="breakLine"> <span style="color: #FFFFFF;"> "As software engineers and innovators the goal should not be make software and products that bring us back to
                               a pre-covid norm but rather a build a better more social one" - The opening line to SYNCSHACK 2024, with the Theme Software That Brings People Together. </span> </p>
@@ -123,7 +135,7 @@
                           <hr />
                           <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> PyGame, Figma </span></p>
 
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> An introduction to Game Development workshop that I orchastrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span style="color: #FFFFFF;"> The goal was to inspire stuents, to be creative and hopfeully introuce them to a different career option in CS. Here were the results: <a target="_blank" href="https://gdsc-game-jam-2022.devpost.com/project-gallery">Link</a>. </span> </p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> An introduction to Game Development workshop that I orchestrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span style="color: #FFFFFF;"> The goal was to inspire students to be creative, and hopefully introduce them to a different career option in CS. Here were the results: <a target="_blank" href="https://gdsc-game-jam-2022.devpost.com/project-gallery">Link</a>. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 5" class="singleProjectDescBox projectBox">
@@ -136,7 +148,7 @@
                           <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> Python </span></p>
 
                           <p class="breakLine"> <span style="color: #FFFFFF;"> A small project made to assist me in my endeavours of learning Korean. </span> </p>
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> In my attempts to learn korean, before my exchange at KAIST University, I realised tools like Quizlet and other spaced repitition based learning apps, just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> In my attempts to learn Korean, before my exchange at KAIST University, I realised tools like Quizlet and other spaced repetition based learning apps, just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
@@ -146,9 +158,8 @@
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/personal_website','_blank')"> <img src="/link.svg" /> </button>
                           </div>
                           <hr />
-                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> HTML, CSS, JS, Figma, Vue 3, Nuxt 3, Vercel </span></p>
-                          <p class="breakLine"> <span style="color: #FFFFFF;"> This personal website was a means for me to realy delve into the creative side of developing apps, while making a website as for my personal brand
-                              . I tried encorporating a terminal esque look, while adding elements of comic books here and there.</span> </p>
+                          <p class="breakLine"> Made Using: <span style="color: #FFFFFF;"> HTML, CSS, JS, Figma, Vue 3, Nuxt 4, Vercel </span></p>
+                          <p class="breakLine"> <span style="color: #FFFFFF;"> This personal website was a means for me to really delve into the creative side of developing apps, while making a website for my personal brand. I tried incorporating a terminal-esque look, while adding elements of comic books here and there.</span> </p>
                       </div>
                   </div>
               </div>
@@ -420,6 +431,71 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    /* Mobile: the tmux session stays, the panes stack vertically */
+    @media (max-width: 850px) {
+        body {
+            font-size: 16px;
+        }
+
+        div.background {
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .hoverContainer {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            overflow: visible;
+        }
+
+        .topBar {
+            min-height: 56px;
+            padding: 6px 12px;
+        }
+
+        p.headerFont {
+            font-size: 30px;
+        }
+
+        p.highlightFont {
+            font-size: 17px;
+        }
+
+        .profileCircle {
+            height: 110px;
+            width: 110px;
+        }
+
+        .vimText {
+            min-height: 0;
+            height: 300px;
+        }
+
+        .vimText > p {
+            font-size: 14px;
+        }
+
+        .proj {
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+        }
+
+        .projectBox {
+            min-height: 44px;
+        }
+
+        .singleProjectDescBox {
+            padding: 14px;
+        }
+
+        .modalContents {
+            max-width: 92vw;
+            box-sizing: border-box;
+        }
     }
 
 </style>
