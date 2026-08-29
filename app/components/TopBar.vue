@@ -11,7 +11,11 @@
 
     const theme = ref('light');
     const applyTheme = () => {
-        if (typeof document !== 'undefined') document.documentElement.dataset.theme = theme.value;
+        if (typeof document === 'undefined') return;
+        document.documentElement.dataset.theme = theme.value;
+        // the tab icon follows the toggle: tracer head at night, petal at dawn
+        const fav = document.querySelector("link[rel='icon']");
+        if (fav) fav.href = theme.value === 'dark' ? '/favicon-dot.svg' : '/favicon-petal.svg';
     };
     onMounted(() => {
         try {

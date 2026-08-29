@@ -2,7 +2,7 @@
     // Apply the saved theme before hydration so there is no flash of the wrong theme
     useHead({
         link: [
-            { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2' },
+            { rel: 'icon', type: 'image/svg+xml', href: '/favicon-petal.svg' },
             { rel: 'alternate icon', href: '/favicon.ico?v=2' },
         ],
         script: [{
