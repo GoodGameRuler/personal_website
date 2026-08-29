@@ -44,15 +44,19 @@
         grid-column: 2;
         background-color: var(--modal-bg);
         color: var(--text);
-        min-width: 400px;
+        min-width: min(400px, 92vw);
         max-width: 700px;
         display: flex;
         flex-direction: column;
         padding: 20px;
-        border-radius: 15px;
+        border-radius: 12px;
         border: solid 1px var(--label);
     }
 
+
+    .modalHeader {
+        color: var(--label);
+    }
 
     .modalContents:hover {
         cursor: default;

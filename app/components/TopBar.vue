@@ -77,11 +77,12 @@
 <style>
 
     .topBarButton {
+        display: inline-flex;
+        align-items: center;
         padding: 5px;
-        border-radius: 10px;
+        border-radius: 8px;
         transition: ease 0.5s;
-        margin: 2px 0;
-        margin-left: 4px;
+        margin: 2px 4px;
     }
 
     .topBarButton:hover {
@@ -95,18 +96,10 @@
         display: block;
     }
 
-    .themeToggle {
-        margin-right: 4px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
-    }
-
     .progressTrack {
         width: 100%;
         height: 14px;
-        border-radius: 7px;
+        border-radius: 8px;
         background-color: var(--pane-solid);
         overflow: hidden;
         margin: 8px 0;
@@ -115,7 +108,7 @@
     .progressFill {
         width: 83%;
         height: 100%;
-        border-radius: 7px;
+        border-radius: 8px;
         background-color: var(--label);
     }
 
@@ -126,7 +119,7 @@
     }
 
     .progressSpinner {
-        font-size: 18px;
+        font-size: 20px;
         display: block;
         animation: spin 2s linear infinite;
     }
@@ -154,7 +147,7 @@
         flex: 1;
         display: flex;
         align-items: center;
-        justify-content: right;
+        justify-content: flex-end;
 
     }
 

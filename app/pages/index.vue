@@ -68,18 +68,18 @@
                       <!--  SELF SHOULD BE LAST -->
                       <div v-if="selectedButton === 6" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> Homelab </p>
+                              <p class="headerText"> Homelab </p>
                               <p class="headerDesc"> Self-Hosted Infrastructure </p>
                           </div>
                           <hr />
                           <p> Made Using: <span class="hl"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
-                          <p class="breakLine" style="font-style: italic;"> An ongoing Linux playground: some services I run because I use them daily, some purely to learn from. </p>
-                          <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs everything I self-host, each service in its own LXC container. </span> </p>
-                          <p class="breakLine"> <span class="hl"> Because CGNAT means the cluster cannot accept connections from the internet, it holds a VPN tunnel out to a small cloud machine instead, and a reverse proxy there forwards traffic back through it. Only the services I choose are publicly reachable. </span> </p>
+                          <p class="breakLine" style="font-style: italic;"> An ongoing Linux playground </p>
+                          <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs most of what I host. Services typically in their own LXC containers. </span> </p>
+                          <p class="breakLine"> <span class="hl"> CGNAT restrictions mean the cluster cannot accept incoming connections, so I VPN into it to use my services from anywhere. Anything meant to be public is exposed through a tunnel to a small cloud machine, where a reverse proxy forwards the traffic back. I also run a small DNS service for adblock, and so I don't have to remember IP addresses. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> OFence </p>
+                              <p class="headerText"> OFence </p>
                               <p class="headerDesc"> Individual Research Project </p>
                           </div>
                           <hr />
@@ -94,7 +94,7 @@
                       </div>
                       <div v-if="selectedButton === 2" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> UniTrack </p>
+                              <p class="headerText"> UniTrack </p>
                               <p class="headerDesc"> Group Project </p>
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/unitrack_v3/','_blank')"> <img src="/link.svg" /> </button>
                           </div>
@@ -111,7 +111,7 @@
                       </div>
                       <div v-if="selectedButton === 3" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> Crawl </p>
+                              <p class="headerText"> Crawl </p>
                               <p class="headerDesc"> Team Project </p>
                               <button class="linkButton" onclick="window.open('https://github.com/Crawl-App/app-frontend','_blank')"> <img src="/link.svg" /> </button>
                           </div>
@@ -130,7 +130,7 @@
                       </div>
                       <div v-if="selectedButton === 4" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> Google DSC Game Jam </p>
+                              <p class="headerText"> Google DSC Game Jam </p>
                               <p class="headerDesc"> Team Planned Event </p>
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/GDSC-PyGame','_blank')"> <img src="/link.svg" /> </button>
                           </div>
@@ -142,7 +142,7 @@
                       </div>
                       <div v-if="selectedButton === 5" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> Korean Learning Script </p>
+                              <p class="headerText"> Korean Learning Script </p>
                               <p class="headerDesc"> Personal Project </p>
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/korean','_blank')"> <img src="/link.svg" /> </button>
                           </div>
@@ -155,7 +155,7 @@
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
-                              <p class="headerText" style="font-size: 25px;"> Portfolio Website </p>
+                              <p class="headerText"> Portfolio Website </p>
                               <p class="headerDesc"> Individual Project </p>
                               <button class="linkButton" onclick="window.open('https://github.com/GoodGameRuler/personal_website','_blank')"> <img src="/link.svg" /> </button>
                           </div>
@@ -244,7 +244,6 @@
     .hoverContainer {
         height: 100%;
         width: 100%;
-        padding: 2rem;
         background-color: var(--overlay);
         box-sizing: border-box;
         padding: 12px;
@@ -275,7 +274,6 @@
     }
 
     .proj{
-        font-size: 20px;
         grid-row: 2 / 4;
         grid-column: 2;
         display: grid;
@@ -290,7 +288,7 @@
         grid-column: 1 / 3;
         display: flex;
         align-items: flex-start;
-        padding: 4px 14px 0;
+        padding: 4px 10px 0;
         font-weight: bold;
     }
 
@@ -300,7 +298,7 @@
         border-radius: 0;
         margin: 0;
         justify-content: flex-start;
-        padding: 0 14px;
+        padding: 0 10px;
         transition: background-color 0.15s ease, color 0.15s ease;
     }
 
@@ -313,7 +311,7 @@
         background-color: transparent;
         border-radius: 0;
         margin: 0;
-        padding: 4px 20px 20px;
+        padding: 4px 10px 20px;
         animation: paneFade 0.2s ease;
     }
 
@@ -324,8 +322,7 @@
 
     .projectBox {
         background-color: var(--surface);
-        margin: 5px;
-        border-radius: 10px;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -340,9 +337,6 @@
     .singleProjectNameBox {
         grid-column: 1;
         color: var(--label);
-        font-size: inherit;
-        font-family: "Source Code Pro";
-        font-weight: bold;
         border: none;
         transition: all ease-in 0.5s;
     }
@@ -361,6 +355,10 @@
     .singleProjectDescBox > p {
         margin-bottom: 10px;
 
+    }
+
+    .projectHeader .headerText {
+        font-size: 25px;
     }
 
     .projectHeader {
@@ -387,9 +385,6 @@
     .linkButton {
         color: var(--pane-solid);
         background-color: var(--label);
-        font-size: 20px;
-        font-family: "Source Code Pro";
-        font-weight: bold;
         border: none;
         display: flex;
         justify-content: center;
@@ -411,16 +406,12 @@
     .projectHeader > button {
         grid-row: 1 / 10;
         margin-bottom: 5px;
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     button > img {
         height: 22px;
 
-    }
-
-    .projectHeader > hr {
-        margin-bottom: 2px;
     }
 
 
@@ -440,7 +431,7 @@
         background-color: var(--pane);
         padding: 20px;
         box-sizing: border-box;
-        border-radius: 20px;
+        border-radius: 12px;
     }
 
     .profilePhoto {
@@ -487,6 +478,10 @@
             font-size: 19px;
         }
 
+        .projectHeader .headerText {
+            font-size: 22px;
+        }
+
         .distroArt {
             font-size: 9px;
         }
@@ -529,9 +524,7 @@
             width: 100%;
         }
 
-        .proj {
-            font-size: 17px;
-        }
+
 
         .topBar .topBarButton {
             font-size: 14px;
@@ -601,6 +594,10 @@
 
         .projectBox {
             min-height: 44px;
+        }
+
+        .projectHeader .headerText {
+            font-size: 20px;
         }
 
         .singleProjectDescBox {

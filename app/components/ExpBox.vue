@@ -32,7 +32,7 @@
             <span class="material-icons resumeFabIcon">download</span>
         </a>
         <div class="vimText">
-            <Modal v-model="showExp" modalID="manPageSkills" modalContentsID="manPageSkillsContents">
+            <Modal v-model="showExp" modalID="manPageExp" modalContentsID="manPageExpContents">
                 <p class=""> exp(8) - MAN PAGE EXPERIENCES </p>
                 <p class="modalHeader lbl"> {{ selExp.name }} </p>
                 <p> SKILLS: {{ selExp.skills }} </p>
@@ -42,7 +42,7 @@
             <p class="vimLine" :class="{ cursorLine: cur === 1 }" @click="setCur(1)"><span class="vimNum">{{ gut(1) }}</span><span class="vimBody"><span class="cur1">#</span>ifndef EXPERIENCES</span></p>
             <p class="vimLine" :class="{ cursorLine: cur === 2 }" @click="setCur(2)"><span class="vimNum">{{ gut(2) }}</span><span class="vimBody"><span class="cur1">#</span>define EXPERIENCES</span></p>
             <p class="vimLine" :class="{ cursorLine: cur === 3 }" @click="setCur(3)"><span class="vimNum">{{ gut(3) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
-            <p class="vimLine" :class="{ cursorLine: cur === 4 }" @click="setCur(4)"><span class="vimNum">{{ gut(4) }}</span><span class="vimBody"><span class="vimComment"><span class="cur1">/</span>/ These are clickable!</span></span></p>
+            <p class="vimLine" :class="{ cursorLine: cur === 4 }" @click="setCur(4)"><span class="vimNum">{{ gut(4) }}</span><span class="vimBody"><span class="vimComment"><span class="cur1">/</span>/ Experiences are clickable!</span></span></p>
             <p class="vimLine" :class="{ cursorLine: cur === 5 }" @click="setCur(5)"><span class="vimNum">{{ gut(5) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
             <p class="vimLine" :class="{ cursorLine: cur === 6 }" @click="setCur(6)"><span class="vimNum">{{ gut(6) }}</span><span class="vimBody"><span class="cur1">1</span>. <a @click="showExp = true; selExp = exp.a"> <span class="hl"> Linux Engineering Intern - Jane Street </span> </a></span></p>
             <p class="vimLine" :class="{ cursorLine: cur === 7 }" @click="setCur(7)"><span class="vimNum">{{ gut(7) }}</span><span class="vimBody"><span class="cur1">&nbsp;</span></span></p>
@@ -73,14 +73,6 @@
 
 <style>
 
-    .cvButton {
-        position: float;
-        top: 10px;
-        right: 10px;
-        width: 75px;
-        border-radius: 5px;
-    }
-
     .exp {
         grid-row: 3;
         grid-column: 1;
@@ -109,14 +101,14 @@
 
     .resumeFab {
         position: absolute;
-        top: 12px;
-        right: 12px;
+        top: 20px;
+        right: 20px;
         z-index: 5;
         display: inline-flex;
         align-items: center;
         padding: 8px;
         border: 2px solid var(--label);
-        border-radius: 10px;
+        border-radius: 8px;
         background-color: var(--surface);
         color: var(--label);
         text-decoration: none;
@@ -148,6 +140,10 @@
         display: block;
     }
 
+    .tmuxBar {
+        padding: 0 10px 4px;
+    }
+
     .vimLuaLine {
         display: flex;
         flex-direction: row;
@@ -160,7 +156,7 @@
         align-items: baseline;
         line-height: 1.35;
         box-sizing: border-box;
-        font-size: 22px;
+        font-size: 20px;
         padding: 0 10px;
         min-height: 1.35em;
     }

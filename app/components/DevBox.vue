@@ -113,14 +113,7 @@ ccccccccccccccccccccccccccccc:'.
     }
 
     .devBox {
-        padding: 5px;
-    }
-
-    #manPageSkills {
-    }
-
-    #manPageSkillsContents {
-        background-color: var(--pane-solid);
+        padding: 10px;
     }
 
     .skills {
@@ -153,13 +146,6 @@ ccccccccccccccccccccccccccccc:'.
     .info {
         grid-row: 1;
         grid-column: 2;
-    }
-
-    .intro {
-        grid-row: 2;
-        grid-column: 1 / 3;
-        color: white;
-        font-style: italic;
     }
 
 </style>

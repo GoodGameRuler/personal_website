@@ -4,12 +4,16 @@
 */
 @font-face {
     font-family: "Source Code Pro";
-    src: url("./fonts/SourceCodePro-VariableFont_wght.ttf") format("truetype"),
-        url("./fonts/SourceCodePro-Italic-VariableFont_wght.ttf") format("truetype"),
-        url("./fonts/SourceCodeProWOFF/OTF/SourceCodePro-Bold.otf.woff") format("woff")
-        url("./fonts/SourceCodeProWOFF2/TTF/SourceCodePro-Bold.ttf.woff2") format("woff2")
-        ;
+    src: url("./fonts/SourceCodePro-VariableFont_wght.ttf") format("truetype");
+    font-weight: 200 900;
     font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Code Pro";
+    src: url("./fonts/SourceCodePro-Italic-VariableFont_wght.ttf") format("truetype");
+    font-weight: 200 900;
+    font-style: italic;
 }
 
 
@@ -28,12 +32,12 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
 	padding: 0;
-    font-family: "Source Code Pro";
+    font-family: "Source Code Pro", monospace;
 	border: 0;
 	vertical-align: baseline;
 }
 
-/* Themes: Catppuccin Mocha (dark, default) and Rose Pine Dawn (light) */
+/* Themes: Rose Pine (dark) and Dawn (light) */
 /* Rose Pine (dark, default) */
 :root {
     --bg: #16141f;
