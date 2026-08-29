@@ -433,8 +433,49 @@
         background-size: cover;
     }
 
+    /* Laptop widths: keep vim buffer lines on one line */
+    @media (min-width: 851px) and (max-width: 1700px) {
+        .vimText > p {
+            font-size: 17px;
+        }
+    }
+
+    /* Laptop heights: compact the panes so the whole session fits on screen */
+    @media (min-width: 851px) and (max-height: 980px) {
+        body {
+            font-size: 18px;
+        }
+
+        p.headerFont {
+            font-size: 36px;
+        }
+
+        p.highlightFont {
+            font-size: 19px;
+        }
+
+        .profileCircle {
+            height: 180px;
+            width: 180px;
+        }
+
+        .vimText {
+            min-height: 200px;
+        }
+    }
+
     /* Mobile: the tmux session stays, the panes stack vertically */
     @media (max-width: 850px) {
+        .topBar {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .topBar .topBarButton {
+            font-size: 14px;
+            padding: 3px;
+        }
+
         body {
             font-size: 16px;
         }
@@ -472,6 +513,7 @@
         .vimText {
             min-height: 0;
             height: 300px;
+            flex: 0 0 auto;
         }
 
         .vimText > p {

@@ -95,13 +95,14 @@
         grid-column: 1;
         display: flex;
         flex-direction: column;
+        min-height: 0;
     }
 
     .vimText {
-        flex: 1 1 auto;
+        flex: 1 1 0;
         display: flex;
         flex-direction: column;
-        min-height: 340px;
+        min-height: 0;
         overflow-y: auto;
     }
 
