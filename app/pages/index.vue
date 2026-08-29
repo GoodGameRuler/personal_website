@@ -239,10 +239,6 @@
         height: 100vh;
         width: 100vw;
         background-color: var(--bg);
-        background-image: var(--wall);
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
     }
 
     .hoverContainer {
@@ -252,8 +248,8 @@
         background-color: var(--overlay);
         box-sizing: border-box;
         padding: 12px;
-        -webkit-backdrop-filter: blur(5.5px);
-        backdrop-filter: blur(5.5px);
+        -webkit-backdrop-filter: blur(6.5px);
+        backdrop-filter: blur(6.5px);
         display: grid;
         gap: 12px;
         grid-template-rows: 54px auto 1fr;

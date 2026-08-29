@@ -40,7 +40,6 @@ time, mark, audio, video {
     --tile-border: rgba(224, 222, 244, 0.09);
     --tile-shadow: rgba(0, 0, 0, 0.35);
     --pane: rgba(25, 23, 36, 0.55);
-    --wall: url('/wall-dark.svg');
     --overlay: rgba(22, 20, 31, 0.22);
     --pane-solid: #191724;
     --surface: #26233a;
@@ -58,11 +57,10 @@ time, mark, audio, video {
 }
 
 :root[data-theme="light"] {
-    --bg: #dfdad9;
+    --bg: #f2d6c2;
     --tile-border: rgba(87, 82, 121, 0.18);
     --tile-shadow: rgba(87, 82, 121, 0.14);
-    --pane: rgba(255, 248, 238, 0.56);
-    --wall: url('/wall-light.svg');
+    --pane: rgba(255, 248, 238, 0.61);
     --overlay: rgba(250, 244, 237, 0.14);
     --btn-border: rgba(87, 82, 121, 0.25);
     --pane-solid: #faf4ed;
@@ -74,9 +72,18 @@ time, mark, audio, video {
     --heading: #907aa9;
     --muted: #797593;
     --selected: rgba(215, 130, 126, 0.28);
-    --modal-bg: #fffaf3;
+    --modal-bg: #f7e2d0;
     --scroll-thumb: #cecacd;
     --scroll-track: rgba(250, 244, 237, 0.9);
+}
+
+body {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button:focus {
+    outline: none;
 }
 
 .hl { color: var(--text-strong); }
