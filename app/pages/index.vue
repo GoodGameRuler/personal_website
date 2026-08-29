@@ -71,9 +71,9 @@
                           </div>
                           <hr />
                           <p> Made Using: <span class="hl"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
-                          <p class="breakLine" style="font-style: italic;"> The server rack lives at home. The services live everywhere. </p>
-                          <p class="breakLine"> <span class="hl"> A home Proxmox cluster running my self-hosted services in LXC containers. My ISP hides the cluster behind CGNAT, so a WireGuard tunnel through a cloud host carries external traffic in, and a Traefik reverse proxy routes it to the right service. </span> </p>
-                          <p class="breakLine"> <span class="hl"> Split DNS zones keep internal and external traffic separate, so the same names work at home and away while only the services meant to be public are reachable from outside. </span> </p>
+                          <p class="breakLine" style="font-style: italic;"> This is where most of my Linux learning actually happens. </p>
+                          <p class="breakLine"> <span class="hl"> I run a Proxmox cluster at home that hosts my self-hosted services in LXC containers. My ISP puts me behind CGNAT, so I set up a WireGuard tunnel through a small cloud host to carry external traffic in, with a Traefik reverse proxy routing it to the right service. </span> </p>
+                          <p class="breakLine"> <span class="hl"> I also configured split DNS zones to separate internal and external traffic. The same names work at home and away, and only the services I choose are reachable from the internet. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
