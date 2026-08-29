@@ -75,7 +75,7 @@
                           <p> Made Using: <span class="hl"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
                           <p class="breakLine" style="font-style: italic;"> This is where most of my Linux learning actually happens. </p>
                           <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs everything I self-host, each service in its own LXC container. </span> </p>
-                          <p class="breakLine"> <span class="hl"> Reaching it from outside was the fun part. My ISP hides me behind CGNAT, so traffic comes in through a WireGuard tunnel via a tiny cloud box, and Traefik hands it to the right service. Split DNS keeps the same names working at home and away, and only what I choose is public. </span> </p>
+                          <p class="breakLine"> <span class="hl"> Due to CGNAT restrictions, the cluster is exposed via a VPN connection, and services that need to be publicly accessible go through a reverse proxy on a cloud machine. Split DNS keeps the same names working at home and away, and only what I choose is public. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
