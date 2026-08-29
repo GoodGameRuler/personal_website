@@ -12,7 +12,7 @@
             desc: "On the Platforms Access team I built a bulk operation for assigning user permissions, and a setting that lets users choose which organisation they land in when they log in. Go and Temporal on the backend, React in front."},
         c: {
             name: "FreeGuides - Data Science Internship",
-            skills: "Python, Pandas, SciKit Learn, BigQuery, Google Cloud Functions",
+            skills: "Python, Pandas, scikit-learn, BigQuery, Google Cloud Functions",
             desc: "I automated the screening of self-guided tours on the app: machine learning models assigned each tour a rating and feedback, replacing manual review."},
     };
 

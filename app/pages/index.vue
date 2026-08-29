@@ -82,8 +82,8 @@
                           </div>
                           <hr />
                           <p> Made Using: <span class="hl"> OFence, C </span></p>
-                          <p class= "breakLine" style="font-style: italic;"> An extension of the original OFence research <a target="_blank" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567504">Paper</a>. </p>
-                          <p> <span class="hl"> My task is to identify (and potentially automate) whether it is feasible to convert read, write, and general purpose memory barriers
+                          <p class= "breakLine" style="font-style: italic;"> An extension of the original OFence research <a target="_blank" href="https://dl.acm.org/doi/abs/10.1145/3552326.3567504">paper</a>. </p>
+                          <p> <span class="hl"> My task is to identify (and potentially automate) whether it is feasible to convert read, write, and general-purpose memory barriers
                           in the Linux Kernel to acquire-release semantics. </span> </p>
                           <p> <span class="hl">Where it is not possible, the project aims to automate the generation of comments around the barriers.
                           This would help kernel developers easily identify the structures that barriers target.</span> </p>
@@ -98,13 +98,13 @@
                           </div>
                           <hr />
                           <p> Made Using (Version 3): <span class="hl"> HTML, CSS, JS, React, NextJS, Vercel </span></p>
-                          <p class= "breakLine" style="font-style: italic;"> This project won 2023 University of Sydney Coding Fest's Best Undergraduate Project </p>
+                          <p class= "breakLine" style="font-style: italic;"> This project won the 2023 University of Sydney Coding Fest's Best Undergraduate Project. </p>
 
-                          <p> <span class="hl"> An improved drag-and-drop University of Sydney degree planner, that allows students to plan their degree with ease.
-                              Compared to the Original University Websites, UniTrack has... Simplified UI One Unified Page for timetabling, and planning A drag and Drop degree planner. </span> </p>
+                          <p> <span class="hl"> An improved drag-and-drop University of Sydney degree planner that allows students to plan their degree with ease.
+                              Compared to the original university websites, UniTrack has... a simplified UI, one unified page for timetabling and planning, and a drag-and-drop degree planner. </span> </p>
 
-                          <p> <span class="hl"> This was also the first opportunity I had creating an open source application that took contributions through forked pull requests.
-                              An experience that has taught me how to manage projects, and what the importance of having proper issue management and documentation is.</span> </p>
+                          <p> <span class="hl"> This was also the first opportunity I had to create an open-source application that took contributions through forked pull requests.
+                              An experience that taught me how to manage projects, and the importance of proper issue management and documentation.</span> </p>
 
                       </div>
                       <div v-if="selectedButton === 3" class="singleProjectDescBox projectBox">
@@ -116,14 +116,14 @@
                           <hr />
                           <p class="breakLine"> Made Using: <span class="hl"> React Native, Expo, Python, Google Maps API, Figma </span></p>
 
-                          <p class= "breakLine" style="font-style: italic;"> This Project was a Finalist in the Sydney Computing Society Annual Hackathon </p>
+                          <p class= "breakLine" style="font-style: italic;"> This project was a finalist in the Sydney Computing Society Annual Hackathon. </p>
 
-                          <p class="breakLine"> <span class="hl"> Crawl is an app that reduces the friction of planning events with friends. Given a location and a number of stops
-                              Crawl determines an optimal activity route using rating as a heuristic and distance as the cost. Crawl's intuitive UI, and simple usage lifts the focus away from
-                              determining the next thing to do, and lets customers focus on what truly matters - enjoying their night.</span> </p>
+                          <p class="breakLine"> <span class="hl"> Crawl is an app that reduces the friction of planning events with friends. Given a location and a number of stops,
+                              Crawl determines an optimal activity route using ratings as a heuristic and distance as the cost. Crawl's intuitive UI and simple usage lift the focus away from
+                              determining the next thing to do, and let customers focus on what truly matters - enjoying their night.</span> </p>
 
-                          <p class="breakLine"> <span class="hl"> "As software engineers and innovators the goal should not be make software and products that bring us back to
-                              a pre-covid norm but rather a build a better more social one" - The opening line to SYNCSHACK 2024, with the Theme Software That Brings People Together. </span> </p>
+                          <p class="breakLine"> <span class="hl"> "As software engineers and innovators the goal should not be to make software and products that bring us back to
+                              a pre-COVID norm but rather to build a better, more social one" - The opening line to SYNCSHACK 2024, with the theme "Software That Brings People Together". </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 4" class="singleProjectDescBox projectBox">
@@ -135,7 +135,7 @@
                           <hr />
                           <p class="breakLine"> Made Using: <span class="hl"> PyGame, Figma </span></p>
 
-                          <p class="breakLine"> <span class="hl"> An introduction to Game Development workshop that I orchestrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span class="hl"> The goal was to inspire students to be creative, and hopefully introduce them to a different career option in CS. Here were the results: <a target="_blank" href="https://gdsc-game-jam-2022.devpost.com/project-gallery">Link</a>. </span> </p>
+                          <p class="breakLine"> <span class="hl"> An introductory Game Development workshop that I orchestrated with my team at GDSC, at Google HQ Sydney. It was the opening for our Game Jam Competition. </span> </p>                          <p> <span class="hl"> The goal was to inspire students to be creative, and hopefully introduce them to a different career option in CS. Here are the results: <a target="_blank" href="https://gdsc-game-jam-2022.devpost.com/project-gallery">Link</a>. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 5" class="singleProjectDescBox projectBox">
@@ -147,8 +147,8 @@
                           <hr />
                           <p class="breakLine"> Made Using: <span class="hl"> Python </span></p>
 
-                          <p class="breakLine"> <span class="hl"> A small project made to assist me in my endeavours of learning Korean. </span> </p>
-                          <p class="breakLine"> <span class="hl"> In my attempts to learn Korean, before my exchange at KAIST University, I realised tools like Quizlet and other spaced repetition based learning apps, just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
+                          <p class="breakLine"> <span class="hl"> A small project made to assist me in learning Korean. </span> </p>
+                          <p class="breakLine"> <span class="hl"> In my attempts to learn Korean, before my exchange at KAIST, I realised tools like Quizlet and other spaced-repetition-based learning apps just took much too long to traverse multiple questions. I wanted to be able to very quickly go through 30, 40 words/questions. So, as any engineer would, I made a Python script to do it for me. </span> </p>
 
                       </div>
                       <div v-if="selectedButton === 1000" class="singleProjectDescBox projectBox">
