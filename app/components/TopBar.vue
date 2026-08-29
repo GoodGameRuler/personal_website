@@ -13,9 +13,15 @@
     const applyTheme = () => {
         if (typeof document === 'undefined') return;
         document.documentElement.dataset.theme = theme.value;
-        // the tab icon follows the toggle: tracer head at night, petal at dawn
-        const fav = document.querySelector("link[rel='icon']");
-        if (fav) fav.href = theme.value === 'dark' ? '/favicon-dot.svg' : '/favicon-petal.svg';
+        // the tab icon follows the toggle: tracer head at night, petal at dawn.
+        // Chromium ignores href mutation on an existing icon link, so the
+        // link node itself is replaced to force a repaint.
+        document.querySelectorAll("link[rel='icon']").forEach(l => l.remove());
+        const fav = document.createElement('link');
+        fav.rel = 'icon';
+        fav.type = 'image/svg+xml';
+        fav.href = (theme.value === 'dark' ? '/favicon-dot.svg' : '/favicon-petal.svg') + '?t=' + theme.value;
+        document.head.appendChild(fav);
     };
     onMounted(() => {
         try {
