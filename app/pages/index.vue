@@ -237,7 +237,7 @@
     div.background {
         height: 100vh;
         width: 100vw;
-        background-color: var(--bg);
+        background: var(--bg-grad) fixed;
     }
 
     .hoverContainer {
