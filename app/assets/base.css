@@ -34,24 +34,26 @@ time, mark, audio, video {
 }
 
 /* Themes: Catppuccin Mocha (dark, default) and Rose Pine Dawn (light) */
+/* Rose Pine (dark, default) */
 :root {
-    --bg: #11111b;
-    --tile-border: rgba(205, 214, 244, 0.08);
+    --bg: #16141f;
+    --tile-border: rgba(224, 222, 244, 0.09);
     --tile-shadow: rgba(0, 0, 0, 0.35);
-    --pane: rgba(30, 30, 46, 0.78);
-    --overlay: rgba(30, 30, 46, 0.6);
-    --pane-solid: #1e1e2e;
-    --surface: #313244;
-    --surface-2: #45475a;
-    --text: #cdd6f4;
-    --text-strong: #f5e0dc;
-    --label: #cba6f7;
-    --heading: #f5c2e7;
-    --muted: #9399b2;
-    --selected: rgba(203, 166, 247, 0.28);
-    --modal-bg: #313244;
-    --scroll-thumb: #585b70;
-    --scroll-track: rgba(30, 30, 46, 0.9);
+    --pane: rgba(25, 23, 36, 0.82);
+    --overlay: rgba(22, 20, 31, 0.6);
+    --pane-solid: #191724;
+    --surface: #26233a;
+    --surface-2: #403d52;
+    --text: #e0def4;
+    --text-strong: #e0def4;
+    --btn-border: rgba(224, 222, 244, 0.12);
+    --label: #c4a7e7;
+    --heading: #ebbcba;
+    --muted: #908caa;
+    --selected: rgba(196, 167, 231, 0.25);
+    --modal-bg: #26233a;
+    --scroll-thumb: #403d52;
+    --scroll-track: rgba(25, 23, 36, 0.9);
 }
 
 :root[data-theme="light"] {
@@ -60,6 +62,7 @@ time, mark, audio, video {
     --tile-shadow: rgba(87, 82, 121, 0.14);
     --pane: rgba(255, 250, 243, 0.92);
     --overlay: rgba(250, 244, 237, 0.55);
+    --btn-border: rgba(87, 82, 121, 0.25);
     --pane-solid: #faf4ed;
     --surface: #fffaf3;
     --surface-2: #f2e9e1;
