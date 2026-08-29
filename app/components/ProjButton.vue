@@ -21,12 +21,13 @@
 
 <style>
     .projectBox.selectedProjButton {
-        background-color: var(--selected);
-
+        background-color: var(--label);
+        color: var(--pane-solid);
     }
 
     .projectBox.selectedProjButton:hover {
-        background-color: var(--selected);
+        background-color: var(--label);
+        color: var(--pane-solid);
     }
 
 </style>

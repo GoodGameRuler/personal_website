@@ -395,7 +395,9 @@
     }
 
     .singleProjectDetailsTitle {
-        background-color: var(--selected);
+        background-color: transparent;
+        border: 1px solid var(--tile-border);
+        color: var(--muted);
         grid-column: 2;
         grid-row: 1;
     }
