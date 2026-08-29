@@ -26,7 +26,7 @@
     import '~/assets/fonts.css'
 
     // sharedState.js
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
 
     const projButtons = [
         { no: 6, value: 'Homelab'},
@@ -44,8 +44,9 @@
 
     const handleSelectButton = (buttonNumber) => {
         selectedButton.value = buttonNumber;
-        console.log("Working");
     };
+
+    const selectedName = computed(() => projButtons.find(b => b.no === selectedButton.value)?.value.replaceAll(' ', '-').toLowerCase() ?? '');
 
 </script>
 
@@ -61,8 +62,7 @@
                   <DevBox />
                   <ExpBox />
                   <div class="proj infoBox">
-                      <div class="singleFoldersTitle projectBox paneTitle"> Folders </div>
-                      <div class="singleProjectDetailsTitle projectBox paneTitle"> Project Details </div>
+                      <div class="rangerPath"><span class="lbl">~/projects/</span><span class="hl">{{ selectedName }}</span></div>
                       <ProjButton v-for="button in projButtons" :key="button.no" :button="button" :selectedButton="selectedButton" @select-button="handleSelectButton" />
                       <!--  SELF SHOULD BE LAST -->
                       <div v-if="selectedButton === 6" class="singleProjectDescBox projectBox">
@@ -284,9 +284,40 @@
         grid-row: 2 / 4;
         grid-column: 2;
         display: grid;
-        grid-template-rows: repeat(8, 65px) 1fr;
+        grid-template-rows: 44px repeat(7, 48px) 1fr;
         grid-template-columns: 1.75fr 5fr;
         padding: 20px;
+        align-content: start;
+    }
+
+    .rangerPath {
+        grid-row: 1;
+        grid-column: 1 / 3;
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        font-weight: bold;
+    }
+
+    .proj .singleProjectNameBox.projectBox {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        margin: 0;
+        justify-content: flex-start;
+        padding: 0 14px;
+        transition: none;
+    }
+
+    .proj .singleProjectNameBox.projectBox:not(.selectedProjButton):hover {
+        background-color: var(--selected);
+        box-shadow: none;
+    }
+
+    .proj .singleProjectDescBox.projectBox {
+        background-color: transparent;
+        border-radius: 0;
+        margin: 0;
     }
 
     .projectBox {
@@ -317,6 +348,7 @@
     .singleProjectDescBox {
         grid-column: 2;
         grid-row: 2 / 10;
+        text-align: left;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -389,29 +421,6 @@
         margin-bottom: 2px;
     }
 
-
-    .singleProjectsTitle {
-        background-color: var(--selected);
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .paneTitle {
-        background-color: var(--surface);
-        color: var(--heading);
-        font-weight: bold;
-        border: 1px solid var(--tile-border);
-    }
-
-    .singleFoldersTitle {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .singleProjectDetailsTitle {
-        grid-column: 2;
-        grid-row: 1;
-    }
 
     .infoBox, .topBar {
         outline: 2px solid transparent;
