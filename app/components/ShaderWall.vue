@@ -186,7 +186,7 @@
             // the decay: every frame the past sinks a little further into the night
             ctx.globalCompositeOperation = 'source-over';
             ctx.shadowBlur = 0;
-            ctx.fillStyle = 'rgba(22, 20, 31, 0.045)';
+            ctx.fillStyle = 'rgba(22, 20, 31, 0.010)';
             ctx.fillRect(0, 0, nc.width, nc.height);
 
             // macro randomness: glide smoothly, change intent every second or two
