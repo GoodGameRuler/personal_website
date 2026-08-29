@@ -56,6 +56,7 @@
 
   <main>
       <div class="background">
+          <ShaderWall />
           <div class="blurContainer">
               <div class="hoverContainer">
                   <TopBar />
@@ -264,6 +265,8 @@
     }
 
     .blurContainer {
+        position: relative;
+        z-index: 1;
         height: 100%;
         width: 100%;
         backdrop-filter: blur(5px);

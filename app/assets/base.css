@@ -39,7 +39,7 @@ time, mark, audio, video {
     --bg: #16141f;
     --tile-border: rgba(224, 222, 244, 0.09);
     --tile-shadow: rgba(0, 0, 0, 0.35);
-    --pane: rgba(25, 23, 36, 0.6);
+    --pane: rgba(25, 23, 36, 0.68);
     --wall: url('/wall-dark.svg');
     --overlay: rgba(22, 20, 31, 0.22);
     --pane-solid: #191724;
