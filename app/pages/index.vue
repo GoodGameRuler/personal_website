@@ -252,11 +252,8 @@
         background-color: var(--overlay);
         box-sizing: border-box;
         padding: 12px;
-        -webkit-backdrop-filter: blur(15px);
-        -moz-backdrop-filter: blur(15px);
-        -o-backdrop-filter: blur(15px);
-        -ms-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
         display: grid;
         gap: 12px;
         grid-template-rows: 54px auto 1fr;
@@ -269,11 +266,6 @@
         z-index: 1;
         height: 100%;
         width: 100%;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        -moz-backdrop-filter: blur(5px);
-        -o-backdrop-filter: blur(5px);
-        -ms-backdrop-filter: blur(5px);
     }
 
     .dev {
