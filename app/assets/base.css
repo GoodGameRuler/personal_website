@@ -46,7 +46,7 @@ time, mark, audio, video {
     --surface-2: #403d52;
     --text: #e0def4;
     --text-strong: #e0def4;
-    --btn-border: rgba(224, 222, 244, 0.12);
+    --btn-border: transparent;
     --label: #c4a7e7;
     --heading: #ebbcba;
     --muted: #908caa;
