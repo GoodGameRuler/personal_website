@@ -499,7 +499,7 @@
 
         .profilePhoto {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .info, .skills {

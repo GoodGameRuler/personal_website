@@ -85,6 +85,10 @@
 
     .themeToggle {
         margin-right: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
     }
 
     .progressTrack {
