@@ -281,6 +281,7 @@
     }
 
     .proj{
+        font-size: 20px;
         grid-row: 2 / 4;
         grid-column: 2;
         display: grid;
@@ -307,7 +308,7 @@
     .singleProjectNameBox {
         grid-column: 1;
         color: var(--label);
-        font-size: 20px;
+        font-size: inherit;
         font-family: "Source Code Pro";
         font-weight: bold;
         border: none;
@@ -402,6 +403,16 @@
         grid-row: 1;
     }
 
+    .infoBox, .topBar {
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+        transition: outline-color 0.2s ease;
+    }
+
+    .infoBox:hover, .infoBox:focus-within, .topBar:hover, .topBar:focus-within {
+        outline-color: var(--label);
+    }
+
     .infoBox {
         background-color: var(--pane);
         border: 1px solid transparent;
@@ -468,7 +479,37 @@
     @media (max-width: 850px) {
         .topBar {
             font-size: 14px;
-            white-space: nowrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 6px 12px;
+        }
+
+        .rightTopBar {
+            flex: 0 0 auto;
+        }
+
+        .leftTopBar {
+            flex: 1 1 auto;
+            flex-wrap: wrap;
+        }
+
+        .dev {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .profilePhoto {
+            display: flex;
+            justify-content: center;
+        }
+
+        .info, .skills {
+            width: 100%;
+        }
+
+        .proj {
+            font-size: 17px;
         }
 
         .topBar .topBarButton {
