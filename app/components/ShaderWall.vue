@@ -26,10 +26,10 @@ vec2 r=vec2(fbm(p+2.5*q+vec2(1.7,9.2)+t*.5),fbm(p+2.5*q+vec2(8.3,2.8)-t*.4));
 float f=smoothstep(.30,.85,fbm(p+3.*r));
 vec3 base=vec3(.995,.972,.940);
 vec3 mid=vec3(.965,.870,.815);
-vec3 rose=vec3(.83,.51,.55);
+vec3 rose=vec3(.93,.38,.58);
 vec3 gold=vec3(.92,.64,.28);
 vec3 col=mix(base,mid,f);
-col=mix(col,rose,smoothstep(.45,.95,r.x)*.75);
+col=mix(col,rose,smoothstep(.42,.92,r.x)*.85);
 col=mix(col,gold,smoothstep(.6,.98,q.y)*.25);
 col*=.93+.10*uv.y;
 gl_FragColor=vec4(col,1.);}`;
@@ -66,8 +66,9 @@ gl_FragColor=vec4(col,1.);}`;
         /* ---- dark: neon tracer with a decaying trail (2D canvas) ---- */
         const nc = neonCanvas.value;
         const ctx = nc.getContext('2d');
-        const trailColors = ['#c4a7e7', '#ebbcba', '#9ccfd8'];
+        const trailColors = ['#d3bdf5', '#f5c6c3', '#aee2ea'];
         let px = 0, py = 0, ang = 0;
+        let targetAng = 0, speed = 2.2, targetSpeed = 2.2, nextTurn = 0;
         const sizeNeon = () => {
             nc.width = Math.max(1, Math.floor(nc.clientWidth / 2));
             nc.height = Math.max(1, Math.floor(nc.clientHeight / 2));
@@ -86,6 +87,7 @@ gl_FragColor=vec4(col,1.);}`;
             if (edge === 2) { px = 2; py = Math.random() * h; ang = 0; }
             if (edge === 3) { px = w - 2; py = Math.random() * h; ang = Math.PI; }
             ang += (Math.random() - 0.5) * 1.0;
+            targetAng = ang;
         };
 
         const drawNeon = (ms) => {
@@ -95,18 +97,25 @@ gl_FragColor=vec4(col,1.);}`;
             ctx.fillStyle = 'rgba(22, 20, 31, 0.045)';
             ctx.fillRect(0, 0, nc.width, nc.height);
 
+            // macro randomness: glide smoothly, change intent every second or two
+            if (ms > nextTurn) {
+                targetAng = ang + (Math.random() - 0.5) * 3.0;
+                targetSpeed = 1.4 + Math.random() * 3.4;
+                nextTurn = ms + 700 + Math.random() * 1500;
+            }
+            ang += (targetAng - ang) * 0.045;
+            speed += (targetSpeed - speed) * 0.05;
+
             const mixT = (Math.sin(ms * 0.00013) + 1) / 2 * (trailColors.length - 1);
             const col = trailColors[Math.round(mixT)];
             for (let i = 0; i < 2; i++) {
-                ang += (Math.random() - 0.5) * 0.35 + Math.sin(ms * 0.00045) * 0.03;
-                const sp = 2.6;
-                const nx = px + Math.cos(ang) * sp;
-                const ny = py + Math.sin(ang) * sp;
+                const nx = px + Math.cos(ang) * speed;
+                const ny = py + Math.sin(ang) * speed;
                 if (nx < 0 || ny < 0 || nx > nc.width || ny > nc.height) { respawn(); continue; }
                 ctx.strokeStyle = col;
                 ctx.shadowColor = col;
-                ctx.shadowBlur = 14;
-                ctx.lineWidth = 2.2;
+                ctx.shadowBlur = 12;
+                ctx.lineWidth = 2.4;
                 ctx.lineCap = 'round';
                 ctx.beginPath();
                 ctx.moveTo(px, py);
@@ -114,6 +123,20 @@ gl_FragColor=vec4(col,1.);}`;
                 ctx.stroke();
                 px = nx; py = ny;
             }
+
+            // the shining head: white-hot core in a coloured bloom, shimmering
+            const r = 2.4 + Math.sin(ms * 0.012) * 0.5;
+            ctx.shadowColor = col;
+            ctx.shadowBlur = 26;
+            ctx.fillStyle = col;
+            ctx.beginPath();
+            ctx.arc(px, py, r + 1.6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 10;
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(px, py, r * 0.7, 0, Math.PI * 2);
+            ctx.fill();
         };
 
         if (still) {
