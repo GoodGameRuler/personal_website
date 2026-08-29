@@ -252,8 +252,8 @@
         background-color: var(--overlay);
         box-sizing: border-box;
         padding: 12px;
-        -webkit-backdrop-filter: blur(6px);
-        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(5.5px);
+        backdrop-filter: blur(5.5px);
         display: grid;
         gap: 12px;
         grid-template-rows: 54px auto 1fr;
