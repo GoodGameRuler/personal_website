@@ -39,9 +39,9 @@ time, mark, audio, video {
     --bg: #16141f;
     --tile-border: rgba(224, 222, 244, 0.09);
     --tile-shadow: rgba(0, 0, 0, 0.35);
-    --pane: rgba(25, 23, 36, 0.74);
-    --bg-grad: linear-gradient(168deg, #2b2742 0%, #191724 38%, #221c38 62%, #43305c 86%, #6b4a72 100%);
-    --overlay: rgba(22, 20, 31, 0.6);
+    --pane: rgba(25, 23, 36, 0.6);
+    --wall: url('/wall-dark.svg');
+    --overlay: rgba(22, 20, 31, 0.22);
     --pane-solid: #191724;
     --surface: #26233a;
     --surface-2: #403d52;
@@ -61,9 +61,9 @@ time, mark, audio, video {
     --bg: #dfdad9;
     --tile-border: rgba(87, 82, 121, 0.18);
     --tile-shadow: rgba(87, 82, 121, 0.14);
-    --pane: rgba(255, 250, 243, 0.84);
-    --bg-grad: linear-gradient(168deg, #fdf8f0 0%, #faf4ed 35%, #f7e2d3 65%, #ecc8c4 88%, #d9aec0 100%);
-    --overlay: rgba(250, 244, 237, 0.55);
+    --pane: rgba(255, 250, 243, 0.7);
+    --wall: url('/wall-light.svg');
+    --overlay: rgba(250, 244, 237, 0.25);
     --btn-border: rgba(87, 82, 121, 0.25);
     --pane-solid: #faf4ed;
     --surface: #fffaf3;

@@ -237,7 +237,11 @@
     div.background {
         height: 100vh;
         width: 100vw;
-        background: var(--bg-grad) fixed;
+        background-color: var(--bg);
+        background-image: var(--wall);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }
 
     .hoverContainer {
