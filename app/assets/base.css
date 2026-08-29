@@ -61,7 +61,7 @@ time, mark, audio, video {
     --bg: #dfdad9;
     --tile-border: rgba(87, 82, 121, 0.18);
     --tile-shadow: rgba(87, 82, 121, 0.14);
-    --pane: rgba(255, 250, 243, 0.48);
+    --pane: rgba(255, 250, 243, 0.62);
     --wall: url('/wall-light.svg');
     --overlay: rgba(250, 244, 237, 0.14);
     --btn-border: rgba(87, 82, 121, 0.25);
