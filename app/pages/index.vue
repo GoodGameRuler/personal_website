@@ -74,8 +74,8 @@
                           <hr />
                           <p> Made Using: <span class="hl"> Proxmox, LXC, Podman, WireGuard, Traefik, DNS </span></p>
                           <p class="breakLine" style="font-style: italic;"> An ongoing Linux playground </p>
-                          <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs most of what I host. Services typically in their own LXC containers. </span> </p>
-                          <p class="breakLine"> <span class="hl"> CGNAT restrictions mean the cluster cannot accept incoming connections, so I VPN into it to use my services from anywhere. Anything meant to be public is exposed through a tunnel to a small cloud machine, where a reverse proxy forwards the traffic back. I also run a small DNS service for adblock, and so I don't have to remember IP addresses. </span> </p>
+                          <p class="breakLine"> <span class="hl"> A Proxmox cluster in the corner of my room runs most of what I host. Services typically in their own LXCs. </span> </p>
+                          <p class="breakLine"> <span class="hl"> CGNAT restrictions mean the cluster cannot accept incoming connections, so I use Wireguard VPN to access my services. Anything meant to be public is exposed through a tunnel to a small cloud machine, where a reverse proxy forwards the traffic to my homelab. I run a minimal DNS service for adblock, and so I don't have to remember IP addresses. </span> </p>
                       </div>
                       <div v-if="selectedButton === 1" class="singleProjectDescBox projectBox">
                           <div class="projectHeader">
