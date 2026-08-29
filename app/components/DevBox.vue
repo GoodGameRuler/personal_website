@@ -23,7 +23,44 @@
 <template>
     <div class="dev infoBox">
         <div class="profilePhoto devBox">
-            <span class="profileCircle" />
+            <pre class="distroArt distroArch">                  -`
+                 .o+`
+                `ooo/
+               `+oooo:
+              `+oooooo:
+              -+oooooo+:
+            `/:-:++oooo+:
+           `/++++/+++++++:
+          `/++++++++++++++:
+         `/+++ooooooooooooo/`
+        ./ooosssso++osssssso+`
+       .oossssso-````/ossssss+`
+      -osssssso.      :ssssssso.
+     :osssssss/        osssso+++.
+    /ossssssss/        +ssssooo/-
+  `/ossssso+/:-        -:/+osssso+-
+ `+sso+:-`                 `.-/+oso:
+`++:.                           `-/+/
+.`                                 `/</pre>
+            <pre class="distroArt distroFedora">             .',;::::;,'.
+         .';:cccccccccccc:;,.
+      .;cccccccccccccccccccccc;.
+    .:cccccccccccccccccccccccccc:.
+  .;ccccccccccccc;.:dddl:.;ccccccc;.
+ .:ccccccccccccc;OWMKOOXMWd;ccccccc:.
+.:ccccccccccccc;KMMc;cc;xMMc;ccccccc:.
+,cccccccccccccc;MMM.;cc;;WW:;cccccccc,
+:cccccccccccccc;MMM.;cccccccccccccccc:
+:ccccccc;oxOOOo;MMM000k.;cccccccccccc:
+cccccc;0MMKxdd:;MMMkddc.;cccccccccccc;
+ccccc;XMO';cccc;MMM.;cccccccccccccccc'
+ccccc;MMo;ccccc;MMW.;ccccccccccccccc;
+ccccc;0MNc.ccc.xMMd;ccccccccccccccc;
+cccccc;dNMWXXXWM0:;cccccccccccccc:,
+cccccccc;.:odl:.;cccccccccccccc:,.
+ccccccccccccccccccccccccccccc:'.
+:ccccccccccccccccccccccc:;,..
+ ':cccccccccccccccc::;,.</pre>
         </div>
         <div class="info devBox">
             <p class="headerFont"> UDIT SAMANT </p> <br />
@@ -48,6 +85,28 @@
 </template>
 
 <style>
+    .distroArt {
+        font-family: "Source Code Pro", monospace;
+        font-size: 11px;
+        line-height: 1.05;
+        font-weight: bold;
+        color: var(--label);
+        user-select: none;
+    }
+
+    .distroFedora {
+        display: none;
+    }
+
+    :root[data-theme="light"] .distroArch {
+        display: none;
+    }
+
+    :root[data-theme="light"] .distroFedora {
+        display: block;
+        color: var(--heading);
+    }
+
     .skillButton:hover {
         color: var(--label);
     }

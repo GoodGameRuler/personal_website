@@ -273,9 +273,10 @@
         grid-row: 2;
         grid-column: 1;
         display: grid;
-        gap: 10px;
+        gap: 10px 30px;
         grid-template-rows: 1fr auto;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: auto 1fr;
+        align-items: center;
     }
 
     .proj{
@@ -475,9 +476,8 @@
             font-size: 19px;
         }
 
-        .profileCircle {
-            height: 180px;
-            width: 180px;
+        .distroArt {
+            font-size: 9px;
         }
 
         .vimText {
@@ -556,9 +556,8 @@
             font-size: 17px;
         }
 
-        .profileCircle {
-            height: 110px;
-            width: 110px;
+        .distroArt {
+            font-size: 8px;
         }
 
         .vimText {
