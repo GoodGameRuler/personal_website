@@ -1,5 +1,5 @@
 # uditsamant.com
-> A ful disclaimer that I have used AI tools to help me make this website - I don't think I would have been able caputre the design I wanted otherwise. 
+> A ful disclaimer that I have used AI tools to help me make this website - I don't think I would have been able fully captur the design I wanted otherwise. 
 
 My personal website: bio, projects, and experience. Built with Nuxt. I really enjoy making unique designs that showcase my interests. This particular page is inspired by tiling window managers and my setup on personal computer. The theme is based on a combination of the nvim rose-pine theme and Catppuccin.
 
